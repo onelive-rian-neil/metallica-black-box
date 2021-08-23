@@ -6,6 +6,8 @@
     "colors_outline_button_labels": "#d73a32",
     "colors_background_1": "#000000",
     "colors_background_2": "#222222",
+    "site-background-image": true,
+    "site-background-image-file": "shopify:\/\/shop_images\/download_3.jpg",
     "type_header_font": "raleway_n4",
     "type_body_font": "raleway_n4",
     "social_twitter_link": "#",
