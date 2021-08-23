@@ -1,4 +1,131 @@
 {
   "current": {
+    "colors_accent_1": "#333333",
+    "colors_accent_2": "#d73a32",
+    "colors_text": "#ffffff",
+    "colors_outline_button_labels": "#d73a32",
+    "colors_background_1": "#000000",
+    "colors_background_2": "#222222",
+    "type_header_font": "raleway_n4",
+    "type_body_font": "raleway_n4",
+    "social_twitter_link": "#",
+    "social_facebook_link": "#",
+    "social_pinterest_link": "#",
+    "social_instagram_link": "#",
+    "sections": {
+      "announcement-bar": {
+        "type": "announcement-bar",
+        "settings": {
+        }
+      },
+      "header": {
+        "type": "header",
+        "blocks": {
+          "6dc7190b-54e5-4741-b294-7d1540d9242b": {
+            "type": "logo",
+            "settings": {
+              "logo": "shopify:\/\/shop_images\/met-logo.png",
+              "logo_width": 250,
+              "logo_align": "center"
+            }
+          }
+        },
+        "block_order": [
+          "6dc7190b-54e5-4741-b294-7d1540d9242b"
+        ],
+        "settings": {
+          "page_width": true,
+          "alignment": "stack",
+          "background_color": "#000000",
+          "text_color": "#ffffff",
+          "homepage_transparents": true,
+          "header_position": "sticky"
+        }
+      },
+      "footer": {
+        "type": "footer",
+        "blocks": {
+          "footer-0": {
+            "type": "link_list",
+            "settings": {
+              "heading": "Quick links",
+              "menu": "main-menu"
+            }
+          },
+          "a5a3b4f7-3ce5-4fcc-b1c5-e89b5148d499": {
+            "type": "social-links",
+            "settings": {
+              "social_heading": "Connect with us"
+            }
+          },
+          "bf368619-a358-49e7-be9b-d0aec88b38bf": {
+            "type": "newsletter",
+            "settings": {
+              "newsletter_heading": "Heading",
+              "newsletter_text": "Subscribe to be the first to hear about our exclusive offers and latest arrivals",
+              "show_newsletter_social": false
+            }
+          }
+        },
+        "block_order": [
+          "footer-0",
+          "a5a3b4f7-3ce5-4fcc-b1c5-e89b5148d499",
+          "bf368619-a358-49e7-be9b-d0aec88b38bf"
+        ],
+        "settings": {
+          "color_scheme": "background-1",
+          "newsletter_enable": true,
+          "newsletter_heading": "Sign up to our emails",
+          "show_social": false,
+          "enable_country_selector": true,
+          "enable_language_selector": true,
+          "payment_enable": true
+        }
+      },
+      "top-bar": {
+        "type": "top-bar",
+        "blocks": {
+          "9bc2ef87-af1c-4287-b9aa-b0844e5f5f6e": {
+            "type": "menu",
+            "settings": {
+              "menu": "",
+              "append_cart": false,
+              "append_account": false,
+              "append_search": false,
+              "append_social": true,
+              "menu_align": "left",
+              "fixed_width": ""
+            }
+          },
+          "fd8f0954-6741-44d2-88c5-8a422bfd26a3": {
+            "type": "menu",
+            "settings": {
+              "menu": "",
+              "append_cart": true,
+              "append_account": true,
+              "append_search": false,
+              "append_social": false,
+              "menu_align": "right",
+              "fixed_width": ""
+            }
+          }
+        },
+        "block_order": [
+          "9bc2ef87-af1c-4287-b9aa-b0844e5f5f6e",
+          "fd8f0954-6741-44d2-88c5-8a422bfd26a3"
+        ],
+        "settings": {
+          "hide": true,
+          "page_width": false,
+          "alignment": "align",
+          "background_color": "rgba(0,0,0,0)",
+          "text_color": "#ffffff",
+          "homepage_transparents": true
+        }
+      }
+    },
+    "content_for_index": [
+
+    ]
   }
 }
