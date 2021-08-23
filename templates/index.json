@@ -1,7 +1,82 @@
 {
   "sections": {
+    "16268749773f5802fd": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "<div style=\"position:relative;height:100vh\"><div class=\"vimeo-wrapper\">\n   <iframe src=\"https:\/\/player.vimeo.com\/video\/577736909?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1\"\n           frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen><\/iframe>\n<\/div><\/div>\n\n<style>\n#shopify-section-template--14134119563318__16268749773f5802fd{\nmargin-top: 0;\n}\n.vimeo-wrapper {\n   position: absolute;\n   top: 0;\n   left: 0;\n   width: 100%;\n   height: 100%;\n   z-index: -1;\n   pointer-events: none;\n   overflow: hidden;\n}\n.vimeo-wrapper iframe {\n   width: 100vw;\n   height: 56.25vw; \/* Given a 16:9 aspect ratio, 9\/16*100 = 56.25 *\/\n   min-height: 100vh;\n   min-width: 177.77vh; \/* Given a 16:9 aspect ratio, 16\/9*100 = 177.77 *\/\n   position: absolute;\n   top: 50%;\n   left: 50%;\n   transform: translate(-50%, -50%);\n}\n<\/style>"
+      }
+    },
+    "featured_products": {
+      "type": "featured-collection",
+      "disabled": true,
+      "settings": {
+        "title": "SHOP THE DROP",
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "show_view_all": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    },
+    "16286132157e8717c1": {
+      "type": "custom-liquid",
+      "disabled": true,
+      "settings": {
+        "custom_liquid": "Add the signup form here."
+      }
+    },
+    "1629228300f5af320f": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner.jpg",
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-2",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "16292283257068b508": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner2.jpg",
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "16292304408f0234c8": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner3.jpg",
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "1629230576b58695b1": {
+      "type": "image-banner",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner4.jpg",
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    }
   },
   "order": [
-
+    "16268749773f5802fd",
+    "featured_products",
+    "16286132157e8717c1",
+    "1629228300f5af320f",
+    "16292283257068b508",
+    "16292304408f0234c8",
+    "1629230576b58695b1"
   ]
 }
