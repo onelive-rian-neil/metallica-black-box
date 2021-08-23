@@ -68,6 +68,12 @@
         "stack_images_on_mobile": true,
         "adapt_height_first_image": false
       }
+    },
+    "1629746007623cebf6": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": ""
+      }
     }
   },
   "order": [
@@ -77,6 +83,7 @@
     "1629228300f5af320f",
     "16292283257068b508",
     "16292304408f0234c8",
-    "1629230576b58695b1"
+    "1629230576b58695b1",
+    "1629746007623cebf6"
   ]
 }
