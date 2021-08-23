@@ -1,0 +1,277 @@
+{% include 'header-vars' %}
+
+{% unless section.settings.hide %}
+<div class="top-bar-wrapper top-bar--{{ section.settings.alignment }}{% if section.settings.page_width %} page-width{% endif %}{% if section.settings.homepage_transparents and template contains 'index' %} top-bar-transparent{% endif %}">
+                              
+      {%- for block in section.blocks -%}
+        {%- case block.type -%}
+  
+          {%- when 'menu' -%}
+  			{% assign menu_count = menu_count | plus: 1 %}
+  			{% if block.settings.fixed_width != blank %}
+            	{% assign menu_custom_width = true %}
+            	{% assign menu_custom_width_number = block.settings.fixed_width | downcase | remove: '%' | remove: 'px' | remove: 'em' | remove: 'rem' %}
+  				{% assign menu_custom_width_number_total = menu_custom_width_number_total | plus: menu_custom_width_number %}
+            {% endif %}
+  
+            {%- if block.settings.menu != blank or block.settings.append_social or block.settings.append_search or block.settings.append_account or block.settings.append_cart -%}
+              <nav class="header__menu-wrapper" style="{% if block.settings.fixed_width != blank %}width: {{ block.settings.fixed_width }};{% endif %} text-align: {{ block.settings.menu_align }}">
+                <ul class="list-menu" role="list">
+                  {%- for link in block.settings.menu.links -%}
+                    {% assign linktitle = link.title | downcase %}
+                    <li>
+                      {%- if link.links != blank -%}
+                        <details-disclosure>
+                          <details>
+                            <summary class="header__menu-item list-menu__item link focus-inset">
+                              <span {%- if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                              {% render 'icon-caret' %}
+                            </summary>
+                            <ul class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+                              {%- for childlink in link.links -%}
+                                <li>
+                                  {%- if childlink.links == blank -%}
+                                    <a href="{{ childlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
+                                      {{ childlink.title | escape }}
+                                    </a>
+                                  {%- else -%}
+                                    <details>
+                                      <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
+                                        {{ childlink.title | escape }}
+                                        {% render 'icon-caret' %}
+                                      </summary>
+                                      <ul class="header__submenu list-menu motion-reduce">
+                                        {%- for grandchildlink in childlink.links -%}
+                                          <li>
+                                            <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                              {{ grandchildlink.title | escape }}
+                                            </a>
+                                          </li>
+                                        {%- endfor -%}
+                                      </ul>
+                                    </details>
+                                  {%- endif -%}
+                                </li>
+                              {%- endfor -%}
+                            </ul>
+                          </details>
+                        </details-disclosure>
+                      {%- elsif linktitle == 'search' -%}
+                        {{ search_icon }}
+                      {%- elsif linktitle == 'cart' -%}
+                        {{ cart_icon }}
+                      {%- elsif linktitle == 'account' -%} 
+                        {{ account_icon }}
+                      {%- elsif linktitle == 'social' or linktitle == 'social-media' or linktitle == 'social_media' or linktitle == 'social media' -%}    
+                        {{ social_icons }}
+                      {%- else -%}
+                        <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                          <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                        </a>
+                      {%- endif -%}
+                    </li>
+                  {%- endfor -%}
+                  {%- if block.settings.append_social -%}
+                    <li>{{ social_icons }}</li>
+                  {%- endif -%}
+                  {%- if block.settings.append_search -%}
+                    <li>{{ search_icon }}</li>
+                  {%- endif -%}
+                  {%- if block.settings.append_account -%}
+                    <li>{{ account_icon }}</li>
+                  {%- endif -%}
+                  {%- if block.settings.append_cart -%}
+                    <li>{{ cart_icon }}</li>
+                  {%- endif -%}
+                </ul>
+              </nav>
+            {%- endif -%}
+  
+        {%- endcase -%}
+      {%- endfor -%}
+     
+</div>
+{% endunless %}
+  
+<style>
+  #shopify-section-top-bar{
+    background-color: {{ section.settings.background_color }};
+    color: {{ section.settings.text_color }};
+    position: relative;
+    z-index: 9;
+  }
+  {% if section.settings.header_position == 'fixed' %}
+    #shopify-section-top-bar{
+      position: sticky;
+      z-index: 3;
+      top: -1px;
+    }
+  {% endif %}
+  #shopify-section-top-bar .page-width{
+    position: relative;
+  }
+  #shopify-section-top-bar a,
+  #shopify-section-top-bar span,
+  #shopify-section-top-bar summary{
+    color: {{ section.settings.text_color }};
+  }
+  #shopify-section-top-bar svg{
+    fill: {{ section.settings.text_color }};
+  }
+  #shopify-section-top-bar .header{
+    background: transparent;
+  }
+  #shopify-section-top-bar .header__submenu.list-menu{
+    background-color: {{ section.settings.background_color }};
+  }
+  #shopify-section-top-bar .header__submenu.list-menu .header__submenu.list-menu{
+    box-shadow: inset 0px -10px 30px -30px, inset 0px 10px 30px -30px, inset 0px -10px 30px -30px black, inset 0px 10px 30px -30px black;
+  }
+  #shopify-section-top-bar div.top-bar--align nav.header__menu-wrapper{
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(50% - 3px);
+  }
+  #shopify-section-top-bar .list-menu > li{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  #shopify-section-top-bar .header__icon--cart{
+    margin-right: 0;
+  }
+  #shopify-section-top-bar ul.header__list-social{
+    
+  }
+  #shopify-section-top-bar ul.header__list-social > li{
+    display: inline-block;
+    vertical-align: middle;
+  }
+  {% if section.settings.homepage_transparents %}
+  	.template-index #shopify-section-top-bar{
+      background: transparent;
+      width: 100%;
+      z-index: 10;
+    }
+  {% endif %}
+</style>
+
+
+
+{% schema %} 
+{
+  "name": "Top bar",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "hide",
+      "label": "Hide section?",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "page_width",
+      "label": "Use site width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Menu placement",
+      "options": [
+        {
+          "value": "stack",
+          "label": "Stack"
+        },
+        {
+          "value": "align",
+          "label": "Align"
+        }
+      ],
+      "default": "align",
+      "info": "Align or stack Menus & Logo"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color"
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text Color"
+    },
+    {
+      "type": "checkbox",
+      "id": "homepage_transparents",
+      "label": "Homepage transparent",
+      "default": false,
+      "info": "Allows the header to site on banner with transparent background"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menu",
+      "name": "Menu",
+      "limit": 2,
+      "settings": [
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Menu"
+        },
+        {
+          "type": "checkbox",
+          "id": "append_cart",
+          "label": "Append cart icon",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "append_account",
+          "label": "Append account icon",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "append_search",
+          "label": "Append search icon",
+          "default": false
+        },
+        {
+          "type": "checkbox",
+          "id": "append_social",
+          "label": "Append social icons",
+          "default": false
+        },
+        {
+          "type": "select",
+          "id": "menu_align",
+          "label": "Menu alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center",
+          "info": "Align Menus"
+        },
+        {
+          "type": "text",
+          "id": "fixed_width",
+          "label": "Menu width",
+          "info": "Overwrites width of menu"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

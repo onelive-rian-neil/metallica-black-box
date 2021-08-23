@@ -1,0 +1,295 @@
+<div class="tours background-{{ section.settings.background_style }}{% if section.settings.title == blank %} no-heading{% endif %}">
+  {% if section.settings.page_width %}<div class="page-width">{% endif %}
+    <div class="title-wrapper-with-link title-wrapper--self-padded-mobile{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}">
+      {% if section.settings.title != blank %}
+        <h2 class="title">
+          {{ section.settings.title | escape }}
+        </h2>
+      {% endif %}
+    </div>
+
+
+{% comment %}
+
+	Rian, you can use this file as a template for designing tour pages for each store. 
+
+	In the FSD demo store it is included in page.tours.liquid.
+	
+	I've included comments so that you can see what the liquid is doing, but I would recommend 
+	duplicating this file and deleting the comments when you use it in production.
+	
+	Don't modify anything in the variables or the if/else logic (unless you're confident that you 
+	know what you're doing) But feel free to add/remove html structure/content in order to create a new
+	design for a new store.
+
+	Feel free to modify the html and the output tour/event data.
+
+	questions: support@pogodan.com
+
+{% endcomment %}
+
+{% assign tours = shop.metafields.automatik.tours %}
+
+
+<!-- Loop through the tours buttons -->
+{% comment %} <div class="section-header btn-group btn-group-right tour-button-wrapper">
+  {% for t in tours %}
+    {% assign toursButton = t.tour.name | split: '_' %}
+    <a href="#" class="btn btn-default scroll-trigger tour-button" data-scroll-to="#tour-{{ t.tour.id }}">{{ toursButton[1] }}</a>
+  {% endfor %}
+</div> {% endcomment %}
+
+
+<!-- Loop through the tours -->
+{% for t in tours %}
+    {% if t.no_tours %}
+        <div style="text-align: center;">No upcoming tour dates at this time.</div>
+        {% break %}
+    {% endif %}
+	
+	<!-- Tour Name -->
+   	{% comment %} <h1 style="height: 0; width: 0; opacity: 0;" id="tour-{{ t.tour.id }}">{{ t.tour.name }}</h1>  {% endcomment %}
+
+<!--     <hr style="background:#ccc;"> -->
+	
+	<!-- Loop through the events in a tour -->
+  	{% for e in t.events %}
+        <!-- Set variables -->
+        <!---- For comparison to 'now' ---->
+        {% assign time_now = "now" | date: '%s' %}
+		
+		<!---- Set blank publishing date/times to 'now' (i.e. visible by default) ---->
+		<!---- This also prevents the dates being persitsted accross loops ---->
+ 		<!------ For Events  ------>        
+		{% assign e_on    = "now" | date: '%s' %}
+        {% assign e_off   = "now" | date: '%s' %}
+		
+		<!------ For Links  ------>
+		{% assign u_1_on  = "now" | date: '%s' %}
+        {% assign u_2_on  = "now" | date: '%s' %}
+        {% assign u_3_on  = "now" | date: '%s' %}
+        {% assign u_4_on  = "now" | date: '%s' %}
+        {% assign u_5_on  = "now" | date: '%s' %}
+        {% assign u_1_off = "now" | date: '%s' %}
+        {% assign u_2_off = "now" | date: '%s' %}
+        {% assign u_3_off = "now" | date: '%s' %}
+        {% assign u_4_off = "now" | date: '%s' %}
+        {% assign u_5_off = "now" | date: '%s' %}
+
+        <!---- For non-blank publishing date/times, set the datetime ---->
+		<!---- Here we override the publishing date/times ONLY for links/events that have them ---->
+
+        <!------ For Events  ------>
+        {% unless e.publish_on == blank %}{% assign e_on  = e.publish_on | date: '%s' %}{% endunless %}
+        {% unless e.remove_on  == blank %}{% assign e_off = e.remove_on  | date: '%s' %}{% endunless %}
+
+        <!------ For Links  ------>
+        {% unless e.url_1_publish_on == blank %}{% assign u_1_on  = e.url_1_publish_on | date: '%s' %}{% endunless %}
+        {% unless e.url_2_publish_on == blank %}{% assign u_2_on  = e.url_2_publish_on | date: '%s' %}{% endunless %}
+        {% unless e.url_3_publish_on == blank %}{% assign u_3_on  = e.url_3_publish_on | date: '%s' %}{% endunless %}
+        {% unless e.url_4_publish_on == blank %}{% assign u_4_on  = e.url_4_publish_on | date: '%s' %}{% endunless %}
+        {% unless e.url_5_publish_on == blank %}{% assign u_5_on  = e.url_5_publish_on | date: '%s' %}{% endunless %}
+        {% unless e.url_1_remove_on  == blank %}{% assign u_1_off = e.url_1_remove_on  | date: '%s' %}{% endunless %}
+        {% unless e.url_2_remove_on  == blank %}{% assign u_2_off = e.url_2_remove_on  | date: '%s' %}{% endunless %}
+        {% unless e.url_3_remove_on  == blank %}{% assign u_3_off = e.url_3_remove_on  | date: '%s' %}{% endunless %}
+        {% unless e.url_4_remove_on  == blank %}{% assign u_4_off = e.url_4_remove_on  | date: '%s' %}{% endunless %}
+        {% unless e.url_5_remove_on  == blank %}{% assign u_5_off = e.url_5_remove_on  | date: '%s' %}{% endunless %}
+		<!-- End Variables -->
+
+		<!-- Show if the event is published and we are within the publishing timeframe -->
+		{% if e.published == "1" and time_now >= e_on and time_now <= e_off %}
+		<article id="event-{{e.id}}" class="art-row event" data-date="{{ e.event_date | date: '%m-%d-%Y' }}">
+
+
+            <!-- Event Info --> 
+            <div class="date event-date">
+                {{ e.event_date | date: '%d' }}.{{ e.event_date | date: '%m' }}.{{ e.event_date | date: '%Y' }}
+            </div>
+
+          <div class="event-title">
+						<h2>{{ e.city }}, {{ e.province }} <span>{{ e.venue }} {{ e.title }}</span></h2>
+					</div>
+  
+            {% comment %} <div class="location-container " >
+                <h1 class="h3 type-brand text-uppercase">
+                    {{ e.city }},  {{ e.province }} 
+                </h1>
+                <div class="location">
+                    {{ e.venue }}   
+                </div>
+
+
+                <div class="dropdown-tour left-tour-loop-{{ forloop.index }}">
+                    <p>{{ e.title }}</p>
+                    <p>{{ e.description }}</p> 
+                    <p>{{ e.event_date | date: '%m-%d-%Y' }}, {{ e.venue }}, {{ e.city }} {{ e.providence }} {{ e.country }}</p>
+                    <p><a href="{{ e.page_url }}">{{ e.page_url }}</a>                    
+                </div>
+
+            </div> {% endcomment %}
+
+            <footer class="actions">
+            <div class="btn-group event-links">
+            {% comment %} <a href="{{ e.page_url }}" class="tourdates-tickets">{{ e.page_url }}</a> {% endcomment %}
+
+            <!-- Show Link 1 if enabled on tour  -->
+            {% if t.tour.url_1 %}
+                <!-- Show if we have a URL and we are within the URL publishing times on the event -->
+                {% if e.url_1 != blank and time_now >= u_1_on and time_now <= u_1_off %}
+                    <a href="{{ e.url_1 }}" class="{% if e.sold_out == '1' %}aClassForStrikingThroughText {% endif %}btn btn-default tourdates-tickets button">
+                      <span>{% if e.sold_out == "1" %}
+                        SOLD OUT{% else %}{{ t.tour.url_1 }}{% endif %}
+                      </span>
+                    </a>
+                    {% comment %} <a class="info left-info-loop-{{ forloop.index }}">{{ t.tour.url_1 }}</a> {% endcomment %}
+                {% endif %}
+            {% endif %}
+            <!-- Show Link 2 if enabled on tour -->
+            {% if t.tour.url_2  != blank and e.url_2 != blank %}
+                <!-- Show if we have a URL and we are within the URL publishing times on the event -->
+                {% if e.url_2 and time_now >= u_2_on and time_now <= u_2_off %}
+                    <a href="{{ e.url_2 }}" class="{% if e.sold_out == '1' %}aClassForStrikingThroughText {% endif %}btn btn-default tourdates-tickets button">{{ t.tour.url_2 }}</a>
+                {% endif %}
+            {% endif %}
+            <!-- Show Link 3 if enabled on tour -->
+            {% if t.tour.url_3 != blank and e.url_3 != blank %}
+                <!-- Show if we have a URL and we are within the URL publishing times on the event -->
+                {% if e.url_3 and time_now >= u_3_on and time_now <= u_3_off %}
+                    <a href="{{ e.url_3 }}" class="{% if e.sold_out == '1' %}aClassForStrikingThroughText {% endif %}btn btn-default tourdates-tickets button">{{ t.tour.url_3 }}</a>
+                {% endif %}
+            {% endif %}
+            <!-- Show Link 4 if enabled on tour -->
+            {% if t.tour.url_4 != blank and e.url_4 != blank %}
+                <!-- Show if we have a URL and we are within the URL publishing times on the event -->
+                {% if e.url_4 and time_now >= u_4_on and time_now <= u_4_off %}
+                    <a href="{{ e.url_4 }}" class="{% if e.sold_out == '1' %}aClassForStrikingThroughText {% endif %}btn btn-default tourdates-tickets button">{{ t.tour.url_4 }}</a>
+                {% endif %}
+            {% endif %}
+            <!-- Show Link 5 if enabled on tour-->
+            {% if t.tour.url_5 != blank and e.url_5 != blank %}
+                <!-- Show if we have a URL and we are within the URL publishing times on the event -->
+                {% if e.url_5 and time_now >= u_5_on and time_now <= u_5_off %}
+                    <a href="{{ e.url_5 }}" class="{% if e.sold_out == '1' %}aClassForStrikingThroughText {% endif %}btn btn-default tourdates-tickets button">{{ t.tour.url_5 }}</a>
+                {% endif %}
+            {% endif %}
+            <!-- End Links -->
+
+            </div>
+            </footer>
+            {% comment %} <hr style="background:#ccc;"> {% endcomment %}
+		<!-- End Published Event Info -->
+		{% endif %}
+</article>
+    <!-- End Event Loop -->              
+	{% endfor %}
+
+<!-- End Tour Loop -->   
+{% endfor %}
+
+<!-- For admin/debugging purposes only (remove in production) -->
+{% comment %} <pre><code>{{ tours }}</code></pre>  {% endcomment %}
+
+  {% if section.settings.page_width %}
+  </div>
+  {% endif %}
+</div>
+
+<style>
+  .shopify-section--tour{
+    text-align: center;
+    text-transform: uppercase;
+  }
+  .shopify-section--tour article.event{
+    border-bottom: 2px solid #ffffff;
+    padding: 10px 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .shopify-section--tour article.event .event-date{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
+    text-align: left;
+  }
+  .shopify-section--tour article.event .event-title{
+    display: inline-block;
+    vertical-align: middle;
+    width: calc(60% - 11px);
+    text-align: left;
+  }
+  .shopify-section--tour article.event .event-title h2{
+    font-size: 18px;
+  }
+  .shopify-section--tour article.event .actions{
+    display: inline-block;
+    vertical-align: middle;
+    width: 20%;
+    text-align: right;
+  }
+  .shopify-section--tour article.event .actions .event-links a{
+    text-align: center;
+    width: 100%;
+  }
+  .shopify-section--tour article.event .actions .event-links .aClassForStrikingThroughText{
+    opacity: 0.8;
+    cursor: not-allowed;
+  }
+  @media screen and (max-width: 990px){
+    .shopify-section--tour article.event .event-date,
+    .shopify-section--tour article.event .event-title,
+    .shopify-section--tour article.event .actions{
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>
+
+{% schema %} 
+{
+  "name": "Tour",
+  "class": "shopify-section--tour",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "UPCOMING SHOWS"
+    },
+    {
+      "type": "checkbox",
+      "id": "page_width",
+      "label": "Use site width",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "background_style",
+      "options": [
+        {
+          "value": "none",
+          "label": "t:sections.multicolumn.settings.background_style.options__1.label"
+        },
+        {
+          "value": "primary",
+          "label": "t:sections.multicolumn.settings.background_style.options__2.label"
+        },
+        {
+          "value": "secondary",
+          "label": "t:sections.multicolumn.settings.background_style.options__3.label"
+        }
+      ],
+      "default": "primary",
+      "label": "t:sections.multicolumn.settings.background_style.label"
+    }
+  ],
+  "blocks": [
+  ],
+  "presets": [
+    {
+      "name": "Tour",
+      "blocks": [
+      ]
+    }
+  ]
+}
+{% endschema %}

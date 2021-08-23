@@ -1,0 +1,82 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+      }
+    },
+    "162878861534ee3ebe": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "VOD RENTAL",
+        "collection": "accessories",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    },
+    "162878866025e5cea1": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Merch From other shows",
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    },
+    "1628788638c9727d88": {
+      "type": "image-banner",
+      "blocks": {
+        "1628788638c9727d88-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner"
+          }
+        },
+        "1628788638c9727d88-1": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template."
+          }
+        },
+        "1628788638c9727d88-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "1628788638c9727d88-0",
+        "1628788638c9727d88-1",
+        "1628788638c9727d88-2"
+      ],
+      "settings": {
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    }
+  },
+  "order": [
+    "main",
+    "162878861534ee3ebe",
+    "162878866025e5cea1",
+    "1628788638c9727d88"
+  ]
+}

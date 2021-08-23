@@ -1,0 +1,42 @@
+ {% if settings.site-background-image %}
+  body{
+    background-image: url('{{ settings.site-background-image-file | img_url: 'master' }}');
+    {% unless settings.site-background-image-repeat == blank %}background-repeat: {{ settings.site-background-image-repeat }};{% endunless %}
+    {% unless settings.site-background-image-position == blank %}background-position: {{ settings.site-background-image-position }};{% endunless %}
+    {% unless settings.site-background-image-size == blank %}background-size: {{ settings.site-background-image-size }};{% endunless %}
+    {% unless settings.site-background-image-attachment == blank %}background-attachment: {{ settings.site-background-image-attachment }};{% endunless %}
+  }
+{% endif %}
+  
+{% if settings.homepage-background-image %}
+  body.template-index {
+      background-image: url('{{ settings.homepage-background-image-file | img_url: 'master' }}');
+      {% unless settings.homepage-background-image-repeat == blank %}background-repeat: {{ settings.homepage-background-image-repeat }};{% endunless %}
+      {% unless settings.homepage-background-image-position == blank %}background-position: {{ settings.homepage-background-image-position }};{% endunless %}
+    {% unless settings.homepage-background-image-size == blank %}background-size: {{ settings.homepage-background-image-size }};{% endunless %}
+    {% unless settings.homepage-background-image-attachment == blank %}background-attachment: {{ settings.homepage-background-image-attachment }};{% endunless %}
+  }
+{% endif %}
+
+{% if settings.site-background-mobile-image %}
+  @media (max-width: 768px) {
+    body {
+      background: none;
+    }
+    body:before {
+      content: "";
+      display: block;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: -10;
+      background: url("{{ settings.site-background-mobile-image-file | img_url: 'master' }}") no-repeat center center;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+    }
+  }
+{% endif %}

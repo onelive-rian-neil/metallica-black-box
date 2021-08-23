@@ -1,0 +1,35 @@
+{
+  "sections": {
+    "16268749773f5802fd": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<div style=\"position:relative;height:100vh\"><div class=\"vimeo-wrapper\">\n   <iframe src=\"https:\/\/player.vimeo.com\/video\/577736909?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1\"\n           frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen><\/iframe>\n<\/div><\/div>\n\n<style>\n#shopify-section-template--14134119563318__16268749773f5802fd{\nmargin-top: 0;\n}\n.vimeo-wrapper {\n   position: absolute;\n   top: 0;\n   left: 0;\n   width: 100%;\n   height: 100%;\n   z-index: -1;\n   pointer-events: none;\n   overflow: hidden;\n}\n.vimeo-wrapper iframe {\n   width: 100vw;\n   height: 56.25vw; \/* Given a 16:9 aspect ratio, 9\/16*100 = 56.25 *\/\n   min-height: 100vh;\n   min-width: 177.77vh; \/* Given a 16:9 aspect ratio, 16\/9*100 = 177.77 *\/\n   position: absolute;\n   top: 50%;\n   left: 50%;\n   transform: translate(-50%, -50%);\n}\n<\/style>"
+      }
+    },
+    "featured_products": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "SHOP THE DROP!!!",
+        "collection": "frontpage",
+        "products_to_show": 4,
+        "show_view_all": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
+    },
+    "1629734206e47197b1": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<h1 style=\"text-align:center;\">\nINNOVATION IN COMMERCE!\n<\/h2>"
+      }
+    }
+  },
+  "order": [
+    "16268749773f5802fd",
+    "featured_products",
+    "1629734206e47197b1"
+  ]
+}

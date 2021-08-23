@@ -1,0 +1,31 @@
+.multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--half-width.multicolumn-card-spacing {
+  padding: 0;
+  width: 100%;
+}
+.page-width,
+.page-width-desktop{
+  max-width: 100%;
+}
+.announcement-bar{
+  border: 0;
+}
+
+h2.title {
+  margin: 0 auto!important;
+  text-transform: uppercase;
+}
+
+
+.article-template {
+      max-width: 130rem;
+    margin: 0 auto;
+}
+
+@media screen and (min-width: 990px){
+  .collage-section .collage {
+    grid-template-columns: minmax(auto, 100%) minmax(40rem, 36rem);
+    /*grid-template-columns: minmax(auto, 93rem) minmax(40rem, 36rem);*/
+  }
+}
+
+  
