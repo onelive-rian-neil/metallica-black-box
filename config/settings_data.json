@@ -8,6 +8,8 @@
     "colors_background_2": "#222222",
     "site-background-image": true,
     "site-background-image-file": "shopify:\/\/shop_images\/download_3.jpg",
+    "site-background-image-repeat": "no-repeat",
+    "site-background-image-attachment": "fixed",
     "type_header_font": "raleway_n4",
     "type_body_font": "raleway_n4",
     "social_twitter_link": "#",
