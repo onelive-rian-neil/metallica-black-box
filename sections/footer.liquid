@@ -354,15 +354,6 @@
           </localization-form>
         {%- endif -%}
       </div>
-      <div class="footer-payment">
-        <ul class="payment-icons">
-          {%- for type in shop.enabled_payment_types -%}
-            <li class="payment-icon">
-              {{ type | payment_type_svg_tag: class: 'icon icon--full-color' }}
-            </li>
-          {%- endfor -%}
-        </ul>
-      </div>
       <div class="footer__column footer__column--info">
         <div class="footer__copyright">
           <small class="copyright__content">&copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: routes.root_url }}</small>
