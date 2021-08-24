@@ -1,11 +1,17 @@
+
 /* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
   HEADER
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
 
+/* 
+keep but move to core css
+*/
+
 .announcement-bar{
   border: 0;
 }
+
 
 #shopify-section-header #menu-drawer .list-menu > li {
   display: block!important;
@@ -27,3 +33,6 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
 #shopify-section-header header.header--align div.header__logo-wrapper{
   width: calc(100% - 150px)!important;
 }
+
+  
+
