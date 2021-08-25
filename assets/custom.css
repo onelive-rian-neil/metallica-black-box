@@ -14,13 +14,30 @@ h2.title {
   margin: 0 auto!important;
   text-transform: uppercase;
 }
+#ContactFooter .newsletter-form__field-wrapper {
+  width: 70%;
+  float: left;
+  display: inline-block;
+}
 
-
+.footer-block__newsletter .newsletter-form__button.button {
+  padding: 0;
+  color: #fff;
+  box-shadow: none;
+  display: inline-block;
+  width: auto;
+  max-width: auto;
+  float: right;
+}
 .article-template {
       max-width: 130rem;
     margin: 0 auto;
 }
-
+.dITnff.dITnff,
+.bfAJHs.bfAJHs,
+.itrmhl.itrmhl {
+  padding-left:0!important;
+}
 @media screen and (min-width: 990px){
   .collage-section .collage {
     grid-template-columns: minmax(auto, 100%) minmax(40rem, 36rem);
