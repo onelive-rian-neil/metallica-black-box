@@ -1,14 +1,17 @@
-.multicolumn-card__image-wrapper.multicolumn-card__image-wrapper--half-width.multicolumn-card-spacing {
-  padding: 0;
-  width: 100%;
-}
-.page-width,
-.page-width-desktop{
-  max-width: 100%;
-}
+
+/* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+  HEADER
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
+
+/* 
+keep but move to core css
+*/
+
 .announcement-bar{
   border: 0;
 }
+
 
 h2.title {
   margin: 0 auto!important;
@@ -43,6 +46,29 @@ h2.title {
     grid-template-columns: minmax(auto, 100%) minmax(40rem, 36rem);
     /*grid-template-columns: minmax(auto, 93rem) minmax(40rem, 36rem);*/
   }
+
+
+#shopify-section-header #menu-drawer .list-menu > li {
+  display: block!important;
+}
+#shopify-section-header .menu-drawer__utility-links{
+  text-align: left;
+}
+#shopify-section-header header.header--align{
+  text-align: center;
+
+}
+/*#shopify-section-header header.header--align > nav:nth-child(1){
+  left: 0;
+}*/
+#shopify-section-header header.header--align nav.header__menu-wrapper{
+  width: auto!important;
+  /*position: absolute;
+  right: 0;*/
+}
+#shopify-section-header header.header--align div.header__logo-wrapper{
+  width: calc(100% - 150px)!important;
 }
 
   
+

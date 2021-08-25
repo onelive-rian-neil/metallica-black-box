@@ -15,11 +15,11 @@
     margin-left: -1.2rem;
   }
 
-  @media screen and (min-width: 990px) {
+  {% comment %} @media screen and (min-width: 990px) {
     header-drawer {
       display: none;
     }
-  }
+  } {% endcomment %}
 
   .menu-drawer-container {
     display: flex;
@@ -81,6 +81,7 @@
 
 <header class="header--{{ section.settings.alignment }}{% if section.settings.page_width %} page-width{% endif %}">
 
+      {% capture hamburger_icon %}
       <header-drawer>
         <details class="menu-drawer-container">
           <summary class="header__icon header__icon--menu header__icon--summary link link--text focus-inset" aria-label="{{ 'sections.header.menu' | t }}">
@@ -251,7 +252,7 @@
           </div>
         </details>
   
-          {%- for block in section.blocks -%}
+          {% comment %} {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'logo' -%}
                 <div class="header__logo-mobile-wrapper" style="{% if section.settings.alignment == 'align' %}width: {{ block.settings.logo_width }}px;{% endif %} text-align: {{ block.settings.logo_align }};">
@@ -275,35 +276,35 @@
                   {%- endif -%}
                 </div>
             {%- endcase -%}
-          {%- endfor -%}
+          {%- endfor -%} {% endcomment %}
         
       </header-drawer>
-  
+      {% endcapture %}
   
   
       {%- for block in section.blocks -%}
         {%- case block.type -%}
           {%- when 'logo' -%}
-  
   			<div class="header__logo-wrapper" style="{% if section.settings.alignment == 'align' %}width: {{ block.settings.logo_width }}px;{% endif %} text-align: {{ block.settings.logo_align }};">
-              {%- if request.page_type == 'index' -%}
-                <h1 class="header__heading">
-              {%- endif -%}
-                  <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
-                    {%- if block.settings.logo != blank -%}
-                      {%- assign image_size = block.settings.logo_width | append: 'x' -%}
-                      <img srcset="{{ block.settings.logo | img_url: image_size }} 1x, {{ block.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                        src="{{ block.settings.logo | img_url: image_size }}"
-                        loading="lazy"
-                        class="header__heading-logo"
-                        alt="{{ block.settings.logo.alt | default: shop.name | escape }}">
-                    {%- else -%}
-                      <span class="h2">{{ shop.name }}</span>
-                    {%- endif -%}
-                  </a>
-              {%- if request.page_type == 'index' -%}
-                </h1>
-              {%- endif -%}
+          {% if block.settings.hide_logo_home and template contains 'index' %}<style>body.template-index #shopify-section-header .header__logo-wrapper{opacity: 0; visibility: hidden;}</style>{% endif %}
+          {%- if request.page_type == 'index' -%}
+            <h1 class="header__heading">
+          {%- endif -%}
+              <a href="{{ routes.root_url }}" class="header__heading-link link link--text focus-inset">
+                {%- if block.settings.logo != blank -%}
+                  {%- assign image_size = block.settings.logo_width | append: 'x' -%}
+                  <img srcset="{{ block.settings.logo | img_url: image_size }} 1x, {{ block.settings.logo | img_url: image_size, scale: 2 }} 2x"
+                    src="{{ block.settings.logo | img_url: image_size }}"
+                    loading="lazy"
+                    class="header__heading-logo"
+                    alt="{{ block.settings.logo.alt | default: shop.name | escape }}">
+                {%- else -%}
+                  <span class="h2">{{ shop.name }}</span>
+                {%- endif -%}
+              </a>
+          {%- if request.page_type == 'index' -%}
+            </h1>
+          {%- endif -%}
   			</div>
   
           {%- when 'menu' -%}
@@ -317,60 +318,64 @@
             {%- if block.settings.menu != blank or block.settings.append_social or block.settings.append_search or block.settings.append_account or block.settings.append_cart  -%}
               <nav class="header__menu-wrapper" style="{% if block.settings.fixed_width != blank %}width: {{ block.settings.fixed_width }};{% endif %} text-align: {{ block.settings.menu_align }}">
                 <ul class="list-menu" role="list">
-                  {%- for link in block.settings.menu.links -%}
-                    {% assign linktitle = link.title | downcase %}
-                    <li>
-                      {%- if link.links != blank -%}
-                        <details-disclosure>
-                          <details>
-                            <summary class="header__menu-item list-menu__item link focus-inset">
-                              <span{% if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                              {% render 'icon-caret' %}
-                            </summary>
-                            <ul class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
-                              {%- for childlink in link.links -%}
-                                <li>
-                                  {%- if childlink.links == blank -%}
-                                    <a href="{{ childlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
-                                      {{ childlink.title | escape }}
-                                    </a>
-                                  {%- else -%}
-                                    <details>
-                                      <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
+                  {%- if block.settings.append_hamburger -%}
+                    <li>{{ hamburger_icon }}</li>
+                  {%- else -%}
+                    {%- for link in block.settings.menu.links -%}
+                      {% assign linktitle = link.title | downcase %}
+                      <li>
+                        {%- if link.links != blank -%}
+                          <details-disclosure>
+                            <details>
+                              <summary class="header__menu-item list-menu__item link focus-inset">
+                                <span{% if link.child_active %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                                {% render 'icon-caret' %}
+                              </summary>
+                              <ul class="header__submenu list-menu list-menu--disclosure caption-large motion-reduce" role="list" tabindex="-1">
+                                {%- for childlink in link.links -%}
+                                  <li>
+                                    {%- if childlink.links == blank -%}
+                                      <a href="{{ childlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if childlink.current %} list-menu__item--active{% endif %}"{% if childlink.current %} aria-current="page"{% endif %}>
                                         {{ childlink.title | escape }}
-                                        {% render 'icon-caret' %}
-                                      </summary>
-                                      <ul class="header__submenu list-menu motion-reduce">
-                                        {%- for grandchildlink in childlink.links -%}
-                                          <li>
-                                            <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
-                                              {{ grandchildlink.title | escape }}
-                                            </a>
-                                          </li>
-                                        {%- endfor -%}
-                                      </ul>
-                                    </details>
-                                  {%- endif -%}
-                                </li>
-                              {%- endfor -%}
-                            </ul>
-                          </details>
-                        </details-disclosure>
-                      {%- elsif linktitle == 'search' -%}
-                        {{ search_icon }}
-                      {%- elsif linktitle == 'cart' -%}
-                        {{ cart_icon }}
-                      {%- elsif linktitle == 'account' -%}        
-                        {{ account_icon }}
-                      {%- elsif linktitle == 'social' or linktitle == 'social-media' or linktitle == 'social_media' or linktitle == 'social media' -%}    
-                        {{ social_icons }}
-                      {%- else -%}
-                        <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
-                          <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
-                        </a>
-                      {%- endif -%}
-                    </li>
-                  {%- endfor -%}
+                                      </a>
+                                    {%- else -%}
+                                      <details>
+                                        <summary class="header__menu-item link link--text list-menu__item focus-inset caption-large">
+                                          {{ childlink.title | escape }}
+                                          {% render 'icon-caret' %}
+                                        </summary>
+                                        <ul class="header__submenu list-menu motion-reduce">
+                                          {%- for grandchildlink in childlink.links -%}
+                                            <li>
+                                              <a href="{{ grandchildlink.url }}" class="header__menu-item list-menu__item link link--text focus-inset caption-large{% if grandchildlink.current %} list-menu__item--active{% endif %}"{% if grandchildlink.current %} aria-current="page"{% endif %}>
+                                                {{ grandchildlink.title | escape }}
+                                              </a>
+                                            </li>
+                                          {%- endfor -%}
+                                        </ul>
+                                      </details>
+                                    {%- endif -%}
+                                  </li>
+                                {%- endfor -%}
+                              </ul>
+                            </details>
+                          </details-disclosure>
+                        {%- elsif linktitle == 'search' -%}
+                          {{ search_icon }}
+                        {%- elsif linktitle == 'cart' -%}
+                          {{ cart_icon }}
+                        {%- elsif linktitle == 'account' -%}        
+                          {{ account_icon }}
+                        {%- elsif linktitle == 'social' or linktitle == 'social-media' or linktitle == 'social_media' or linktitle == 'social media' -%}    
+                          {{ social_icons }}
+                        {%- else -%}
+                          <a href="{{ link.url }}" class="header__menu-item header__menu-item list-menu__item link link--text focus-inset"{% if link.current %} aria-current="page"{% endif %}>
+                            <span {%- if link.current %} class="header__active-menu-item"{% endif %}>{{ link.title | escape }}</span>
+                          </a>
+                        {%- endif -%}
+                      </li>
+                    {%- endfor -%}
+                  {%- endif -%}
                   {%- if block.settings.append_social -%}
                     <li>{{ social_icons }}</li>
                   {%- endif -%}
@@ -501,15 +506,16 @@
     display: inline-block;
     vertical-align: middle;
   }
+  {% comment %} 
   @media screen and (max-width: 990px){
     #shopify-section-header header nav.header__menu-wrapper, 
     #shopify-section-header header div.header__logo-wrapper{
       display: none!important;
-    }
+    } 
     #shopify-section-header .list-menu > li{
       display: block;
     }
-  }
+  }{% endcomment %}
 </style>
                       
 
@@ -713,6 +719,12 @@
         },
         {
           "type": "checkbox",
+          "id": "append_hamburger",
+          "label": "Append hamburger icon",
+          "default": false
+        },
+        {
+          "type": "checkbox",
           "id": "append_cart",
           "label": "Append cart icon",
           "default": false
@@ -804,6 +816,12 @@
           ],
           "default": "center",
           "info": "Align Menus"
+        },
+        {
+          "type": "checkbox",
+          "id": "hide_logo_home",
+          "label": "Hide logo on homepage?",
+          "default": false
         }
       ]
     }

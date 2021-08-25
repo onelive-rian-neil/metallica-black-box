@@ -27,21 +27,50 @@
       "header": {
         "type": "header",
         "blocks": {
+          "8927b764-6e74-4abd-b180-995574b66da6": {
+            "type": "menu",
+            "settings": {
+              "menu": "main-menu",
+              "append_hamburger": true,
+              "append_cart": false,
+              "append_account": false,
+              "append_search": false,
+              "append_social": false,
+              "menu_align": "center",
+              "fixed_width": ""
+            }
+          },
           "6dc7190b-54e5-4741-b294-7d1540d9242b": {
             "type": "logo",
             "settings": {
               "logo": "shopify:\/\/shop_images\/met-logo.png",
               "logo_width": 250,
-              "logo_align": "center"
+              "logo_align": "center",
+              "hide_logo_home": false
+            }
+          },
+          "c9b10040-0bd8-4b02-b8d8-5a47eb9dabee": {
+            "type": "menu",
+            "settings": {
+              "menu": "",
+              "append_hamburger": false,
+              "append_cart": true,
+              "append_account": false,
+              "append_search": true,
+              "append_social": false,
+              "menu_align": "center",
+              "fixed_width": ""
             }
           }
         },
         "block_order": [
-          "6dc7190b-54e5-4741-b294-7d1540d9242b"
+          "8927b764-6e74-4abd-b180-995574b66da6",
+          "6dc7190b-54e5-4741-b294-7d1540d9242b",
+          "c9b10040-0bd8-4b02-b8d8-5a47eb9dabee"
         ],
         "settings": {
-          "page_width": true,
-          "alignment": "stack",
+          "page_width": false,
+          "alignment": "align",
           "background_color": "#000000",
           "text_color": "#ffffff",
           "homepage_transparents": true,
