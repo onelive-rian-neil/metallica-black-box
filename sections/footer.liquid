@@ -25,8 +25,8 @@
 {% endif %}
 {% capture fields %}<input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter">
 <div class="input-group">
-  <input id="fieldEmail" name="{{ email_name }}" class="form-control" type="email" placeholder="{{ 'social.newsletter.sign-up-form-placeholder' | t }}" />
-  <span class="input-group-btn"><button type="submit" class="btn btn-signup">{{ 'social.newsletter.sign-up-form-button' | t }}</button></span>
+  <input id="fieldEmail" name="{{ email_name }}" class="form-control field__input" type="email" placeholder="Your email" />
+  <button type="submit" class="btn btn-signup newsletter__button button">Subscribe</button>
 </div>{% endcapture %}
 
 <footer class="footer color-{{ section.settings.color_scheme }}">
@@ -117,7 +117,9 @@
                       {{ fields }}
                     {% elsif section.settings.newsletter-platform == "mailchimp" %}
 
-                      
+                    <form action="{{ settings.newsletter-form-action-url | replace: '/post?','/post-json?' | append: '&amp;c=?' }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate contact-form">
+                      {{ fields }}
+                    </form>
                     {% elsif section.settings.newsletter-platform == "klaviyo" %}
                       <div class="klaviyo-form-{{ settings.klaviyo-snippet-div }}"></div>
                     {% else %}
@@ -439,8 +441,27 @@
   display:block;
 }     
 {% elsif section.settings.newsletter-platform == "campaign-monitor" %}
-
-
+.newsletter-form {
+  margin:0;
+  display:block;
+}   
+.newsletter-form .btn.btn-signup.newsletter__button.button {
+  margin-top:20px;
+}
+#fieldEmail::placeholder {
+  color:#fff!important;
+}
+{% elsif section.settings.newsletter-platform == "mailchimp" %}
+.newsletter-form {
+  margin:0;
+  display:block;
+}   
+.newsletter-form .btn.btn-signup.newsletter__button.button {
+  margin-top:20px;
+}
+#fieldEmail::placeholder {
+  color:#fff!important;
+}
 {% elsif section.settings.newsletter-platform == "klaviyo" %}
 .newsletter-form {
   margin:0;
