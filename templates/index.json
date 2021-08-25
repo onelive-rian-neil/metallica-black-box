@@ -19,7 +19,8 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "Add the signup form here."
+        "custom_liquid": "Add the signup form here.",
+        "full_width": false
       }
     },
     "1629228300f5af320f": {
@@ -36,13 +37,15 @@
       "type": "custom-liquid",
       "disabled": true,
       "settings": {
-        "custom_liquid": "<div style=\"position:relative;height:100vh\"><div class=\"vimeo-wrapper\">\n   <iframe src=\"https:\/\/player.vimeo.com\/video\/577736909?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1\"\n           frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen><\/iframe>\n<\/div><\/div>\n\n<style>\n#shopify-section-template--14134119563318__16268749773f5802fd{\nmargin-top: 0;\n}\n.vimeo-wrapper {\n   position: absolute;\n   top: 0;\n   left: 0;\n   width: 100%;\n   height: 100%;\n   z-index: -1;\n   pointer-events: none;\n   overflow: hidden;\n}\n.vimeo-wrapper iframe {\n   width: 100vw;\n   height: 56.25vw; \/* Given a 16:9 aspect ratio, 9\/16*100 = 56.25 *\/\n   min-height: 100vh;\n   min-width: 177.77vh; \/* Given a 16:9 aspect ratio, 16\/9*100 = 177.77 *\/\n   position: absolute;\n   top: 50%;\n   left: 50%;\n   transform: translate(-50%, -50%);\n}\n<\/style>"
+        "custom_liquid": "<div style=\"position:relative;height:100vh\"><div class=\"vimeo-wrapper\">\n   <iframe src=\"https:\/\/player.vimeo.com\/video\/577736909?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1\"\n           frameborder=\"0\" webkitallowfullscreen mozallowfullscreen allowfullscreen><\/iframe>\n<\/div><\/div>\n\n<style>\n#shopify-section-template--14134119563318__16268749773f5802fd{\nmargin-top: 0;\n}\n.vimeo-wrapper {\n   position: absolute;\n   top: 0;\n   left: 0;\n   width: 100%;\n   height: 100%;\n   z-index: -1;\n   pointer-events: none;\n   overflow: hidden;\n}\n.vimeo-wrapper iframe {\n   width: 100vw;\n   height: 56.25vw; \/* Given a 16:9 aspect ratio, 9\/16*100 = 56.25 *\/\n   min-height: 100vh;\n   min-width: 177.77vh; \/* Given a 16:9 aspect ratio, 16\/9*100 = 177.77 *\/\n   position: absolute;\n   top: 50%;\n   left: 50%;\n   transform: translate(-50%, -50%);\n}\n<\/style>",
+        "full_width": false
       }
     },
     "1629746007623cebf6": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<br \/>"
+        "custom_liquid": "<br \/>",
+        "full_width": false
       }
     },
     "16292283257068b508": {
@@ -58,7 +61,8 @@
     "1629746035b145d96b": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<br \/>"
+        "custom_liquid": "<br \/>",
+        "full_width": false
       }
     },
     "16292304408f0234c8": {
@@ -80,6 +84,20 @@
         "stack_images_on_mobile": true,
         "adapt_height_first_image": false
       }
+    },
+    "1629921621c5f91bae": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured collection",
+        "collection": "frontpage",
+        "products_to_show": 8,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
     }
   },
   "order": [
@@ -91,6 +109,7 @@
     "16292283257068b508",
     "1629746035b145d96b",
     "16292304408f0234c8",
-    "1629230576b58695b1"
+    "1629230576b58695b1",
+    "1629921621c5f91bae"
   ]
 }
