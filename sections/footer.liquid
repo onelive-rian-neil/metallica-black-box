@@ -16,6 +16,19 @@
 <noscript>{{ 'component-rte.css' | asset_url | stylesheet_tag }}</noscript>
 <noscript>{{ 'disclosure.css' | asset_url | stylesheet_tag }}</noscript>
 
+{% if settings.newsletter-platform == "campaign-monitor" %}
+  {% capture email_name %}cm-{{ settings.newsletter-form-action-url | split: '/' | last }}-{{ settings.newsletter-form-action-url | split: '/' | last }}{% endcapture %}
+{% elsif settings.newsletter-platform == "mailchimp" %}
+  {% assign email_name = 'EMAIL' %}
+{% else %}
+  {% assign email_name = 'contact[email]' %}
+{% endif %}
+{% capture fields %}<input type="hidden" id="contact_tags" name="contact[tags]" value="prospect,newsletter">
+<div class="input-group">
+  <input id="fieldEmail" name="{{ email_name }}" class="form-control field__input" type="email" placeholder="Your email" />
+  <button type="submit" class="btn btn-signup newsletter__button button">Subscribe</button>
+</div>{% endcapture %}
+
 <footer class="footer color-{{ section.settings.color_scheme }}">
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
     <div class="footer__content-top page-width">
@@ -91,14 +104,29 @@
                   </div>
                 {%- when 'newsletter' -%}
                   {%- if block.settings.newsletter_heading != blank -%}
-                    <h2 class="footer-block__heading">{{ section.settings.newsletter_heading }}</h2>
+                  <h2 class="footer-block__heading">{{ section.settings.newsletter_heading }}</h2>
                   {%- endif -%}
-    
+
                   {%- if block.settings.newsletter_text != blank -%}
                     <p>{{ block.settings.newsletter_text | escape }}</p>
                   {%- endif -%}
+                  <div class="newsletter-form">
+                    {% if section.settings.newsletter-platform == "shopify" %}
+                      {% render 'newsletter' %}
+                    {% elsif section.settings.newsletter-platform == "campaign-monitor" %}
+                      {{ fields }}
+                    {% elsif section.settings.newsletter-platform == "mailchimp" %}
 
-                  {% include 'newsletter' with 'footer' %}
+                    <form action="{{ settings.newsletter-form-action-url | replace: '/post?','/post-json?' | append: '&amp;c=?' }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate contact-form">
+                      {{ fields }}
+                    </form>
+                    {% elsif section.settings.newsletter-platform == "klaviyo" %}
+                      <div class="klaviyo-form-{{ settings.klaviyo-snippet-div }}"></div>
+                    {% else %}
+                      {% render 'newsletter' %}
+                    {% endif %}
+                  </div>
+
                   
                   {%- if block.settings.show_newsletter_social -%}
                     <ul class="footer__list-social list-unstyled list-social" role="list">
@@ -189,7 +217,7 @@
                             <span class="visually-hidden">{{ 'general.social.links.twitter' | t }}</span>
                           </a>
                         </li>
-                      {%- endif -%}
+                      {%- endif -%} 
                       {%- if settings.social_facebook_link != blank -%}
                         <li class="list-social__item">
                           <a href="{{ settings.social_facebook_link }}" class="link link--text list-social__link" aria-describedby="a11y-external-message">
@@ -371,7 +399,7 @@
             </ul>
           </div>
         {%- endif -%}
-      </div>
+      </div> 
     </div>
   </div>
 </footer>
@@ -407,6 +435,41 @@
     width: auto;
     max-width:auto;
 }
+{% if section.settings.newsletter-platform == "shopify" %}
+.newsletter-form {
+  margin:0;
+  display:block;
+}     
+{% elsif section.settings.newsletter-platform == "campaign-monitor" %}
+.newsletter-form {
+  margin:0;
+  display:block;
+}   
+.newsletter-form .btn.btn-signup.newsletter__button.button {
+  margin-top:20px;
+} 
+#fieldEmail::placeholder {
+  color:#fff!important;
+}
+{% elsif section.settings.newsletter-platform == "mailchimp" %}
+.newsletter-form {
+  margin:0;
+  display:block;
+}   
+.newsletter-form .btn.btn-signup.newsletter__button.button {
+  margin-top:20px;
+}
+#fieldEmail::placeholder {
+  color:#fff!important;
+}
+{% elsif section.settings.newsletter-platform == "klaviyo" %}
+.newsletter-form {
+  margin:0;
+  display:block;
+}                    
+{% else %}
+
+{% endif %}
 </style>
 {% javascript %}
   class LocalizationForm extends HTMLElement {
@@ -659,6 +722,29 @@
       "id": "payment_enable",
       "default": true,
       "label": "t:sections.footer.settings.payment_enable.label"
+    },
+    {
+      "type": "select",
+      "id": "newsletter-platform",
+      "label": "Newsletter platform",
+      "options": [
+        {
+          "value": "shopify",
+          "label": "Shopify"
+        },
+        {
+          "value": "campaign-monitor",
+          "label": "Campaign Monitor"
+        },
+        {
+          "value": "mailchimp",
+          "label": "MailChimp"
+        },
+        {
+          "value": "klaviyo",
+          "label": "Klaviyo"
+        }
+      ]
     }
   ],
   "default": {
