@@ -84,20 +84,6 @@
         "stack_images_on_mobile": true,
         "adapt_height_first_image": false
       }
-    },
-    "1629921621c5f91bae": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured collection",
-        "collection": "frontpage",
-        "products_to_show": 8,
-        "show_view_all": true,
-        "swipe_on_mobile": false,
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "add_image_padding": false,
-        "show_vendor": false
-      }
     }
   },
   "order": [
@@ -109,7 +95,6 @@
     "16292283257068b508",
     "1629746035b145d96b",
     "16292304408f0234c8",
-    "1629230576b58695b1",
-    "1629921621c5f91bae"
+    "1629230576b58695b1"
   ]
 }
