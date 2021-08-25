@@ -18,6 +18,7 @@
     "social_facebook_link": "#",
     "social_pinterest_link": "#",
     "social_instagram_link": "#",
+    "klaviyo-snippet-div": "XPrEBM",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
@@ -114,7 +115,8 @@
           "show_social": false,
           "enable_country_selector": true,
           "enable_language_selector": true,
-          "payment_enable": true
+          "payment_enable": true,
+          "newsletter-platform": "klaviyo"
         }
       },
       "top-bar": {
