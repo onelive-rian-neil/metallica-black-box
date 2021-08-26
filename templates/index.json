@@ -10,6 +10,8 @@
         "show_view_all": false,
         "swipe_on_mobile": true,
         "background_parallax": false,
+        "add_section_padding": false,
+        "color_overwrite": "",
         "image_ratio": "square",
         "show_secondary_image": true,
         "add_image_padding": false,
@@ -98,10 +100,21 @@
         "swipe_on_mobile": false,
         "background_image": "shopify:\/\/shop_images\/fashionable-man-by-textured-wall.jpg",
         "background_parallax": true,
+        "add_section_padding": false,
+        "color_overwrite": "",
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "add_image_padding": false,
         "show_vendor": false
+      }
+    },
+    "16299966134f7e0982": {
+      "type": "image-banner-no-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/banner3.jpg",
+        "banner_url": "shopify:\/\/collections\/apparel",
+        "margin_top": "15px",
+        "margin_bottom": "15px"
       }
     }
   },
@@ -115,6 +128,7 @@
     "1629746035b145d96b",
     "16292304408f0234c8",
     "1629230576b58695b1",
-    "162998923071cf02fd"
+    "162998923071cf02fd",
+    "16299966134f7e0982"
   ]
 }
