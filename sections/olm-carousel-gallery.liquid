@@ -1,0 +1,86 @@
+{{ 'section-olm-carousel-gallery.css' | asset_url | stylesheet_tag }}
+
+<div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
+    <slider-component class="slider-mobile-gutter">
+        <ul class="collection-list grid grid--1-col{% if section.blocks.size < 5 %} grid--{{ section.blocks.size }}-col-tablet{% else %} grid--3-col-tablet{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} negative-margin--small{% endif %}" id="Slider-{{ section.id }}" role="list">
+            {%- for block in section.blocks -%}
+                {%- case block.type -%}
+                {%- when 'collection' -%}
+                {%- when 'product' -%}
+                {%- when 'image' -%}
+                {%- else -%}
+                    nothing to see here
+                {%- endcase -%}
+            {%- endfor -%}
+        </ul>
+    </slider-component>
+</div>
+
+{% schema %} 
+{
+  "name": "OLM Carousel Gallery",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image_background",
+      "label": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "swipe_on_mobile",
+      "default": true,
+      "label": "carousel swipe. If not checked images will stack."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection",
+      "name": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection_pick",
+          "label": "collection"
+        }
+      ]
+    },
+    {
+      "type": "product",
+      "name": "product",
+      "settings": [
+        {
+          "id": "product",
+          "type": "product",
+          "label": "Pick a product"
+        },
+        {
+          "id": "featured_image_override",
+          "type": "image_picker",
+          "label": "Product Image Override"
+        }        
+      ]
+    },
+    {
+      "type": "image_picker",
+      "name": "image",
+      "settings": [
+        {
+          "id": "image",
+          "type": "image_picker",
+          "label": "image picker"
+        }
+      ]
+    }    
+  ],
+  "presets": [
+    {
+      "name": "OLM Carousel Gallery"
+    }
+  ]  
+}
+{% endschema %}
+
+
+{% stylesheet %} 
+{% endstylesheet %}
