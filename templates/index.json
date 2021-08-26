@@ -9,6 +9,7 @@
         "products_to_show": 4,
         "show_view_all": false,
         "swipe_on_mobile": true,
+        "background_parallax": false,
         "image_ratio": "square",
         "show_secondary_image": true,
         "add_image_padding": false,
@@ -86,6 +87,22 @@
         "stack_images_on_mobile": true,
         "adapt_height_first_image": false
       }
+    },
+    "162998923071cf02fd": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "THE SHOP",
+        "collection": "apparel",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "background_image": "shopify:\/\/shop_images\/fashionable-man-by-textured-wall.jpg",
+        "background_parallax": true,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false
+      }
     }
   },
   "order": [
@@ -97,6 +114,7 @@
     "16292283257068b508",
     "1629746035b145d96b",
     "16292304408f0234c8",
-    "1629230576b58695b1"
+    "1629230576b58695b1",
+    "162998923071cf02fd"
   ]
 }
