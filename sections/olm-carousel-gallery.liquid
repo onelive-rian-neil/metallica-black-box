@@ -1,6 +1,9 @@
 {{ 'section-olm-carousel-gallery.css' | asset_url | stylesheet_tag }}
 
-<div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
+<div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %} riantest">
+    <div class="page-width">
+        <h1>alskjflksjadflkjsaldjflkasjdflkjsd</h1>
+    </div>
     <slider-component class="slider-mobile-gutter">
         <ul class="collection-list grid grid--1-col{% if section.blocks.size < 5 %} grid--{{ section.blocks.size }}-col-tablet{% else %} grid--3-col-tablet{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} negative-margin--small{% endif %}" id="Slider-{{ section.id }}" role="list">
             {%- for block in section.blocks -%}
@@ -14,7 +17,7 @@
             {%- endfor -%}
         </ul>
     </slider-component>
-</div>
+</div> 
 
 {% schema %} 
 {
