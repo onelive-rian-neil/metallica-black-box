@@ -1,0 +1,91 @@
+{{ 'image-banner-no-text.css' | asset_url | stylesheet_tag }}
+
+
+<div class="banner-wrapper" >
+  {%- if section.settings.image != blank -%}
+
+    <div class="banner-container">
+      {%- if section.settings.banner_url != blank -%}<a href="{{ section.settings.banner_url }}">{% endif %}
+      <img 
+        src="{{ section.settings.image | img_url: 'master' }}"
+
+        class="desktop_img"
+        alt="{{ section.settings.image.alt | escape }}"
+
+      >
+      {% if section.settings.mobile_image != blank %}
+        <img
+          src="{{ section.settings.mobile_image | img_url: 'master' }}"
+          class="mobile_img"
+          alt="{{ section.settings.mobile_image.alt | escape }}"
+        >
+      {% endif %}
+      {%- if section.settings.banner_url != blank -%}</a>{% endif %}
+    </div>
+  {%- endif -%}
+  </div>
+</div>
+<style>
+{% if section.settings.margin_top != blank %}
+.banner-wrapper {
+  margin-top:{{ section.settings.margin_top }}!important;
+}
+{% endif %}
+{% if section.settings.margin_bottom != blank %}
+.banner-wrapper {
+  margin-bottom:{{ section.settings.margin_bottom }}!important;
+}
+{% endif %}
+{% if section.settings.mobile_image != blank %}
+@media (max-width:992px) {
+  .desktop_img { 
+    display:none;
+
+  }
+  .mobile_img {
+    display:block;
+  }
+}
+{% endif %}
+</style>
+{% schema %}
+{
+  "name": "Image banner no text",
+  "tag": "section",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "t:sections.image-banner.settings.image.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image"
+    },
+    { 
+      "type": "url",
+      "id": "banner_url",
+      "label": "Banner link"
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin top"
+    },
+
+    { 
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin bottom"
+    }
+  ],
+
+  "presets": [
+    {
+      "name": "Image banner no text"
+    }
+  ]
+}
+{% endschema %}
