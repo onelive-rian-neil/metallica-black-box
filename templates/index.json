@@ -128,6 +128,26 @@
         "add_image_padding": false,
         "show_vendor": false
       }
+    },
+    "162999708568073e49": {
+      "type": "olm-carousel-gallery",
+      "blocks": {
+        "787d0987-00d4-4372-9fea-1b7022a43d39": {
+          "type": "image_picker",
+          "settings": {
+            "title": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "787d0987-00d4-4372-9fea-1b7022a43d39"
+      ],
+      "settings": {
+        "title": "Featured gallery",
+        "image_background": "shopify:\/\/shop_images\/banner2.jpg",
+        "swipe_on_mobile": true
+      }
     }
   },
   "order": [
@@ -142,6 +162,7 @@
     "16292304408f0234c8",
     "1629230576b58695b1",
     "1629996636dc8e6157",
-    "162998923071cf02fd"
+    "162998923071cf02fd",
+    "162999708568073e49"
   ]
 }
