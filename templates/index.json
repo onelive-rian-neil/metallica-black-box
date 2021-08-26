@@ -21,7 +21,7 @@
     "16286132157e8717c1": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\ndiv#parallax-template--14987068899519__162998923071cf02fd .collection .center a {\n    display: none;\n}\n<\/style>",
+        "custom_liquid": "<style>\ndiv#parallax-template--14987068899519__162998923071cf02fd .collection .center a {\n    display: none;\n}\n\n<\/style>",
         "full_width": false
       }
     },
