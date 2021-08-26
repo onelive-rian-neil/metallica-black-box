@@ -79,6 +79,14 @@
   </div>
 {% if section.settings.background_image != blank %}</div>{% endif %}
 
+{% if section.settings.add_section_padding %}
+<style>#parallax-{{section.id}} .collection{padding-top: 40px; padding-bottom: 40px;} #parallax-{{section.id}} .title, #parallax-{{section.id}} .title-wrapper-with-link{margin: 0;}</style>
+{% endif %}
+
+{% if section.settings.color_overwrite != blank %}
+<style>#parallax-{{section.id}} *{color:{{section.settings.color_overwrite}}!important}</style>
+{% endif %}
+
 {% schema %}
 {
   "name": "t:sections.featured-collection.name",
@@ -127,6 +135,17 @@
       "id": "background_parallax",
       "default": false,
       "label": "Parallax background?"
+    },
+    {
+      "type": "checkbox",
+      "id": "add_section_padding",
+      "default": false,
+      "label": "t:sections.featured-collection.settings.add_image_padding.label"
+    },
+    {
+      "type": "color",
+      "id": "color_overwrite",
+      "label": "Overwrite colors"
     },
     {
       "type": "header",
