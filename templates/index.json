@@ -21,7 +21,7 @@
     "16286132157e8717c1": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\ndiv#parallax-template--14987068899519__162998923071cf02fd .collection .center a {\n    display: none;\n}\n\n<\/style>",
+        "custom_liquid": "<style><!-- featured gallery-->\n#Banner-template--14987068899519__162999708568073e49 {\n    min-height: unset;\n    padding-top: 40px;\n    padding-bottom: 40px;\n    background-size: contain;\n    background-position: center center;\n}\nelement.style {\n    background-image: url(\/\/cdn.shopify.com\/s\/files\/1\/0581\/0159\/6351\/files\/black-album.jpg?v=1629997303);\n    \/* background-size: contain; *\/\n    background-size: cover;\n    background-position: top center;\n    padding: 100px 0;\n}\ndiv#shopify-section-template--14987068899519__162999708568073e49 h2 {\n    text-align: center;\n    padding: 10px 0 50px;\n}\n\ndiv#parallax-template--14987068899519__162998923071cf02fd .collection .center a {\n    display: none;\n}\n\n<\/style>",
         "full_width": false
       }
     },
