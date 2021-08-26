@@ -1,29 +1,86 @@
 {{ 'section-olm-carousel-gallery.css' | asset_url | stylesheet_tag }}
 
 <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %} riantest">
-    <div class="page-width">
-        <h1>alskjflksjadflkjsaldjflkasjdflkjsd</h1>
+  <div class="page-width">
+    <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
+      <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }a}</h2>
     </div>
     <slider-component class="slider-mobile-gutter">
-        <ul class="collection-list grid grid--1-col{% if section.blocks.size < 5 %} grid--{{ section.blocks.size }}-col-tablet{% else %} grid--3-col-tablet{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} negative-margin--small{% endif %}" id="Slider-{{ section.id }}" role="list">
-            {%- for block in section.blocks -%}
-                {%- case block.type -%}
-                {%- when 'collection' -%}
-                {%- when 'product' -%}
-                {%- when 'image' -%}
-                {%- else -%}
-                    nothing to see here
-                {%- endcase -%}
-            {%- endfor -%}
-        </ul>
+    {% comment %} collection-list grid grid--1-col{% if section.blocks.size < 5 %} grid--{{ section.blocks.size }}-col-tablet{% else %} grid--3-col-tablet{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} negative-margin--small{% endif %} {% endcomment %}
+      <div class="" id="Slider-{{ section.id }}" role="list">
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+          {%- when 'collection' -%}
+          {%- when 'product' -%}
+          {%- when 'image_picker' -%}
+            <div class="carousel-gallery-image--item">
+              <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="image-image--link">
+              {{ block.settings.image | img_url: 'master' | img_tag: block.settings.image.alt, 'carousel-gallery-image--image' }}
+              <div class="carousel-gallery-image--text">{{ block.settings.title }}</div>
+              </a>
+            </div>
+          {%- else -%}
+              nothing to see here
+          {%- endcase -%}
+        {%- endfor -%}
+      </div>
     </slider-component>
-</div> 
+  </div>
+</div>
+
+<style>
+#Banner-{{ section.id }}{
+  min-height: unset;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+.carousel-gallery-image--item {
+    display: inline-block;
+    width: calc(33.33% - 50px);
+    margin: 0 25px;
+    vertical-align: middle;
+    position: relative;
+    line-height: 0;
+}
+.carousel-gallery-image--item img{
+    width: 100%;
+}
+.carousel-gallery-image--text {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+}
+.carousel-gallery-image--item:hover a.image-image--link:before{
+  content: "";
+  background-color: #000000;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  display: block;
+  position: absolute;
+}
+.carousel-gallery-image--item:hover .carousel-gallery-image--text{
+  display: block;
+}
+.carousel-gallery-image--item a.image-image--link{
+  display: block;
+  color: white;
+}
+</style>
 
 {% schema %} 
 {
   "name": "OLM Carousel Gallery",
   "class": "spaced-section spaced-section--full-width",
   "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured gallery",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
     {
       "type": "image_picker",
       "id": "image_background",
@@ -69,9 +126,19 @@
       "name": "image",
       "settings": [
         {
-          "id": "image",
           "type": "image_picker",
-          "label": "image picker"
+          "id": "image",
+          "label": "Image block"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Text for image block"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link for image block"
         }
       ]
     }    
@@ -83,7 +150,3 @@
   ]  
 }
 {% endschema %}
-
-
-{% stylesheet %} 
-{% endstylesheet %}
