@@ -43,6 +43,7 @@
     },
     "1629746007623cebf6": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<br \/>",
         "full_width": false
@@ -60,6 +61,7 @@
     },
     "1629746035b145d96b": {
       "type": "custom-liquid",
+      "disabled": true,
       "settings": {
         "custom_liquid": "<br \/>",
         "full_width": false
