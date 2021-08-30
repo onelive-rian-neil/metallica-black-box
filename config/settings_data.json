@@ -45,9 +45,9 @@
             "type": "logo",
             "settings": {
               "logo": "shopify:\/\/shop_images\/MetallicaBlackBox_logo.png",
-              "logo_width": 240,
+              "logo_width": 250,
               "logo_align": "center",
-              "hide_logo_home": true
+              "hide_logo_home": false
             }
           },
           "c9b10040-0bd8-4b02-b8d8-5a47eb9dabee": {
