@@ -1,7 +1,7 @@
 {{ 'image-banner-no-text.css' | asset_url | stylesheet_tag }}
 
 
-<div class="banner-wrapper" >
+<div class="banner-wrapper {% if section.settings.page_width %}page-width{% endif %}" >
   {%- if section.settings.image != blank -%}
 
     <div class="banner-container">
@@ -40,7 +40,6 @@
 @media (max-width:992px) {
   .desktop_img { 
     display:none;
-
   }
   .mobile_img {
     display:block;
@@ -74,12 +73,16 @@
       "id": "margin_top",
       "label": "Margin top"
     },
-
     { 
       "type": "text",
       "id": "margin_bottom",
       "label": "Margin bottom"
-    }
+    },
+    {
+      "type": "checkbox",
+      "id": "page_width",
+      "label": "Constrain to page width" 
+    }    
   ],
 
   "presets": [
@@ -89,3 +92,4 @@
   ]
 }
 {% endschema %}
+
