@@ -41,6 +41,120 @@ h2.title {
 .itrmhl.itrmhl {
   padding-left:0!important;
 }
+#shopify-section-header .link--text {
+  text-decoration: none;
+}
+#shopify-section-header svg {
+  margin-right:10px;
+}
+.header__menu-wrapper {
+  right: 10px;
+  top: 5px;
+
+}
+.header__menu-wrapper:first-child .header__icon--menu  {
+  left: 25px;
+  top:25px;
+  right:unset;
+  position: absolute;
+}
+.header__search {
+  position: relative;
+  top:15px;
+}
+.header__icon, .header__icon--cart .icon {
+ width:auto;
+ height:auto;
+} 
+.header__icon span {
+  height: auto;
+}
+
+.header__icon--search span {
+  float: left;
+}
+.header__icon .icon {
+  height: 2rem;
+  width: 2rem;
+  fill: none;
+  vertical-align: middle;
+}
+.icon-search span {
+    display: inline-block;
+}
+.header__icon--cart {
+  float: left;
+
+}
+.header__icon--cart .icon-cart{
+  height: 4rem;
+  width: 4rem;
+}
+.icon.icon-cart-empty {
+  display: none!important;
+}
+.header__icon--search span:first-child {
+  position: relative;
+  top:-10px;
+}
+.list-menu li {
+  margin:0 10px;
+}
+.header__menu-wrapper:last-child {
+  right: 0;
+  position: absolute;
+  left:unset;
+}
+.header__menu-wrapper:last-child .list-menu li:last-child {
+  margin-left:0;
+}
+.header__icon--cart .icon-cart {
+  margin-right:0!important;
+}
+@media screen and (max-width: 992px) {
+  #shopify-section-header header.header--align nav.header__menu-wrapper {
+    width:auto!important;
+    display: inline-block!important;
+  }
+  .header__icon--menu {
+    left:20px;
+    position: absolute!important;
+    right:unset;
+  }
+  .header-wrapper {
+    min-height:100px;
+    padding-bottom:0!important;
+  }
+  .header__menu-wrapper:first-child .header__icon--menu {
+    top:10px;
+  }
+  .header__logo-wrapper {
+    width:100%!important;
+  }
+  .header__menu-wrapper:first-child {
+    left:0;
+    right:unset;
+  }
+  .header__menu-wrapper {
+    position: absolute;
+    bottom:20px;
+    top:unset;
+  }
+
+
+  #shopify-section-header svg {
+    margin-right:0;
+  }
+  .header__icon--cart span,
+  .header__icon--account span,
+  .header__icon--search span:last-child {
+    display:none;
+  }
+  .icon.icon-cart {
+    position: relative;
+    bottom:-2px;
+  }
+}
 @media screen and (min-width: 990px){
   .collage-section .collage {
     grid-template-columns: minmax(auto, 100%) minmax(40rem, 36rem);
@@ -50,6 +164,7 @@ h2.title {
 
 #shopify-section-header #menu-drawer .list-menu > li {
   display: block!important;
+  
 }
 #shopify-section-header .menu-drawer__utility-links{
   text-align: left;
@@ -63,8 +178,11 @@ h2.title {
 }*/
 #shopify-section-header header.header--align nav.header__menu-wrapper{
   width: auto!important;
-  /*position: absolute;
-  right: 0;*/
+
+}
+#shopify-section-header header.header--align nav.header__menu-wrapper:last-child {
+  position: absolute;
+  right: 0;
 }
 #shopify-section-header header.header--align div.header__logo-wrapper{
   width: calc(100% - 150px)!important;

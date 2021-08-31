@@ -9,7 +9,9 @@
           <svg class="modal__toggle-close icon icon-close" aria-hidden="true" focusable="false" role="presentation">
             <use href="#icon-close">
           </svg>
+          
         </span>
+        <span>search</span>
       </summary>
       <div class="search-modal modal__content" role="dialog" aria-modal="true" aria-label="{{ 'general.search.search' | t }}">
         <div class="search-modal__content" tabindex="-1">
@@ -22,6 +24,7 @@
                 <svg class="icon icon-search" aria-hidden="true" focusable="false" role="presentation">
                   <use href="#icon-search">
                 </svg>
+
               </button>
             </div>
           </form>
@@ -39,8 +42,10 @@
 {% capture account_icon %}
   {%- if shop.customer_accounts_enabled -%}
     <a href="{%- if customer -%}{{ routes.account_url }}{%- else -%}{{ routes.account_login_url }}{%- endif -%}" class="header__icon header__icon--account link link--text focus-inset">
+
       {% render 'icon-account' %}
-      <span class="visually-hidden">
+
+      <span>
         {%- liquid
           if customer
             echo 'customer.account_fallback' | t
@@ -48,13 +53,15 @@
             echo 'customer.log_in' | t
           endif
         -%}
-      </span>
+      </span> 
+
     </a>
   {%- endif -%}
 {% endcapture %}
 
 {% capture cart_icon %}
   <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble">
+    {% render 'icon-cart' %}
     {%- liquid
       if cart == empty
         render 'icon-cart-empty'
@@ -62,7 +69,7 @@
         render 'icon-cart'
       endif
     -%}
-    <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
+    <span>{{ 'templates.cart.cart' | t }}</span>
     {%- if cart != empty -%}
       <div class="cart-count-bubble">
         {%- if cart.item_count < 100 -%}
