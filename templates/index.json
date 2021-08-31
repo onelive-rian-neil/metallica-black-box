@@ -36,17 +36,33 @@
             "title": "",
             "link": ""
           }
+        },
+        "9579705b-70ce-4bc5-804a-0c62b1ae9fd9": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": "",
+            "collection_pick_override_image": "shopify:\/\/shop_images\/welcome-to-my-business.jpg"
+          }
         }
       },
       "block_order": [
         "787d0987-00d4-4372-9fea-1b7022a43d39",
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953",
-        "178220f5-cf8d-41f7-8503-125f2159fa55"
+        "178220f5-cf8d-41f7-8503-125f2159fa55",
+        "9579705b-70ce-4bc5-804a-0c62b1ae9fd9"
       ],
       "settings": {
+        "page_width": true,
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": false,
         "title": "THE BLACK ALBUM",
+        "image_title_width": "",
         "image_background": "shopify:\/\/shop_images\/black-album.jpg",
-        "swipe_on_mobile": true
+        "site-background-image-position": "left top",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
       }
     },
     "16299966134f7e0982": {
