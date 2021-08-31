@@ -56,7 +56,7 @@
               "menu": "",
               "append_hamburger": false,
               "append_cart": true,
-              "append_account": false,
+              "append_account": true,
               "append_search": true,
               "append_social": false,
               "menu_align": "center",
