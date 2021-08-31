@@ -28,7 +28,7 @@
                     autocapitalize="off"
                     autocomplete="email"
                     {% if form.errors %}
-                      autofocus
+                      autofocus 
                       aria-invalid="true"
                       aria-describedby="Newsletter-error--{{ section.id }}"
                     {% elsif form.posted_successfully? %}
@@ -57,7 +57,7 @@
     {%- endfor -%}
   </div>
 </div>
-
+ 
 {% schema %}
 {
   "name": "t:sections.newsletter.name",

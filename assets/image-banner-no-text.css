@@ -1,0 +1,16 @@
+
+/* .banner-wrapper {
+  background-color: #000;
+} */
+
+.banner-container img {
+  width:100%;
+}
+.banner-container img:hover {
+  opacity: 0.8;
+  cursor: pointer;
+}
+.mobile_img {
+  display:none;
+}
+

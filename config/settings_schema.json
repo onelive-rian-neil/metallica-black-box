@@ -4,8 +4,8 @@
     "theme_name": "Dawn",
     "theme_version": "1.0.0",
     "theme_author": "Shopify",
-    "theme_documentation_url": "https://shopify.dev/themes/tools/dawn",
-    "theme_support_url": "https://support.shopify.com/"
+    "theme_documentation_url": "https:\/\/shopify.dev\/themes\/tools\/dawn",
+    "theme_support_url": "https:\/\/support.shopify.com\/"
   },
   {
     "name": "t:settings_schema.colors.name",
@@ -522,6 +522,33 @@
         "id": "favicon",
         "label": "t:settings_schema.favicon.settings.favicon.label",
         "info": "t:settings_schema.favicon.settings.favicon.info"
+      }
+    ]
+  },
+  {
+    "name": "Newsletter",
+    "settings": [
+      {
+        "type": "text",
+        "id": "newsletter-form-action-url",
+        "label": "Newsletter submit URL"
+      },
+      {
+        "type": "paragraph",
+        "content": "Paste in Campaign Monitor or MailChimp’s form action URL. Don’t paste the entire form code; just the “action” parameter."
+      },
+      {
+        "type": "paragraph",
+        "content": "Paste your klaviyo Public API Key"
+      },
+      {
+        "type": "text",
+        "id": "klaviyo-snippet-div",
+        "label": "Klaviyo Embed Form Code"
+      },
+      {
+        "type": "paragraph",
+        "content": "Paste your Klaviyo Embed Form Code"
       }
     ]
   }
