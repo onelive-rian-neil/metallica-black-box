@@ -1,12 +1,13 @@
-{{ 'section-olm-carousel-gallery.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 
 {% if section.settings.slider_animation == "fade" %}
   {% assign sliderAnimation = true %}
 {% else %}
   {% assign sliderAnimation = false %}
 {% endif %}
-<div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.page_width %} page-width{% endif %}">
-  <div class="">
+{%- assign collection = collections[section.settings.collection_pick] -%}
+<div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
+  <div class="{% if section.settings.page_width %}page-width{% endif %}">
     <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
       {% if section.settings.image_title != blank %}
         <h2 class="title">
@@ -19,38 +20,16 @@
     {% comment %} <slider-component class="slider-mobile-gutter"> {% endcomment %}
     {% comment %} collection-list grid grid--1-col{% if section.blocks.size < 5 %} grid--{{ section.blocks.size }}-col-tablet{% else %} grid--3-col-tablet{% endif %}{% if section.settings.swipe_on_mobile %} slider slider--tablet grid--peek{% endif %} collection-list--{{ section.blocks.size }}-items{% if section.settings.show_view_all == false or section.blocks.size > collections.size %} negative-margin--small{% endif %} {% endcomment %}
       <div class="slider-blocks-wrapper" id="Slider-{{ section.id }}" role="list" data-speed="{{section.settings.slider_speed}}000" data-fade="{{sliderAnimation}}" data-adaptiveHeight="{{section.settings.slider_adaptiveHeight}}">
-        {%- for block in section.blocks -%}
-          {%- case block.type -%}
-          {%- when 'collection_picker' -%}
-            <div class="carousel-gallery--item carousel-gallery-collection">
-              <a {% if block.settings.collection_pick.url != blank %}href="{{ block.settings.collection_pick.url }}"{% endif %} class="carousel-gallery--link carousel-gallery-collection--link">
-              {% if block.settings.collection_pick_override_image != blank %}
-                {{ block.settings.collection_pick_override_image | img_url: 'master' | img_tag: block.settings.collection_pick_override_image.alt, 'carousel-gallery--image carousel-gallery-product--image' }}
-              {% else %}
-                {{ block.settings.collection_pick.featured_image | img_url: 'master' | img_tag: block.settings.collection_pick.featured_image.alt, 'carousel-gallery--image carousel-gallery-collection--image' }}
-              {% endif %}
-              <div class="carousel-gallery--text carousel-gallery-collection--text">{{ block.settings.collection_pick.title }}</div>
-              </a>
-            </div>
-          {%- when 'product_picker' -%}
-            <div class="carousel-gallery--item carousel-gallery-product--item">
-              <a {% if block.settings.product_pick.url != blank %}href="{{ block.settings.product_pick.url }}"{% endif %} class="carousel-gallery--link carousel-gallery-product--link">
-              {% if block.settings.product_pick_override_image != blank %}
-                {{ block.settings.product_pick_override_image | img_url: 'master' | img_tag: block.settings.product_pick_override_image.alt, 'carousel-gallery--image carousel-gallery-product--image' }}
-              {% else %}
-                {{ block.settings.product_pick.featured_image | img_url: 'master' | img_tag: block.settings.product_pick.featured_image.alt, 'carousel-gallery--image carousel-gallery-product--image' }}
-              {% endif %}
-              <div class="carousel-gallery--text carousel-gallery-product--text">{{ block.settings.product_pick.title }}</div>
-              </a>
-            </div>
-          {%- when 'image_picker' -%}
-            <div class="carousel-gallery--item carousel-gallery-image--item">
-              <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="carousel-gallery--link carousel-gallery-image--link">
-              {{ block.settings.image | img_url: 'master' | img_tag: block.settings.image.alt, 'carousel-gallery--image carousel-gallery-image--image' }}
-              <div class="carousel-gallery--text carousel-gallery-image--text">{{ block.settings.title }}</div>
-              </a>
-            </div>
-          {%- endcase -%}
+        {%- for product in collection.products limit: section.settings.collection_pick_limit -%}
+          <div class="carousel-gallery--item">
+            <a href="{{ product.url }}" class="carousel-gallery--link">
+              {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'carousel-gallery--image' }}
+              <div class="carousel-gallery--hover_wrapper">
+                <div class="carousel-gallery--title">{{ product.title }}</div>
+                {% render 'price', product: product, price_class: '' %}
+              </div>
+            </a>
+          </div>
         {%- endfor -%}
       </div>
     {% comment %} </slider-component> {% endcomment %}
@@ -59,6 +38,10 @@
 
 <style>
 {% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
+{% if section.settings.text_color_overwrite != blank %}
+#Banner-{{ section.id }} h2.title{color:{{ section.settings.text_color_overwrite }}!important;}
+#Banner-{{ section.id }} .slick-next:before, #Banner-{{ section.id }} .slick-prev:before{color:{{ section.settings.text_color_overwrite }}!important;}
+{% endif %}
   #Banner-{{ section.id }}{
     min-height: unset;
     padding-top: 40px;
@@ -72,17 +55,15 @@
     width: 100%;
   }
   #Banner-{{ section.id }} .carousel-gallery--item {
-      /*display: inline-block;
-      width: calc(33.33% - 50px);
-      margin: 0 25px;*/
       vertical-align: middle;
       position: relative;
-      line-height: 0;
+      text-align: center;
+      line-height: 20px;
   }
   #Banner-{{ section.id }} .carousel-gallery--item img{
       width: 100%;
   }
-  #Banner-{{ section.id }} .carousel-gallery--text {
+  #Banner-{{ section.id }} .carousel-gallery--hover_wrapper {
     display: none;
     position: absolute;
     left: 50%;
@@ -98,7 +79,16 @@
     display: block;
     position: absolute;
   }
-  #Banner-{{ section.id }} .carousel-gallery--item:hover .carousel-gallery--text{
+  #Banner-{{ section.id }} .carousel-gallery--hover_wrapper .price{
+    text-align: center;
+    line-height: normal;
+    display: block;
+    margin: 10px 0 0;
+  }
+  #Banner-{{ section.id }} .carousel-gallery--hover_wrapper .price dd{
+    margin: 0;
+  }
+  #Banner-{{ section.id }} .carousel-gallery--item:hover .carousel-gallery--hover_wrapper{
     display: block;
   }
   #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
@@ -109,7 +99,7 @@
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
       text-decoration: none;
     }
-    #Banner-{{ section.id }} .carousel-gallery--text{
+    #Banner-{{ section.id }} .carousel-gallery--hover_wrapper{
       display: block;
       position: unset;
       text-align: center;
@@ -147,12 +137,17 @@
     content: "\f054";
     font-size: 40px;
   }
+  #Banner-{{ section.id }} .slick-next, #Banner-{{ section.id }} .slick-prev{
+    height: auto;
+    width: auto;
+  }
 </style>
 <script>
   $( document ).ready(function() {
-    carousel_gallery.init();
+    carousel_collection.init();
   });
-  var carousel_gallery = {
+
+  var carousel_collection = {
     init: function(){
       var slider_speed = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-speed");
       var sliderAnimation = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-fade");
@@ -161,7 +156,7 @@
         dots: false,
         infinite: true,
         speed: 500,
-        slidesToShow: 3,
+        slidesToShow: 4,
         slidesToScroll: 1,
         autoplay: false,
         arrows: true,
@@ -170,6 +165,12 @@
         adaptiveHeight: JSON.parse(slider_adaptiveHeight),
         cssEase: 'linear',
         responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 3
+            }
+          },
           {
             breakpoint: 600,
             settings: {
@@ -186,21 +187,37 @@
       });
     }
   }
+
   function process_init_event(evt){
-    carousel_gallery.init();
+    carousel_collection.init();
   }
   $(document).on('shopify:section:load', process_init_event )
 </script>
 
 {% schema %} 
 {
-  "name": "OLM Carousel Gallery",
+  "name": "OLM Carousel Collection",
   "class": "spaced-section spaced-section--full-width",
   "settings": [
     {
       "type": "checkbox",
       "id": "page_width",
       "label": "Constrain to page width" 
+    },
+    {
+      "type": "collection",
+      "id": "collection_pick",
+      "label": "Collection"
+    },
+    {
+      "type": "range",
+      "id": "collection_pick_limit",
+      "label": "Product limits",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 6,
+      "unit": "prd"
     },
     {
       "type": "select",
@@ -245,6 +262,11 @@
       "id": "image_title",
       "label": "Title image",
       "info": "replaces heading text"
+    },
+    {
+      "type": "color",
+      "id": "text_color_overwrite",
+      "label": "Text color overwrite"
     },
     {
       "type": "text",
@@ -366,64 +388,11 @@
       ]
     }
   ],
-  "blocks": [
-    {
-      "type": "collection_picker",
-      "name": "collection",
-      "settings": [
-        {
-          "type": "collection",
-          "id": "collection_pick",
-          "label": "collection"
-        },
-        {
-          "type": "image_picker",
-          "id": "collection_pick_override_image",
-          "label": "Collection image override"
-        }  
-      ]
-    },
-    {
-      "type": "product_picker",
-      "name": "product",
-      "settings": [
-        {
-          "type": "product",
-          "id": "product_pick",
-          "label": "Pick a product"
-        },
-        {
-          "type": "image_picker",
-          "id": "product_pick_override_image",
-          "label": "Product image override"
-        }        
-      ]
-    },
-    {
-      "type": "image_picker",
-      "name": "image",
-      "settings": [
-        {
-          "type": "image_picker",
-          "id": "image",
-          "label": "Image block"
-        },
-        {
-          "type": "text",
-          "id": "title",
-          "label": "Text for image block"
-        },
-        {
-          "type": "url",
-          "id": "link",
-          "label": "Link for image block"
-        }
-      ]
-    }    
+  "blocks": [ 
   ],
   "presets": [
     {
-      "name": "OLM Carousel Gallery"
+      "name": "OLM Carousel Collection"
     }
   ]  
 }
