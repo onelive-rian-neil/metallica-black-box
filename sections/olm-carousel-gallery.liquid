@@ -5,8 +5,8 @@
 {% else %}
   {% assign sliderAnimation = false %}
 {% endif %}
-<div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.page_width %} page-width{% endif %}">
-  <div class="">
+<div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %}">
+  <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
     <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
       {% if section.settings.image_title != blank %}
         <h2 class="title">
@@ -61,8 +61,6 @@
 {% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
   #Banner-{{ section.id }}{
     min-height: unset;
-    padding-top: 40px;
-    padding-bottom: 40px;
     background-position: {{ section.settings.site-background-image-position }};
     background-size: {{ section.settings.site-background-image-size }};
     background-repeat: {{ section.settings.site-background-image-repeat }};
@@ -70,7 +68,19 @@
     display: block;
     flex-direction: unset;
     width: 100%;
+    padding: 50px;
+    border: 1px solid #ffffff;
   }
+  {% if section.settings.margin_top != blank %}
+    .banner-wrapper-carousel {
+      margin-top:{{ section.settings.margin_top }}!important;
+    }
+  {% endif %}
+  {% if section.settings.margin_bottom != blank %}
+    .banner-wrapper-carousel {
+      margin-bottom:{{ section.settings.margin_bottom }}!important;
+    }
+  {% endif %}
   #Banner-{{ section.id }} .carousel-gallery--item {
       /*display: inline-block;
       width: calc(33.33% - 50px);
@@ -201,6 +211,16 @@
       "type": "checkbox",
       "id": "page_width",
       "label": "Constrain to page width" 
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin top"
+    },
+    { 
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin bottom"
     },
     {
       "type": "select",
