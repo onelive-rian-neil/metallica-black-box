@@ -108,7 +108,7 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
   </head>
 
-  <body class="{% include 'body-classes' %}">
+  <body class="{% include 'body-classes' %}" data-aos-easing="ease-out-back" data-aos-duration="1000" data-aos-delay="0">
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -150,6 +150,14 @@
     <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}"></script>
 
+    <link href="//unpkg.com/aos@2.3.0/dist/aos.css" rel="stylesheet">
+    <script src="//unpkg.com/aos@2.3.0/dist/aos.js"></script>
+    <script>
+      //initialize AOS transitions
+     $(function() {
+          AOS.init();
+     });
+    </script>
     <script>
       function process_init_event(evt){
         headerTransparent.init();

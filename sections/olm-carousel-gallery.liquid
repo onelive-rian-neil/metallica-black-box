@@ -5,7 +5,7 @@
 {% else %}
   {% assign sliderAnimation = false %}
 {% endif %}
-<div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %}">
+<div data-aos="fade-up" class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %}">
   <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
     <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
       {% if section.settings.image_title != blank %}
@@ -60,12 +60,12 @@
 <style>
 {% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
   #Banner-{{ section.id }}{
+    display: none;
     min-height: unset;
     background-position: {{ section.settings.site-background-image-position }};
     background-size: {{ section.settings.site-background-image-size }};
     background-repeat: {{ section.settings.site-background-image-repeat }};
     background-attachment: {{ section.settings.site-background-image-attachment }};
-    display: block;
     flex-direction: unset;
     width: 100%;
     padding: 50px;
@@ -161,12 +161,13 @@
 <script>
   $( document ).ready(function() {
     carousel_gallery.init();
+    $('#Banner-{{ section.id }}').show();
   });
   var carousel_gallery = {
     init: function(){
-      var slider_speed = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-speed");
-      var sliderAnimation = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-fade");
-      var slider_adaptiveHeight = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-adaptiveHeight");
+      var slider_speed_gallery = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-speed");
+      var sliderAnimation_gallery = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-fade");
+      var slider_adaptiveHeight_gallery = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-adaptiveHeight");
       $('#Banner-{{ section.id }} .slider-blocks-wrapper').slick({
         dots: false,
         infinite: true,
@@ -175,9 +176,9 @@
         slidesToScroll: 1,
         autoplay: false,
         arrows: true,
-        autoplaySpeed: parseInt(slider_speed),
-        fade: JSON.parse(sliderAnimation),
-        adaptiveHeight: JSON.parse(slider_adaptiveHeight),
+        autoplaySpeed: parseInt(slider_speed_gallery),
+        fade: JSON.parse(sliderAnimation_gallery),
+        adaptiveHeight: JSON.parse(slider_adaptiveHeight_gallery),
         cssEase: 'linear',
         responsive: [
           {
@@ -196,10 +197,10 @@
       });
     }
   }
-  function process_init_event(evt){
+  function process_init_event_gallery(){
     carousel_gallery.init();
   }
-  $(document).on('shopify:section:load', process_init_event )
+  $(document).on('shopify:section:load', process_init_event_gallery )
 </script>
 
 {% schema %} 
