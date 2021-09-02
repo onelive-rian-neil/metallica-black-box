@@ -206,31 +206,43 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
 .iRlXmm.iRlXmm {
   display:none!important;
 }
-@media screen and (max-width: 992px) {
-  .footer-block.column-1,
-  .footer-block.column-2,
-  .footer-block.column-3 {
-    width:100%;
-  }
-  .footer-block-image>img {
-    width:70%;
-  }
-  .list-social__item {
-    margin:0 10px;
-  }
-
-}
 @media screen and (max-width: 1250px) {
+  .footer-block-image>img {
+    width:90%;
+  }
   .footer-block.column-1,
-  .footer-block.column-2,
   .footer-block.column-3 {
-    width:100%;
+    width:20%;
+  }
+  .footer-block.column-3 p {
+    margin:0;
+    font-size:12px;
   }
   .characters { 
     display:none;
   }
 }
+
 @media screen and (max-width: 992px) {
+  .footer-block.column-1,
+  .footer-block.column-2,
+  .footer-block.column-3 {
+    width:100%;
+    text-align: center;
+  }
+  .footer-block.column-2 .footer-block-image {
+ 
+  }
+  .footer-block-image>img {
+    width:50%;
+
+  }
+  .list-social__item {
+    margin:0 10px;
+  }
+  .newsletter-form {
+    margin:0 auto!important;
+  }
   #shopify-section-header header.header--align nav.header__menu-wrapper {
     width:auto!important;
     display: inline-block!important;
@@ -274,6 +286,17 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
     bottom:-2px;
   }
 }
+@media screen and (max-width: 375px) { 
+  .footer-block-image>img {
+    width:90%;
+
+  }
+  .footer-block.column-2  .footer-block-image {
+    text-align: center;
+  }
+}
+
+
 @media screen and (min-width: 990px){
   .collage-section .collage {
     grid-template-columns: minmax(auto, 100%) minmax(40rem, 36rem);
