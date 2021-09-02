@@ -10,46 +10,10 @@
       "settings": {
         "heading": ""
       }
-    },
-    "163059960015a69e1d": {
-      "type": "olm-carousel-gallery",
-      "blocks": {
-        "26f4d08f-3c17-498f-bdf1-8530619830df": {
-          "type": "collection_picker",
-          "settings": {
-            "collection_pick": "apparel"
-          }
-        },
-        "f9cb1f73-17d4-47a5-9c9f-884f529ffcf4": {
-          "type": "product_picker",
-          "settings": {
-            "product_pick": "test-product"
-          }
-        }
-      },
-      "block_order": [
-        "26f4d08f-3c17-498f-bdf1-8530619830df",
-        "f9cb1f73-17d4-47a5-9c9f-884f529ffcf4"
-      ],
-      "settings": {
-        "page_width": false,
-        "margin_top": "",
-        "margin_bottom": "",
-        "slider_animation": "slide",
-        "slider_speed": 6,
-        "slider_adaptiveHeight": false,
-        "title": "Featured gallery",
-        "image_title_width": "",
-        "site-background-image-position": "left top",
-        "site-background-image-size": "auto",
-        "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll"
-      }
     }
   },
   "order": [
     "main",
-    "form",
-    "163059960015a69e1d"
+    "form"
   ]
 }
