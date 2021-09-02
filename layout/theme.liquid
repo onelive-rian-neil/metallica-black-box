@@ -16,6 +16,12 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {% if settings.checkbox_typekit_font_override %}
+      <!-- adobe font override -->
+      <link rel="stylesheet" href="{{ settings.typekit_font_url }}">
+    {% endif %}
+
+
     <title>{{ page_title }}</title>
 
     {% if page_description %}
@@ -95,6 +101,7 @@
     {{ 'base.css' | asset_url | stylesheet_tag }}
     {{ 'base-liquid.css' | asset_url | stylesheet_tag }}
     {{ 'custom.css' | asset_url | stylesheet_tag }}
+    {{ 'temp.css' | asset_url | stylesheet_tag }}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
