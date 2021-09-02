@@ -1,5 +1,34 @@
 {
   "sections": {
+    "16305997925fc5dcae": {
+      "type": "olm-carousel-gallery",
+      "blocks": {
+        "a60841ba-35a6-4536-a239-8552f4916b50": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": "apparel"
+          }
+        }
+      },
+      "block_order": [
+        "a60841ba-35a6-4536-a239-8552f4916b50"
+      ],
+      "settings": {
+        "page_width": true,
+        "margin_top": "10px",
+        "margin_bottom": "10px",
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": false,
+        "title": "SAMPLE COLLECTION",
+        "image_title_width": "",
+        "image_background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "site-background-image-position": "center center",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed"
+      }
+    },
     "1628788335a88b53d2": {
       "type": "image-banner",
       "disabled": true,
@@ -62,6 +91,7 @@
     }
   },
   "order": [
+    "16305997925fc5dcae",
     "1628788335a88b53d2",
     "banner",
     "product-grid"

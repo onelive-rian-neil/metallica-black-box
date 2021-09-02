@@ -84,28 +84,30 @@
           "footer-0": {
             "type": "link_list",
             "settings": {
-              "heading": "Quick links",
+              "heading": "",
               "menu": "main-menu"
             }
           },
-          "a5a3b4f7-3ce5-4fcc-b1c5-e89b5148d499": {
-            "type": "social-links",
+          "f100aadb-aa81-4727-8735-f1c096a44b34": {
+            "type": "image",
             "settings": {
-              "social_heading": "Connect with us"
+              "image": "shopify:\/\/shop_images\/footer-logo.png",
+              "image_width": 100,
+              "alignment": "center"
             }
           },
           "bf368619-a358-49e7-be9b-d0aec88b38bf": {
             "type": "newsletter",
             "settings": {
-              "newsletter_heading": "Heading",
-              "newsletter_text": "Subscribe to be the first to hear about our exclusive offers and latest arrivals",
+              "newsletter_heading": "Join The Black Box list",
+              "newsletter_text": "support@metallicablackbox.com",
               "show_newsletter_social": false
             }
           }
         },
         "block_order": [
           "footer-0",
-          "a5a3b4f7-3ce5-4fcc-b1c5-e89b5148d499",
+          "f100aadb-aa81-4727-8735-f1c096a44b34",
           "bf368619-a358-49e7-be9b-d0aec88b38bf"
         ],
         "settings": {
