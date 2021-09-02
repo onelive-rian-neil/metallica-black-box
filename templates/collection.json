@@ -8,10 +8,33 @@
           "settings": {
             "collection_pick": "apparel"
           }
+        },
+        "3c78b470-b869-4233-9c2a-c6608a4417a4": {
+          "type": "product_picker",
+          "settings": {
+            "product_pick": "test-product"
+          }
+        },
+        "c08053d7-3cdf-436f-ba04-e2140f6e0618": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": "merch"
+          }
+        },
+        "6e543274-a5c1-45ef-9af4-f6caffaef5b3": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/black-product.jpg",
+            "title": "test",
+            "link": "#"
+          }
         }
       },
       "block_order": [
-        "a60841ba-35a6-4536-a239-8552f4916b50"
+        "a60841ba-35a6-4536-a239-8552f4916b50",
+        "3c78b470-b869-4233-9c2a-c6608a4417a4",
+        "c08053d7-3cdf-436f-ba04-e2140f6e0618",
+        "6e543274-a5c1-45ef-9af4-f6caffaef5b3"
       ],
       "settings": {
         "page_width": true,
