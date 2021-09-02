@@ -41,7 +41,7 @@
           "type": "collection_picker",
           "settings": {
             "collection_pick": "",
-            "collection_pick_override_image": "shopify:\/\/shop_images\/welcome-to-my-business.jpg"
+            "collection_pick_override_image": "shopify:\/\/shop_images\/black-product.jpg"
           }
         }
       },
