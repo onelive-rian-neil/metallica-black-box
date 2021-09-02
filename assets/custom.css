@@ -111,6 +111,125 @@ h2.title {
 .header__icon--cart .icon-cart {
   margin-right:0!important;
 }
+
+
+
+/* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
+Footer 
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
+.footer {
+  position: relative;
+}
+.footer .page-width{
+  max-width:150rem;
+}
+.footer__blocks-wrapper {
+  position: relative;
+  z-index: 5;
+}
+.footer-block-image img {
+  width:100%;
+}
+.footer-block-image>img {
+  width:90%;
+}
+.footer-block.column-1,
+.footer-block.column-3 {
+  width:20%;
+}
+.footer-block.column-2 { 
+  width:60%;
+}
+.footer-block.column-3 .footer-block__heading  {
+  margin-bottom:0;
+  text-transform: uppercase;
+  color:#f8f5f5;
+  font-size:15px;
+}
+.footer-block.column-3 p {
+  margin:0;
+  font-size:14px;
+}
+.characters { 
+  position: absolute;
+}
+.left-character-img {
+  left:0;
+  bottom:0;
+}
+.right-character-img {
+  right:0;
+  bottom:0;
+}
+
+.list-social__item {
+  margin:0 60px;
+}
+.footer__copyright small,
+.footer__copyright p {
+  display: inline-block;
+  color:#f8f5f5;
+  text-transform: uppercase;
+}
+.footer__copyright p a {
+  color:#f8f5f5;
+  font-size: 13.3333px;
+  margin:0 5px;
+  text-decoration: none;
+}
+.footer__copyright p span:last-child {
+  display:none;
+}
+.newsletter-form-wrapper {
+  position: relative;
+}
+.newsletter-arrow {
+  position: absolute;
+  z-index: 10;
+  width: 10px;
+  right: 20px;
+  top: 34px;
+}
+
+
+
+.fhmQhu.fhmQhu.fhmQhu.fhmQhu.fhmQhu.fhmQhu {
+  background-color: transparent!important;
+  border:1px solid #fff!important;
+  position: relative;
+}
+
+.fhmQhu.fhmQhu.fhmQhu.fhmQhu.fhmQhu.fhmQhu:hover {
+  border-color:#fff!important;
+}
+.iRlXmm.iRlXmm {
+  display:none!important;
+}
+@media screen and (max-width: 992px) {
+  .footer-block.column-1,
+  .footer-block.column-2,
+  .footer-block.column-3 {
+    width:100%;
+  }
+  .footer-block-image>img {
+    width:70%;
+  }
+  .list-social__item {
+    margin:0 10px;
+  }
+
+}
+@media screen and (max-width: 1250px) {
+  .footer-block.column-1,
+  .footer-block.column-2,
+  .footer-block.column-3 {
+    width:100%;
+  }
+  .characters { 
+    display:none;
+  }
+}
 @media screen and (max-width: 992px) {
   #shopify-section-header header.header--align nav.header__menu-wrapper {
     width:auto!important;
