@@ -334,6 +334,21 @@
     "settings": [
       {
         "type": "header",
+        "content": "System Font Override"
+      },
+      {
+        "type": "checkbox",
+        "id": "checkbox_typekit_font_override",
+        "default": true,
+        "label": "Check this box if want to use adobe typekit"
+      },
+      {
+        "type": "text",
+        "id": "typekit_font_url",
+        "label": "Adobe Typekit Font URL - Add just the URL not the entire embed code"
+      },
+      {
+        "type": "header",
         "content": "t:settings_schema.typography.settings.header__1.content"
       },
       {
