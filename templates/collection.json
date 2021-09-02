@@ -2,6 +2,7 @@
   "sections": {
     "1628788335a88b53d2": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "1628788335a88b53d2-0": {
           "type": "heading",
@@ -41,6 +42,7 @@
     },
     "banner": {
       "type": "main-collection-banner",
+      "disabled": true,
       "settings": {
         "show_collection_description": false,
         "show_collection_image": true
@@ -54,8 +56,8 @@
         "show_secondary_image": false,
         "add_image_padding": false,
         "show_vendor": false,
-        "enable_filtering": true,
-        "enable_sorting": true
+        "enable_filtering": false,
+        "enable_sorting": false
       }
     }
   },
