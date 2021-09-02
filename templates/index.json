@@ -61,8 +61,8 @@
         "image_title_width": "100%",
         "image_background": "shopify:\/\/shop_images\/black-album.jpg",
         "site-background-image-position": "left top",
-        "site-background-image-size": "contain",
-        "site-background-image-repeat": "repeat",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "scroll"
       }
     },
