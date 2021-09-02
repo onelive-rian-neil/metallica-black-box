@@ -90,6 +90,7 @@
     },
     "162998923071cf02fd": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "THE SHOP",
         "collection": "apparel",
