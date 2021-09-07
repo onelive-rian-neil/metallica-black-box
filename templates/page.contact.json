@@ -10,10 +10,20 @@
       "settings": {
         "heading": ""
       }
+    },
+    "1631044128786d7c12": {
+      "type": "page-settings",
+      "settings": {
+        "page-background": "shopify:\/\/shop_images\/Store.jpg",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
+      }
     }
   },
   "order": [
     "main",
-    "form"
+    "form",
+    "1631044128786d7c12"
   ]
 }
