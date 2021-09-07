@@ -1,0 +1,94 @@
+<style>
+body {
+    background-image:url({{ section.settings.page-background | img_url: 'master' }})!important;
+    background-attachment:{{ section.settings.site-background-image-attachment }};
+    background-repeat:{{ section.settings.site-background-image-repeat }};
+    background-size:{{ section.settings.site-background-image-size }};
+}
+
+</style>
+
+{% schema %}
+{
+  "name": "Background image",
+  "tag": "section",
+  "class": "background-image",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "page-background",
+      "label": "Page background image"
+    },
+    { 
+        "type": "select",
+        "id": "site-background-image-size",
+        "label": "Site background image size",
+        "options": [
+          {
+            "value": "auto",
+            "label": "auto"
+          },
+          {
+            "value": "100% auto",
+            "label": "100% auto"
+          },
+          {
+            "value": "contain",
+            "label": "contain"
+          },
+          {
+            "value": "cover",
+            "label": "cover"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "site-background-image-repeat",
+        "label": "Site background image repeat",
+        "options": [
+          {
+            "value": "repeat",
+            "label": "repeat"
+          },
+          {
+            "value": "repeat-x",
+            "label": "repeat-x"
+          },
+          {
+            "value": "repeat-y",
+            "label": "repeat-y"
+          },
+          {
+            "value": "no-repeat",
+            "label": "no-repeat"
+          },
+          {
+            "value": "inherit",
+            "label": "inherit"
+          }
+        ]
+    },
+    {
+        "type": "select",
+        "id": "site-background-image-attachment",
+        "label": "Site background image attachment",
+        "options": [
+          {
+            "value": "scroll",
+            "label": "scroll"
+          },
+          {
+            "value": "fixed",
+            "label": "fixed"
+          }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Background"
+    }
+  ]
+}
+{% endschema %}
