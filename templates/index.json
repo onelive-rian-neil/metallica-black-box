@@ -83,8 +83,8 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/banner4.jpg",
         "banner_url": "shopify:\/\/collections\/merch",
-        "margin_top": "15px",
-        "margin_bottom": "15px",
+        "margin_top": "30px",
+        "margin_bottom": "30px",
         "page_width": true
       }
     },
