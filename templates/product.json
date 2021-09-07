@@ -76,7 +76,8 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "enable_video_looping": false
+        "enable_video_looping": false,
+        "enable_addtocart_scroller": true
       }
     },
     "product-recommendations": {
@@ -92,13 +93,24 @@
     "1628788463b3762000": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": ""
+        "custom_liquid": "",
+        "full_width": false
+      }
+    },
+    "1631044019e6f62eee": {
+      "type": "page-settings",
+      "settings": {
+        "page-background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
       }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "1628788463b3762000"
+    "1628788463b3762000",
+    "1631044019e6f62eee"
   ]
 }
