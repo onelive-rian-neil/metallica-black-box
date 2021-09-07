@@ -110,7 +110,7 @@
     "1630594482a7bb6acf": {
       "type": "olm-carousel-collection",
       "settings": {
-        "page_width": false,
+        "page_width": true,
         "collection_pick": "frontpage",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
