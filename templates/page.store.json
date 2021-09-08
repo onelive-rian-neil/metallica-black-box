@@ -58,6 +58,7 @@
         "title": "COLLECTION ONE",
         "text_color_overwrite": "#000000",
         "image_title_width": "",
+        "view_all": true,
         "site-background-image-position": "left top",
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
@@ -66,7 +67,6 @@
     },
     "16311177612a41a0a8": {
       "type": "olm-carousel-collection",
-      "disabled": true,
       "settings": {
         "page_width": true,
         "collection_pick": "frontpage",
@@ -77,6 +77,7 @@
         "title": "COLLECTION TWO",
         "text_color_overwrite": "#000000",
         "image_title_width": "",
+        "view_all": true,
         "site-background-image-position": "left top",
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
