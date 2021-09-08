@@ -336,5 +336,10 @@ padding-left:0!important;
   width: calc(100% - 150px)!important;
 }
 
-  
+.page-width {
+  padding: 0;
+}  
 
+.add-pad {
+    padding: 0 5rem;
+}
