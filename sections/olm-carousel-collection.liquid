@@ -7,8 +7,8 @@
 {% endif %}
 {%- assign collection = collections[section.settings.collection_pick] -%}
 <div data-aos="fade-up">
-  <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
-    <div class="{% if section.settings.page_width %}page-width{% endif %}">
+  <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %} {% if section.settings.page_width %}page-width add-pad{% endif %}">
+    <div class="{% unless section.settings.page_width %}page-width{% endunless %} page-width">
       <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
         {% if section.settings.image_title != blank %}
           <h2 class="title">
