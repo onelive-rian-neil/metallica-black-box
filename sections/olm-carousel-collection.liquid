@@ -34,7 +34,10 @@
           {%- endfor -%}
         </div>
       {% comment %} </slider-component> {% endcomment %}
-    </div>
+      {% if section.settings.view_all != blank %}
+      <a href="{{ collection.url }}" title="{{ collection.title }}" class="carousel-view-all">VIEW ALL</a>
+      {% endif %}
+    </div> {% comment %}page-width{% endcomment %}
   </div>
 </div>
 <style>
@@ -42,6 +45,7 @@
 {% if section.settings.text_color_overwrite != blank %}
 #Banner-{{ section.id }} h2.title{color:{{ section.settings.text_color_overwrite }}!important;}
 #Banner-{{ section.id }} .slick-next:before, #Banner-{{ section.id }} .slick-prev:before{color:{{ section.settings.text_color_overwrite }}!important;}
+#Banner-{{ section.id }} a.carousel-view-all{color:{{ section.settings.text_color_overwrite }}!important;}
 {% endif %}
   #Banner-{{ section.id }}{
     display: none;
@@ -64,6 +68,7 @@
   #Banner-{{ section.id }} .carousel-gallery--item img{
       width: 100%;
   }
+
   #Banner-{{ section.id }} .carousel-gallery--hover_wrapper {
     display: none;
     position: absolute;
@@ -82,7 +87,7 @@
   }
   #Banner-{{ section.id }} .carousel-gallery--hover_wrapper .price{
     text-align: center;
-    line-height: normal;
+    line-height: normal; 
     display: block;
     margin: 10px 0 0;
   }
@@ -95,6 +100,13 @@
   #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
     display: block;
     color: white;
+  }
+  #Banner-{{ section.id }} a.carousel-view-all{
+    text-align: right;
+    display: block;
+    margin: 20px 25px 0;
+    text-decoration: none;
+    font-weight: bold;
   }
   @media only screen and (max-width: 768px) {
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
@@ -111,12 +123,11 @@
       font-size: 18px;
       margin: 10px auto;
     }
+    #Banner-{{ section.id }} .carousel-gallery--title{color:{{ section.settings.text_color_overwrite }}!important;}
+    #Banner-{{ section.id }} .price{color:{{ section.settings.text_color_overwrite }}!important;}
   }
 </style>
 	
-{% comment %} SLICK SLIDER CODE {% endcomment %}
-<link href="{{ 'slick.scss.css' | asset_url }}" rel="stylesheet">
-{{ 'slick.js' | asset_url | script_tag }}
 <style>
   #Banner-{{ section.id }} .slick-slide{
     padding: 0 25px;
@@ -143,13 +154,17 @@
     width: auto;
   }
 </style>
+
+{%- assign min = 0 -%}
+{%- assign max = 9999999999 -%}
+{%- assign diff = max | minus: min -%}
+{%- assign random_number = "now" | date: "%N" | modulo: diff | plus: min -%}
 <script>
   $( document ).ready(function() {
-    carousel_collection.init();
-    $('#Banner-{{ section.id }}').show();
+    carousel_collection_{{ random_number }}.init();
   });
 
-  var carousel_collection = {
+  var carousel_collection_{{ random_number }} = {
     init: function(){
       var slider_speed_collection = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-speed");
       var sliderAnimation_collection = $('#Banner-{{ section.id }} .slider-blocks-wrapper').attr("data-fade");
@@ -187,13 +202,14 @@
           }
         ]
       });
+      $('#Banner-{{ section.id }}').show();
     }
   }
 
-  function process_init_event_collection(){
-    carousel_collection.init();
+  function process_init_event_collection_{{ random_number }}(){
+    carousel_collection_{{ random_number }}.init();
   }
-  $(document).on('shopify:section:load', process_init_event_collection )
+  $(document).on('shopify:section:load', process_init_event_collection_{{ random_number }} )
 </script>
 
 {% schema %} 
@@ -275,6 +291,12 @@
       "id": "image_title_width",
       "label": "Title image width",
       "info": "use % or px"
+    },
+    {
+      "type": "checkbox",
+      "id": "view_all",
+      "label": "Show view all?",
+      "default": true
     },
     {
       "type": "image_picker",

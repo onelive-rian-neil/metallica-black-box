@@ -47,6 +47,7 @@
         },
         "buy_buttons": {
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": true
           }
@@ -100,7 +101,7 @@
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "page-background": "shopify:\/\/shop_images\/fashionable-man-by-textured-wall.jpg",
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
         "site-background-image-attachment": "scroll"

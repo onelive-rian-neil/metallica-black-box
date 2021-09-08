@@ -12,6 +12,7 @@
         },
         "title": {
           "type": "title",
+          "disabled": true,
           "settings": {
           }
         },
@@ -24,6 +25,7 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
           }
         },
@@ -82,6 +84,7 @@
     },
     "product-recommendations": {
       "type": "product-recommendations",
+      "disabled": true,
       "settings": {
         "heading": "You may also like",
         "image_ratio": "adapt",
@@ -100,7 +103,7 @@
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "page-background": "shopify:\/\/shop_images\/welcome-to-my-business.jpg",
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
         "site-background-image-attachment": "scroll"

@@ -104,6 +104,9 @@
     {{ 'temp.css' | asset_url | stylesheet_tag }}
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    {% comment %} SLICK SLIDER CODE {% endcomment %}
+    <link href="{{ 'slick.scss.css' | asset_url }}" rel="stylesheet">
+    {{ 'slick.js' | asset_url | script_tag }}
 
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
