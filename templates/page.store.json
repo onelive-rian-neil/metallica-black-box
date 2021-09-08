@@ -55,7 +55,7 @@
         "slider_speed": 6,
         "slider_adaptiveHeight": false,
         "title": "COLLECTION ONE",
-        "text_color_overwrite": "",
+        "text_color_overwrite": "#000000",
         "image_title_width": "",
         "site-background-image-position": "left top",
         "site-background-image-size": "auto",
