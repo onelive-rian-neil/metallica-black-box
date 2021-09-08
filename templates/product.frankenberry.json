@@ -12,6 +12,7 @@
         },
         "title": {
           "type": "title",
+          "disabled": true,
           "settings": {
           }
         },
@@ -24,6 +25,7 @@
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
           }
         },
