@@ -66,6 +66,7 @@
     },
     "16311177612a41a0a8": {
       "type": "olm-carousel-collection",
+      "disabled": true,
       "settings": {
         "page_width": true,
         "collection_pick": "frontpage",
