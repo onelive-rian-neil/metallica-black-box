@@ -62,6 +62,10 @@
         "image_title": "shopify:\/\/shop_images\/black_album-text.png",
         "image_title_width": "100%",
         "image_background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "enble-borders": false,
+        "border-width": "",
+        "border-style": "",
+        "border-color": "",
         "site-background-image-position": "left top",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
@@ -110,7 +114,7 @@
     "1630594482a7bb6acf": {
       "type": "olm-carousel-collection",
       "settings": {
-        "page_width": true,
+        "page_width": false,
         "collection_pick": "frontpage",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
@@ -119,6 +123,7 @@
         "title": "THE SHOP",
         "text_color_overwrite": "",
         "image_title_width": "",
+        "view_all": true,
         "image_background": "shopify:\/\/shop_images\/Store.jpg",
         "site-background-image-position": "center top",
         "site-background-image-size": "cover",
