@@ -89,6 +89,21 @@
       position: relative;
       line-height: 0;
   }
+  {% if section.settings.enble-borders %}
+  .carousel-gallery--item {
+    {% if section.settings.border-width != blank %}
+      border-width:{{ section.settings.border-width }};
+    {% endif %}
+
+    
+    {% if section.settings.border-style != blank %}
+      border-style:{{ section.settings.border-style }};
+    {% endif %}
+    {% if section.settings.border-color != blank %}
+      border-color:{{ section.settings.border-color }};
+    {% endif %}
+  }
+  {% endif %}
   #Banner-{{ section.id }} .carousel-gallery--item img{
       width: 100%;
   }
@@ -277,6 +292,31 @@
       "type": "image_picker",
       "id": "image_background",
       "label": "Background Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "enble-borders",
+      "label": "Add border around items" 
+    },
+    
+    {
+      "type": "text",
+      "id": "border-width",
+      "label": "Border width use px"  
+    },
+    {
+      "type":"paragraph",
+      "content": "Need help with choosing a border style? [Learn more](https://www.w3schools.com/css/css_border.asp)."
+    },
+    {
+      "type": "text",
+      "id": "border-style",
+      "label": "Border style" 
+    },
+    {
+      "type": "text",
+      "id": "border-color",
+      "label": "Border color use hex #" 
     },
     {
       "type": "select",
