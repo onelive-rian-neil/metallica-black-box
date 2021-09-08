@@ -68,6 +68,31 @@ h2.title {
  width:auto;
  height:auto;
 } 
+.search-modal {
+
+  border:none;
+}
+.search-modal.modal__content {
+  border:none;
+  background-color: transparent;
+}
+.search-modal__content {
+  position: relative;
+  top:10px;
+}
+.search-modal .field__label{
+  display:none;
+}
+.search-modal .field {
+  min-width:200px;
+  position: absolute;
+  background-color: #000;
+}
+.search-modal__content .modal__close-button {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+}
 .header__icon span {
   height: auto;
 }
@@ -230,6 +255,11 @@ padding-left:0!important;
 }
 
 @media screen and (max-width: 992px) {
+.search-modal.modal__content {
+    position: absolute;
+    left:unset;
+    right: 50px;
+}
   .footer-block.column-1,
   .footer-block.column-2,
   .footer-block.column-3 {
