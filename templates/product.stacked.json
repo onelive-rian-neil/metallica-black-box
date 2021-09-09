@@ -70,9 +70,8 @@
     },
     "1628788463b3762000": {
       "type": "custom-liquid",
-      "disabled": true,
       "settings": {
-        "custom_liquid": "",
+        "custom_liquid": "<style>\nsection.page-width{max-width: 90rem}\n<\/style>",
         "full_width": false
       }
     },
