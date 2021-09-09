@@ -51,6 +51,19 @@
     },
     "1631219449ebf9b3e2": {
       "type": "olm-carousel-gallery",
+      "blocks": {
+        "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/imge_2.jpg",
+            "title": "COLLECTION ITEM",
+            "link": "shopify:\/\/products\/test-product"
+          }
+        }
+      },
+      "block_order": [
+        "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f"
+      ],
       "settings": {
         "page_width": false,
         "margin_top": "",
