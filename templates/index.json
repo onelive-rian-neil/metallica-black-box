@@ -13,43 +13,42 @@
     "162999708568073e49": {
       "type": "olm-carousel-gallery",
       "blocks": {
-        "787d0987-00d4-4372-9fea-1b7022a43d39": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/black-product.jpg",
-            "title": "",
-            "link": ""
-          }
-        },
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953": {
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/black-product.jpg",
-            "title": "",
-            "link": ""
+            "title": "STORE PAGE",
+            "link": "shopify:\/\/pages\/store"
           }
         },
         "178220f5-cf8d-41f7-8503-125f2159fa55": {
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/black-product.jpg",
-            "title": "",
-            "link": ""
+            "title": "PRODUCT",
+            "link": "shopify:\/\/products\/test-product"
           }
         },
-        "9579705b-70ce-4bc5-804a-0c62b1ae9fd9": {
-          "type": "collection_picker",
+        "a0c766f7-d218-4d71-9cf8-ab20b688464f": {
+          "type": "image_picker",
           "settings": {
-            "collection_pick": "",
-            "collection_pick_override_image": "shopify:\/\/shop_images\/black-product.jpg"
+            "title": "STORE PAGE",
+            "link": "shopify:\/\/pages\/store"
+          }
+        },
+        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
+          "type": "image_picker",
+          "settings": {
+            "title": "PRODUCT",
+            "link": "shopify:\/\/products\/test-product"
           }
         }
       },
       "block_order": [
-        "787d0987-00d4-4372-9fea-1b7022a43d39",
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953",
         "178220f5-cf8d-41f7-8503-125f2159fa55",
-        "9579705b-70ce-4bc5-804a-0c62b1ae9fd9"
+        "a0c766f7-d218-4d71-9cf8-ab20b688464f",
+        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e"
       ],
       "settings": {
         "page_width": true,
@@ -124,6 +123,7 @@
         "text_color_overwrite": "",
         "image_title_width": "",
         "view_all": true,
+        "enable_bg_image": false,
         "image_background": "shopify:\/\/shop_images\/Store.jpg",
         "site-background-image-position": "center top",
         "site-background-image-size": "cover",
