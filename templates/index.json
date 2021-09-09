@@ -32,6 +32,7 @@
         "a0c766f7-d218-4d71-9cf8-ab20b688464f": {
           "type": "image_picker",
           "settings": {
+            "image": "shopify:\/\/shop_images\/imge_2.jpg",
             "title": "STORE PAGE",
             "link": "shopify:\/\/pages\/store"
           }
