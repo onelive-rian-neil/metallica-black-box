@@ -71,7 +71,7 @@
     "1628788463b3762000": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\nsection.page-width{max-width: 90rem;color: black!important; font-weight: bold;text-transform: uppercase;}\n.price, h1.product__title{color: black!important;}\n.price--on-sale .price-item--regular{color: #555;}\n<\/style>",
+        "custom_liquid": "<style>\nbutton, section.page-width{max-width: 90rem;color: black!important; font-weight: bold;text-transform: uppercase;}\n.price, h1.product__title{color: black!important;}\n.price--on-sale .price-item--regular{color: #555;} select,quantity-input{background-color: white!important;text-transform: uppercase!important;color: black!important; border: 2px solid #000!important;box-shadow: unset!important;font-weight: bold!important;}\n.product-form__submit{color: white!important; letter-spacing: 3px}\n<\/style>",
         "full_width": false
       }
     },
