@@ -11,18 +11,21 @@
       "blocks": {
         "1628788638c9727d88-0": {
           "type": "heading",
+          "disabled": true,
           "settings": {
-            "heading": "Image banner"
+            "heading": ""
           }
         },
         "1628788638c9727d88-1": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "Give customers details about the banner image(s) or content on the template."
           }
         },
         "1628788638c9727d88-2": {
           "type": "buttons",
+          "disabled": true,
           "settings": {
             "button_label_1": "Button label",
             "button_link_1": "",
@@ -39,7 +42,7 @@
         "1628788638c9727d88-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "image": "shopify:\/\/shop_images\/store_banner.jpg",
         "desktop_text_box_position": "center",
         "color_scheme": "background-1",
         "stack_images_on_mobile": true,
