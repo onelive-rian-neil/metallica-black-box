@@ -7,7 +7,7 @@
 {% endif %}
 {%- assign collection = collections[section.settings.collection_pick] -%}
 <div data-aos="fade-up">
-  <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %} {% if section.settings.page_width %}page-width add-pad{% endif %}">
+  <div style="{% if section.settings.enable_bg_image %}background-image: url({{section.settings.image_background | img_url: 'master'}});{% endif %}" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %} {% if section.settings.page_width %}page-width add-pad{% endif %}">
     <div class="{% unless section.settings.page_width %}page-width{% endunless %} page-width">
       <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
         {% if section.settings.image_title != blank %}
@@ -299,10 +299,17 @@
       "default": true
     },
     {
+      "type": "checkbox",
+      "id": "enable_bg_image",
+      "label": "Enable Background Image",
+      "default": false,
+      "info": "Checking this will display a background image, if unchecked background will be transparent."
+    },
+    {
       "type": "image_picker",
       "id": "image_background",
       "label": "Background Image"
-    },
+    },   
     {
       "type": "select",
       "id": "site-background-image-position",
