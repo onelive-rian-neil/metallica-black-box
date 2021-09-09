@@ -369,7 +369,9 @@ padding-left:0!important;
 .page-width {
   padding: 0;
 }  
-
 .add-pad {
     padding: 0 5rem;
+}
+.slick-slide img, .carousel-gallery--item:hover a.carousel-gallery--link:before {
+    border: 1px solid;
 }
