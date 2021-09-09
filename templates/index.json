@@ -44,13 +44,21 @@
             "title": "PRODUCT",
             "link": "shopify:\/\/products\/test-product"
           }
+        },
+        "4f82678f-2651-4715-a4be-f4846422a7fc": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": "apparel",
+            "collection_pick_override_image": "shopify:\/\/shop_images\/imge_2.jpg"
+          }
         }
       },
       "block_order": [
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953",
         "178220f5-cf8d-41f7-8503-125f2159fa55",
         "a0c766f7-d218-4d71-9cf8-ab20b688464f",
-        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e"
+        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e",
+        "4f82678f-2651-4715-a4be-f4846422a7fc"
       ],
       "settings": {
         "page_width": true,
@@ -125,7 +133,7 @@
         "text_color_overwrite": "",
         "image_title_width": "",
         "view_all": true,
-        "enable_bg_image": false,
+        "enable_bg_image": true,
         "image_background": "shopify:\/\/shop_images\/Store.jpg",
         "site-background-image-position": "center top",
         "site-background-image-size": "cover",
