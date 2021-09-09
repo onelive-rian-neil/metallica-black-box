@@ -81,10 +81,10 @@
               {{ product.title | escape }}
             </h1>
           {%- when 'price' -%}
-            <div class="no-js-hidden" id="price-{{ section.id }}" {{ block.shopify_attributes }}>
+            <div class="no-js-hidden product-price-wrapper" id="price-{{ section.id }}" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
             </div>
-            <div {{ block.shopify_attributes }}>
+            <div class="product-priceform-wrapper" {{ block.shopify_attributes }}>
               {%- form 'product', product, id: 'product-form-installment', class: 'installment caption-large' -%}
                 <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                 {{ form | payment_terms }}
@@ -254,7 +254,7 @@
               </div>
             </noscript>
           {%- when 'buy_buttons' -%}
-            <div {{ block.shopify_attributes }}>
+            <div class="product-add-to-cart-btns-wrapper" {{ block.shopify_attributes }}>
               <product-form class="product-form">
                 {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -483,6 +483,7 @@
     padding-top: 10px;
     padding-bottom: 10px;
     box-shadow: 0px 5px 10px -10px #000000;
+    max-width: unset;
   }
   .addtocart-scroll--left{
     display: inline-block;
@@ -504,6 +505,7 @@
   }
   .addtocart-scroll-wrapper .addtocart-scroll--price{
     text-align: right;
+    vertical-align: middle;
   }
   .addtocart-scroll-wrapper .addtocart-scroll--price .price-item{
     color: black;
@@ -541,6 +543,67 @@ $(window).on('scroll',function(){
     }
 });
 </script>
+{% endif %}
+
+{% if section.settings.enable_stacked %}
+<style>
+@media only screen and (min-width: 750px) {
+  #MainContent .product > .grid__item{
+    width: 100%;
+    max-width: unset;
+    padding: 0;
+    text-align: center;
+  }
+  #MainContent .product ul.product__media-list{
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  #MainContent .product .product__description{
+    text-align: left;
+  }
+  #MainContent .product .product__title{
+    text-transform: uppercase;
+  }
+  #MainContent .product ul.product__media-list > li.product__media-item{
+    width: calc(25% - 50px);
+        display: inline-block;
+    flex-grow: unset;
+    flex-shrink: unset;
+    scroll-snap-align: unset;
+  }
+  #MainContent .product ul.product__media-list > li.product__media-item:first-child{
+    width: 100%;
+    margin-bottom: 50px;
+  }
+  .product-priceform-wrapper{
+    display: none;
+  }
+  .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
+    width: calc(50% - 3px);
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+  }
+  quantity-input.quantity{
+    margin: 0 auto;
+  }
+}
+@media (max-width:992px) and (min-width:750px) {
+  .product .price{
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media only screen and (min-width: 992px) {
+  #MainContent .product ul.product__media-list > li.product__media-item{
+    width: calc(25% - 100px);
+  }
+  .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
+    width: calc(25% - 2px);
+  }
+}
+</style>
 {% endif %}
 
 
@@ -838,6 +901,13 @@ $(window).on('scroll',function(){
       "default": true,
       "label": "Adds a scoll to product",
       "info": "useful for mobile when content is at the top"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_stacked",
+      "default": true,
+      "label": "Stack content?",
+      "info": "stack product images and content"
     }
   ]
 }
