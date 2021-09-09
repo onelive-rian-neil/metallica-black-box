@@ -71,7 +71,7 @@
     "1628788463b3762000": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\nsection.page-width{max-width: 90rem}\n<\/style>",
+        "custom_liquid": "<style>\nsection.page-width{max-width: 90rem;color: black!important; font-weight: bold;text-transform: uppercase;}\n.price, h1.product__title{color: black!important;}\n.price--on-sale .price-item--regular{color: #555;}\n<\/style>",
         "full_width": false
       }
     },
