@@ -118,10 +118,20 @@
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
   </head>
 
-  <body class="{% include 'body-classes' %}" data-aos-easing="ease-out-back" data-aos-duration="1000" data-aos-delay="0">
+ 
+    {% if content_for_header contains "previewBarInjector.init();" %}
+    {% assign current_view = 'preview' %}
+    {% elsif content_for_header contains "Shopify.designMode" %}
+      {% assign current_view = 'customizer' %}
+    {% else %}
+      {% assign current_view = 'live' %}
+    {% endif %}
+  
+  <body class="{% include 'body-classes' %} current_view-{{current_view}}" >
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
+    
 
     {% section 'announcement-bar' %}
     {% section 'top-bar' %}
@@ -160,14 +170,18 @@
     <script src="{{ 'variants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'theme.js' | asset_url }}"></script>
 
-    <link href="//unpkg.com/aos@2.3.0/dist/aos.css" rel="stylesheet">
-    <script src="//unpkg.com/aos@2.3.0/dist/aos.js"></script>
-    <script>
-      //initialize AOS transitions
-     $(function() {
-          AOS.init();
-     });
-    </script>
+    {% unless request.design_mode %}
+      <link href="//unpkg.com/aos@2.3.0/dist/aos.css" rel="stylesheet">
+      <script src="//unpkg.com/aos@2.3.0/dist/aos.js"></script>
+      <script>
+        //initialize AOS transitions
+      $(function() {
+            AOS.init();
+      });
+      </script>
+    {% endunless %}
+
+
     <script>
       function process_init_event(evt){
         headerTransparent.init();
