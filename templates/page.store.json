@@ -59,10 +59,28 @@
             "title": "COLLECTION ITEM",
             "link": "shopify:\/\/products\/test-product"
           }
+        },
+        "2c20bb63-225f-4a9a-8c3c-b6727ada94ce": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/black-product.jpg",
+            "title": "PRODUCT TEXT",
+            "link": "shopify:\/\/products\/test-product"
+          }
+        },
+        "37f9da3d-9f80-466a-933c-6186cd6a2f53": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/imge_3.jpg",
+            "title": "PRODUCT LINK",
+            "link": "shopify:\/\/products\/test-product-eight"
+          }
         }
       },
       "block_order": [
-        "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f"
+        "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f",
+        "2c20bb63-225f-4a9a-8c3c-b6727ada94ce",
+        "37f9da3d-9f80-466a-933c-6186cd6a2f53"
       ],
       "settings": {
         "page_width": false,
