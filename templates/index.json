@@ -24,7 +24,7 @@
         "178220f5-cf8d-41f7-8503-125f2159fa55": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/black-product.jpg",
+            "image": "shopify:\/\/shop_images\/imge_3.jpg",
             "title": "PRODUCT",
             "link": "shopify:\/\/products\/test-product"
           }
@@ -40,6 +40,7 @@
         "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
           "type": "image_picker",
           "settings": {
+            "image": "shopify:\/\/shop_images\/imge_3.jpg",
             "title": "PRODUCT",
             "link": "shopify:\/\/products\/test-product"
           }
