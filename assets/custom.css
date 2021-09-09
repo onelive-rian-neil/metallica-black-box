@@ -375,3 +375,6 @@ padding-left:0!important;
 .slick-slide img, .carousel-gallery--item:hover a.carousel-gallery--link:before {
     border: 1px solid;
 }
+body:not(.template-index) footer.color-background-1 {
+    background: #000000c7;
+}
