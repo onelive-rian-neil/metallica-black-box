@@ -1,0 +1,8 @@
+{% if content_for_header contains "previewBarInjector.init();" %}
+{% assign current_view = 'preview' %}
+{% elsif content_for_header contains "Shopify.designMode" %}
+  {% assign current_view = 'customizer' %}
+{% else %}
+  {% assign current_view = 'live' %}
+{% endif %}
+current_view-{{ current_view }}
