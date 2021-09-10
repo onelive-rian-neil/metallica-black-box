@@ -1,7 +1,20 @@
 {
   "sections": {
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_vendor": false,
+        "enable_filtering": false,
+        "enable_sorting": false
+      }
+    },
     "16305997925fc5dcae": {
       "type": "olm-carousel-gallery",
+      "disabled": true,
       "blocks": {
         "a60841ba-35a6-4536-a239-8552f4916b50": {
           "type": "collection_picker",
@@ -45,6 +58,10 @@
         "slider_adaptiveHeight": false,
         "title": "SAMPLE COLLECTION",
         "image_title_width": "",
+        "enble-borders": false,
+        "border-width": "",
+        "border-style": "",
+        "border-color": "",
         "site-background-image-position": "center center",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
@@ -99,24 +116,30 @@
         "show_collection_image": true
       }
     },
-    "product-grid": {
-      "type": "main-collection-product-grid",
+    "1631283548f8efe221": {
+      "type": "featured-collection",
       "disabled": true,
       "settings": {
-        "products_per_page": 16,
+        "title": "Featured collection",
+        "collection": "",
+        "products_to_show": 4,
+        "show_view_all": true,
+        "swipe_on_mobile": false,
+        "background_parallax": false,
+        "add_section_padding": false,
+        "color_overwrite": "",
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "add_image_padding": false,
-        "show_vendor": false,
-        "enable_filtering": false,
-        "enable_sorting": false
+        "show_vendor": false
       }
     }
   },
   "order": [
+    "product-grid",
     "16305997925fc5dcae",
     "1628788335a88b53d2",
     "banner",
-    "product-grid"
+    "1631283548f8efe221"
   ]
 }
