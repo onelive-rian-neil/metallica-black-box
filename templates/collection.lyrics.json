@@ -133,6 +133,15 @@
         "add_image_padding": false,
         "show_vendor": false
       }
+    },
+    "1631284216e9865d96": {
+      "type": "page-settings",
+      "settings": {
+        "page-background": "shopify:\/\/shop_images\/lyric_background.jpg",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
+      }
     }
   },
   "order": [
@@ -140,6 +149,7 @@
     "16305997925fc5dcae",
     "1628788335a88b53d2",
     "banner",
-    "1631283548f8efe221"
+    "1631283548f8efe221",
+    "1631284216e9865d96"
   ]
 }
