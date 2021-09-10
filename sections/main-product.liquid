@@ -18,7 +18,7 @@
 
 <section class="page-width">
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-    <div class="grid__item product__media-wrapper">
+    <div class="grid__item product__media-wrapper grid__layout_{{ section.settings.product_page_layout }}">
       <slider-component class="slider-mobile-gutter">
         <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
           {{ "accessibility.skip_to_product_info" | t }}
@@ -64,10 +64,9 @@
         </button>
       {%- endif -%}
     </div>
-    <div class="product__info-wrapper grid__item">
+    <div class="product__info-wrapper grid__item grid__layout_{{ section.settings.product_page_layout }}">
       <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
         {%- for block in section.blocks -%}
           {%- case block.type -%}
           {%- when '@app' -%}
@@ -545,66 +544,85 @@ $(window).on('scroll',function(){
 </script>
 {% endif %}
 
-{% if section.settings.enable_stacked %}
-<style>
-@media only screen and (min-width: 750px) {
-  #MainContent .product > .grid__item{
-    width: 100%;
-    max-width: unset;
-    padding: 0;
-    text-align: center;
-  }
-  #MainContent .product ul.product__media-list{
-    display: inline-block;
-    width: 100%;
-    margin-bottom: 50px;
-  }
-  #MainContent .product .product__description{
-    text-align: left;
-  }
-  #MainContent .product .product__title{
-    text-transform: uppercase;
-  }
-  #MainContent .product ul.product__media-list > li.product__media-item{
-    width: calc(25% - 50px);
-        display: inline-block;
-    flex-grow: unset;
-    flex-shrink: unset;
-    scroll-snap-align: unset;
-  }
-  #MainContent .product ul.product__media-list > li.product__media-item:first-child{
-    width: 100%;
-    margin-bottom: 50px;
-  }
-  .product-priceform-wrapper{
-    display: none;
-  }
-  .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
-    width: calc(50% - 3px);
-    display: inline-block;
-    vertical-align: middle;
-    text-align: center;
-  }
-  quantity-input.quantity{
-    margin: 0 auto;
-  }
-}
-@media (max-width:992px) and (min-width:750px) {
-  .product .price{
-    align-items: center;
-    justify-content: center;
-  }
-}
-@media only screen and (min-width: 992px) {
-  #MainContent .product ul.product__media-list > li.product__media-item{
-    width: calc(25% - 100px);
-  }
-  .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
-    width: calc(25% - 2px);
-  }
-}
-</style>
-{% endif %}
+
+
+  {% if section.settings.product_page_layout == '1__2' %}
+    <style>
+      @media only screen and (min-width: 750px) {
+        #MainContent .product > .grid__item.grid__layout_1__2 {
+          width: 50%;
+          max-width: unset;
+          float: left;
+        }  
+      }
+    </style>
+  {% elsif section.settings.product_page_layout == '3__4' %}
+    <style>
+
+    </style>
+  {% elsif section.settings.product_page_layout == 'stacked' %}
+    <style>
+      @media only screen and (min-width: 750px) {
+        #MainContent .product > .grid__item{
+          width: 100%;
+          max-width: unset;
+          padding: 0;
+          text-align: center;
+        }
+        #MainContent .product ul.product__media-list{
+          display: inline-block;
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        #MainContent .product .product__description{
+          text-align: left;
+        }
+        #MainContent .product .product__title{
+          text-transform: uppercase;
+        }
+        #MainContent .product ul.product__media-list > li.product__media-item{
+          width: calc(25% - 50px);
+              display: inline-block;
+          flex-grow: unset;
+          flex-shrink: unset;
+          scroll-snap-align: unset;
+        }
+        #MainContent .product ul.product__media-list > li.product__media-item:first-child{
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        .product-priceform-wrapper{
+          display: none;
+        }
+        .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
+          width: calc(50% - 3px);
+          display: inline-block;
+          vertical-align: middle;
+          text-align: center;
+        }
+        quantity-input.quantity{
+          margin: 0 auto;
+        }
+      }
+      @media (max-width:992px) and (min-width:750px) {
+        .product .price{
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      @media only screen and (min-width: 992px) {
+        #MainContent .product ul.product__media-list > li.product__media-item{
+          width: calc(25% - 100px);
+        }
+        .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
+          width: calc(25% - 2px);
+        }
+      }
+    </style>
+  {% endif %}
+
+
+
 
 
 {% schema %}
@@ -903,11 +921,23 @@ $(window).on('scroll',function(){
       "info": "useful for mobile when content is at the top"
     },
     {
-      "type": "checkbox",
-      "id": "enable_stacked",
-      "default": true,
-      "label": "Stack content?",
-      "info": "stack product images and content"
+      "type": "select",
+      "id": "product_page_layout",
+      "label": "Product page layout options",
+      "options": [
+        {
+          "value": "1__2",
+          "label": "half width"
+        },
+        {
+          "value": "3__4",
+          "label": "three quarters width"
+        },        
+        {
+          "value": "stacked",
+          "label": "stacked"
+        }
+      ]
     }
   ]
 }
