@@ -8,21 +8,14 @@
         "show_collection_image": true
       }
     },
-    "product-grid": {
-      "type": "main-collection-product-grid",
+    "collection-masonry": {
+      "type": "collection-masonry",
       "settings": {
-        "products_per_page": 16,
-        "image_ratio": "adapt",
-        "show_secondary_image": false,
-        "add_image_padding": false,
-        "show_vendor": false,
-        "enable_filtering": false,
-        "enable_sorting": false
       }
     }
   },
   "order": [
     "banner",
-    "product-grid"
+    "collection-masonry"
   ]
 }
