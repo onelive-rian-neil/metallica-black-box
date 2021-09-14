@@ -96,6 +96,7 @@
       "type": "image-banner-no-text",
       "settings": {
         "image": "shopify:\/\/shop_images\/banner4.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/TheArtBanner_1000x1000_2c06f86f-90ed-4035-a559-89c73625d6ca.jpg",
         "banner_url": "shopify:\/\/collections\/merch",
         "margin_top": "30px",
         "margin_bottom": "30px",
