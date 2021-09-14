@@ -85,6 +85,7 @@
       "type": "image-banner-no-text",
       "settings": {
         "image": "shopify:\/\/shop_images\/banner3.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/BlackAlbumLive_1000x1000_24de4cc4-91b3-4fd6-ba41-9fe7299fed63.jpg",
         "banner_url": "shopify:\/\/collections\/apparel",
         "margin_top": "30px",
         "margin_bottom": "30px",
@@ -130,7 +131,7 @@
         "slider_speed": 6,
         "slider_adaptiveHeight": false,
         "title": "THE SHOP",
-        "text_color_overwrite": "",
+        "text_color_overwrite": "#000000",
         "image_title_width": "",
         "view_all": true,
         "enable_bg_image": true,
