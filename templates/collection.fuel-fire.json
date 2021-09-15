@@ -11,11 +11,30 @@
     "collection-masonry": {
       "type": "collection-masonry",
       "settings": {
+        "page_width": false,
+        "margin_top": "",
+        "margin_bottom": "",
+        "title": "Featured gallery",
+        "image_title_width": "",
+        "body": "",
+        "grid_layout": "a",
+        "grid_effect": "Hapi"
+      }
+    },
+    "163172697793c8b0cb": {
+      "type": "page-settings",
+      "settings": {
+        "page-background": "shopify:\/\/shop_images\/artifact_bkg.jpg",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#fff"
       }
     }
   },
   "order": [
     "banner",
-    "collection-masonry"
+    "collection-masonry",
+    "163172697793c8b0cb"
   ]
 }
