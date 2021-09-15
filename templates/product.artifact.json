@@ -15,23 +15,14 @@
           "settings": {
           }
         },
-        "subtitle": {
-          "type": "text",
+        "description": {
+          "type": "description",
           "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
-            "text_style": "subtitle"
           }
         },
         "price": {
           "type": "price",
           "settings": {
-          }
-        },
-        "173e31b3-5911-44e5-9795-67a5c26a1ec3": {
-          "type": "popup",
-          "settings": {
-            "link_label": "Size Chart",
-            "page": "mens-t-shirt-size-chart"
           }
         },
         "variant_picker": {
@@ -42,42 +33,31 @@
         },
         "quantity_selector": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
-          }
-        },
-        "share": {
-          "type": "share",
-          "settings": {
+            "show_dynamic_checkout": false
           }
         }
       },
       "block_order": [
         "vendor",
         "title",
-        "subtitle",
+        "description",
         "price",
-        "173e31b3-5911-44e5-9795-67a5c26a1ec3",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons",
-        "description",
-        "share"
+        "buy_buttons"
       ],
       "settings": {
         "enable_sticky_info": true,
         "enable_video_looping": false,
-        "enable_addtocart_scroller": true
+        "enable_addtocart_scroller": true,
+        "product_page_layout": "1__2"
       }
     },
     "product-recommendations": {
@@ -90,27 +70,20 @@
         "show_vendor": false
       }
     },
-    "1628788463b3762000": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "full_width": false
-      }
-    },
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/black_album-background.jpg",
-        "site-background-image-size": "auto",
-        "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll"
+        "page-background": "shopify:\/\/shop_images\/lyrpic_prod-dark.jpg",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#fff"
       }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "1628788463b3762000",
     "1631044019e6f62eee"
   ]
 }
