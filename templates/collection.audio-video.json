@@ -56,7 +56,7 @@
       "disabled": true,
       "blocks": {
         "1628788335a88b53d2-0": {
-          "type": "heading",
+          "type": "heading", 
           "settings": {
             "heading": "Image banner"
           }
@@ -100,7 +100,7 @@
       }
     },
     "product-grid": {
-      "type": "main-collection-product-grid",
+      "type": "video-audio-collection-product-grid",
       "settings": {
         "products_per_page": 16,
         "image_ratio": "adapt",
