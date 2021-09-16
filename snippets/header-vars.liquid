@@ -61,14 +61,13 @@
 
 {% capture cart_icon %}
   <a href="{{ routes.cart_url }}" class="header__icon header__icon--cart link link--text focus-inset" id="cart-icon-bubble">
-    {% render 'icon-cart' %}
-    {%- liquid
-      if cart == empty
-        render 'icon-cart-empty'
-      else
-        render 'icon-cart'
-      endif
-    -%}
+
+
+    {%- if cart == empty %}
+        {% render 'icon-cart-empty' %}
+    {% else %}
+        {% render 'icon-cart' %}
+    {% endif %}
     <span>{{ 'templates.cart.cart' | t }}</span>
     {%- if cart != empty -%}
       <div class="cart-count-bubble">

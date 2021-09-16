@@ -113,13 +113,16 @@ h2.title {
   float: left;
 
 }
-.header__icon--cart .icon-cart{
+.header__icon--cart .icon-cart,
+.header__icon--cart .icon-cart-empty{
   height: 4rem;
   width: 4rem;
+
 }
-.icon.icon-cart-empty {
-  display: none!important;
+.header__icon--cart .icon-cart-empty {
+  margin-right:0!important;
 }
+
 .header__icon--search span:first-child {
   position: relative;
   top:-10px;
