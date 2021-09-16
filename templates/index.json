@@ -71,6 +71,7 @@
         "image_title": "shopify:\/\/shop_images\/black_album-text.png",
         "image_title_width": "100%",
         "image_background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "image_background_mobile": "shopify:\/\/shop_images\/BlackAlbum_1000x1000_1e9588ca-32fc-4899-906b-e17957d0944a.jpg",
         "enble-borders": false,
         "border-width": "",
         "border-style": "",
