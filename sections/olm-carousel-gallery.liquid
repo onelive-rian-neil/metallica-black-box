@@ -9,17 +9,6 @@
 <div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %}">
   <div{% if section.settings.image_background != blank %} style="background-image: url({{section.settings.image_background | img_url: 'master'}});"{% endif %} id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
     <div class="{% if section.settings.title == blank %}title-wrapper-with-link--no-heading{% endif %}">
-
-
-          {% if section.settings.mobile_image != blank %}
-        <img
-          src="{{ section.settings.mobile_image | img_url: 'master' }}"
-          class="mobile_img"
-          alt="{{ section.settings.mobile_image.alt | escape }}"
-        >
-      {% endif %}
-
-
       {% if section.settings.image_title != blank %}
         <h2 class="title">
           {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
@@ -172,7 +161,7 @@
     } 
     {% if section.settings.mobile_image != blank %}   
       #Banner-{{ section.id }} {
-        background-imge:{{ section.settings.mobile_image | img_url: 'master' }};
+        background-imge:{{ section.settings.image_background_mobile | img_url: 'master' }};
       }
     {% endif %}
   }
