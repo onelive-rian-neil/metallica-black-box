@@ -18,7 +18,6 @@
     },
     "1631219449ebf9b3e2": {
       "type": "olm-carousel-gallery",
-      "disabled": true,
       "blocks": {
         "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f": {
           "type": "image_picker",
