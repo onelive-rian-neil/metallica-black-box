@@ -35,7 +35,11 @@
         </div>
       {% comment %} </slider-component> {% endcomment %}
       {% if section.settings.view_all != blank %}
-      <a href="{{ collection.url }}" title="{{ collection.title }}" class="carousel-view-all">VIEW ALL</a>
+        {% if section.settings.override_url != blank %}
+          <a href="{{ section.settings.override_url }}" title="{{ collection.title }}" class="carousel-view-all">VIEW ALL</a>
+        {% else %}
+          <a href="{{ collection.url }}" title="{{ collection.title }}" class="carousel-view-all">VIEW ALL</a>
+        {% endif %}
       {% endif %}
     </div> {% comment %}page-width{% endcomment %}
   </div>
@@ -297,6 +301,11 @@
       "id": "view_all",
       "label": "Show view all?",
       "default": true
+    },
+    {
+      "type": "url",
+      "id": "override_url",
+      "label": "Override View All URL"
     },
     {
       "type": "checkbox",
