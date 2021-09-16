@@ -2,6 +2,7 @@
   "sections": {
     "16305997925fc5dcae": {
       "type": "olm-carousel-gallery",
+      "disabled": true,
       "blocks": {
         "a60841ba-35a6-4536-a239-8552f4916b50": {
           "type": "collection_picker",
@@ -45,6 +46,10 @@
         "slider_adaptiveHeight": false,
         "title": "SAMPLE COLLECTION",
         "image_title_width": "",
+        "enble-borders": false,
+        "border-width": "",
+        "border-style": "",
+        "border-color": "",
         "site-background-image-position": "center center",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
@@ -56,7 +61,7 @@
       "disabled": true,
       "blocks": {
         "1628788335a88b53d2-0": {
-          "type": "heading", 
+          "type": "heading",
           "settings": {
             "heading": "Image banner"
           }
@@ -110,12 +115,23 @@
         "enable_filtering": false,
         "enable_sorting": false
       }
+    },
+    "163181078652ee7440": {
+      "type": "page-settings",
+      "settings": {
+        "page-background": "shopify:\/\/shop_images\/bg.jpg",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#fff"
+      }
     }
   },
   "order": [
     "16305997925fc5dcae",
     "1628788335a88b53d2",
     "banner",
-    "product-grid"
+    "product-grid",
+    "163181078652ee7440"
   ]
 }
