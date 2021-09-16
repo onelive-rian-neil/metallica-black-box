@@ -135,6 +135,7 @@
         "text_color_overwrite": "#000000",
         "image_title_width": "",
         "view_all": true,
+        "override_url": "shopify:\/\/pages\/store",
         "enable_bg_image": true,
         "image_background": "shopify:\/\/shop_images\/Store.jpg",
         "site-background-image-position": "center top",
