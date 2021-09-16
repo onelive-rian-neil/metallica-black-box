@@ -3,13 +3,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "vendor": {
-          "type": "text",
-          "settings": {
-            "text": "{{ product.vendor }}",
-            "text_style": "uppercase"
-          }
-        },
         "title": {
           "type": "title",
           "settings": {
@@ -18,20 +11,8 @@
         "subtitle": {
           "type": "text",
           "settings": {
-            "text": "{{ product.metafields.descriptors.subtitle.value }}",
+            "text": "{{ product.metafields.my_fields.secondary_tagline.value }}",
             "text_style": "subtitle"
-          }
-        },
-        "price": {
-          "type": "price",
-          "settings": {
-          }
-        },
-        "173e31b3-5911-44e5-9795-67a5c26a1ec3": {
-          "type": "popup",
-          "settings": {
-            "link_label": "Size Chart",
-            "page": "mens-t-shirt-size-chart"
           }
         },
         "variant_picker": {
@@ -45,72 +26,69 @@
           "settings": {
           }
         },
+        "price": {
+          "type": "price",
+          "settings": {
+          }
+        },
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": true
-          }
-        },
-        "description": {
-          "type": "description",
-          "settings": {
+            "show_dynamic_checkout": false
           }
         },
         "share": {
           "type": "share",
           "settings": {
           }
+        },
+        "description": {
+          "type": "description",
+          "settings": {
+          }
         }
       },
       "block_order": [
-        "vendor",
         "title",
         "subtitle",
-        "price",
-        "173e31b3-5911-44e5-9795-67a5c26a1ec3",
         "variant_picker",
         "quantity_selector",
+        "price",
         "buy_buttons",
-        "description",
-        "share"
+        "share",
+        "description"
       ],
       "settings": {
         "enable_sticky_info": true,
         "enable_video_looping": false,
-        "enable_addtocart_scroller": true
+        "enable_addtocart_scroller": true,
+        "product_page_layout": "1__2"
       }
     },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
-        "heading": "You may also like",
+        "heading": "RELATED PRODUCTS",
         "image_ratio": "adapt",
         "show_secondary_image": false,
         "add_image_padding": false,
         "show_vendor": false
       }
     },
-    "1628788463b3762000": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "",
-        "full_width": false
-      }
-    },
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/black_album-background.jpg",
-        "site-background-image-size": "auto",
-        "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll"
+        "page-background": "shopify:\/\/shop_images\/Store.jpg",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#000000"
       }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "1628788463b3762000",
     "1631044019e6f62eee"
   ]
 }
