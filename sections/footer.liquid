@@ -535,6 +535,18 @@
     width: auto;
     max-width:auto;
 }
+@media screen and (min-width: 750px) {
+  .footer__content-top .grid {
+      margin-left: 0;
+  }
+  .footer__content-top .grid__item {
+      padding-left: 0;
+      padding:20px;
+  }
+  .footer-block.column-2 {
+      width: 50%;
+  }
+}
 {% if section.settings.newsletter-platform == "shopify" %}
 .newsletter-form {
   margin:0;
