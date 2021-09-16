@@ -18,6 +18,7 @@
     },
     "1631219449ebf9b3e2": {
       "type": "olm-carousel-gallery",
+      "disabled": true,
       "blocks": {
         "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f": {
           "type": "image_picker",
@@ -107,6 +108,27 @@
         "site-background-image-repeat": "repeat",
         "site-background-image-attachment": "scroll"
       }
+    },
+    "16318103445a64017d": {
+      "type": "olm-carousel-collection",
+      "settings": {
+        "page_width": false,
+        "collection_pick": "apparel",
+        "collection_pick_limit": 6,
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": false,
+        "title": "COLLECTION 1",
+        "text_color_overwrite": "#333333",
+        "image_title_width": "",
+        "view_all": true,
+        "override_url": "",
+        "enable_bg_image": false,
+        "site-background-image-position": "left top",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
+      }
     }
   },
   "order": [
@@ -114,6 +136,7 @@
     "1628788638c9727d88",
     "1631219449ebf9b3e2",
     "16311175450f61b827",
-    "16318071439345de0b"
+    "16318071439345de0b",
+    "16318103445a64017d"
   ]
 }
