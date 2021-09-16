@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 
+{% assign explore_active = false %}
+
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- if first_3d_model -%}
   {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
@@ -300,6 +302,96 @@
             </div>
 
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+          
+            {%- unless product.has_only_default_variant -%}
+              {%- if block.settings.picker_type == 'button' -%}
+                <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+                  {%- for option in product.options_with_values -%}
+                      <fieldset class="js product-form__input">
+                        <legend class="form__label">{{ option.name }}</legend>
+                        {%- for value in option.values -%}
+                          <input type="radio" id="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}"
+                                name="{{ option.name }}"
+                                value="{{ value | escape }}"
+                                form="product-form-{{ section.id }}"
+                                {% if option.selected_value == value %}checked{% endif %}
+                          >
+                          <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
+                            {{ value }}
+                          </label>
+                        {%- endfor -%}
+                      </fieldset>
+                  {%- endfor -%}
+                  <script type="application/json">
+                    {{ product.variants | json }}
+                  </script>
+                </variant-radios>
+              {%- else -%}
+                <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
+                  {%- for option in product.options_with_values -%}
+                    <div class="product-form__input product-form__input--dropdown">
+                      <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
+                        {{ option.name }}
+                      </label>
+                      <div class="select">
+                        <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
+                          class="select__select"
+                          name="options[{{ option.name | escape }}]"
+                          form="product-form-{{ section.id }}"
+                        >
+                          {%- for value in option.values -%}
+                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
+                              {{ value }}
+                            </option>
+                          {%- endfor -%}
+                        </select>
+                        {% render 'icon-caret' %}
+                      </div>
+                    </div>
+                  {%- endfor -%}
+
+                  <script type="application/json">
+                    {{ product.variants | json }}
+                  </script>
+                </variant-selects>
+              {%- endif -%}
+            {%- endunless -%}
+
+            <noscript>
+              <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
+                <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
+                <div class="select">
+                  <select name="id" id="Variants-{{ section.id }}" class="select__select" form="product-form">
+                    {%- for variant in product.variants -%}
+                      <option
+                        {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
+                        {% if variant.available == false %}disabled{% endif %}
+                        value="{{ variant.id }}"
+                      >
+                        {{ variant.title }}
+                        {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
+                        - {{ variant.price | money | strip_html }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                  {% render 'icon-caret' %}
+                </div>
+              </div>
+            </noscript>
+          {%- when 'explore' -%}
+            {% assign explore_active = true %}
+            <div class="product-explore-btn">Click to explore</div>
+            <div class="product-explore-popup-wrapper">
+              <div class="product-explore-popup-container">
+                <div class="product-explore-x">x</div>
+                <div class="product-explore-subtext">{{ product.metafields.my_fields.artifact_explore_subheader }}</div>
+                <div class="product-explore-title">{{ product.metafields.my_fields.artifact_explore_title }}</div>
+                <div class="product-explore-video">{{ product.metafields.my_fields.artifact_explore_video_embed }}</div>
+                <div class="product-explore-description">{{ product.metafields.my_fields.artifact_explore_description }}</div>
+              </div>
+            </div>
+          {%- when 'buy_edition' -%}
+            <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">BUY EDITION</a></div>
           {%- endcase -%}
         {%- endfor -%}
       </div>
@@ -412,9 +504,9 @@
 
   {% assign sizechart = section.blocks | where: "type", "sizechart" %}
   {%- for block in sizechart -%}
-        <h1 class="h2">{{ block.settings.page.title }}</h1>
-        {{ block.settings.size_chart }}
-    {%- endfor -%}  
+    <h1 class="h2">{{ block.settings.page.title }}</h1>
+    {{ block.settings.size_chart }}
+  {%- endfor -%}  
 </section>
 
 {% javascript %}
@@ -621,9 +713,132 @@ $(window).on('scroll',function(){
     </style>
   {% endif %}
 
+{% if explore_active %}
+  <style>
+    .product__info-container--sticky{
+      z-index: 6;
+    }
+    .product-explore-btn{
+      cursor: pointer;
+    }
+    .product-explore-btn:before{
+      content: "+";
+      font-size: 25px;
+      border-radius: 100%;
+      color: #ffffff;
+      background-color: #af1111;
+      padding: 0px 9px 3px 10px;
+      margin-right: 10px;
+    }
+    .product-explore-btn:hover{
+      color: white;
+    }
+    .product-explore-btn:hover:before{
+      box-shadow: 0px 0px 2px 4px #af11118c;
+      animation: pulse-black 2s infinite;
+    }
+    .product-explore-popup-wrapper{
+      display: none;
+      background: #f5f5f5;
+      color: black;
+      font-size: 12px;
+      position: absolute;
+      top: 0px;
+      margin: 0;
+      padding: 50px;
+      width: 100%;
+      z-index: 9;
+    }
+    .product-explore-x{
+      cursor: pointer;
+      font-size: 40px;
+      top: 0px;
+      position: absolute;
+      right: 20px;
+      color: #5d5d5d;
+    }
+    .product-explore-x:hover{
+      color: black;
+    }
+    .product-explore-subtext{
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+    .product-explore-title{
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 36px;
+      margin: 10px 0 0;
+    }
+    .product-explore-video iframe{
+      width: 100%!important;
+    }
+    @media only screen and (max-width: 768px) {
+      .product-explore-popup-wrapper{
+        position: fixed;
+        overflow: scroll;
+        height: 100vh;
+        padding: 70px 35px 10px 20px;
+      }
+      .product-explore-video iframe{
+        height: 450px!important;
+        margin: 20px 0;
+      }
+      .product-explore-x{
+        right: 30px;
+      }
+    }
+    @media only screen and (max-width: 501px) {
+      .product-explore-video iframe{
+        height: 250px!important;
+      }
+    }
+    @keyframes pulse-black {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(175, 17, 17, 0.7);
+      }
+      
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(175, 17, 17, 0);
+      }
+      
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(175, 17, 17, 0);
+      }
+    }
+  </style>
+  <script>
+  $( document ).ready(function() {
+    $( '.product-explore-btn' ).click(function() {
+      $('.product-explore-popup-wrapper').slideDown();
+    });
+    $( '.product-explore-x' ).click(function() {
+      $('.product-explore-popup-wrapper').slideUp();
+    });
+  });
+  </script>
+{% endif %}
 
-
-
+<style>
+.product-explore-buy-edition{
+  margin: 50px 0 10px;
+}
+.product-explore-buy-edition a{
+  padding: 20px 30px;
+  letter-spacing: 4px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  border: 1px solid #af1111;
+}
+.product-explore-buy-edition a:hover{
+  background-color: #af1111;
+  color: white;
+}
+</style>
 
 {% schema %}
 {
@@ -876,7 +1091,21 @@ $(window).on('scroll',function(){
           "default": "Welcome to my Section"
         }
       ]
-    },        
+    },
+    {
+      "type": "explore",
+      "name": "Expore Button & popup",
+      "limit": 1,
+      "settings": [
+      ]
+    }, 
+    {
+      "type": "buy_edition",
+      "name": "Expore Buy Edition",
+      "limit": 1,
+      "settings": [
+      ]
+    },   
     {
       "type": "popup",
       "name": "t:sections.main-product.blocks.popup.name",
