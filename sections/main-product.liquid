@@ -92,11 +92,19 @@
               {%- endform -%}
             </div>
           {%- when 'description' -%}
-            {%- if product.description != blank -%}
-              <div class="product__description rte">
-                {{ product.description }}
-              </div>
-            {%- endif -%}
+            {% capture p_description %}
+              {%- if product.description != blank -%}
+                <div class="product__description rte{% if block.settings.description_outside %} product__description_below{% endif %}">
+                  {{ product.description }}
+                </div>
+              {%- endif -%}
+            {% endcapture %}
+            {% if block.settings.description_outside %}
+              {% assign p_description_trigger = true %}
+            {% else %}
+              {% assign p_description_trigger = false %}
+              {{ p_description }}
+            {% endif %}
           {%- when 'collapsible_tab' -%}
             <div class="product__accordion accordion" {{ block.shopify_attributes }}>
               <details>
@@ -255,7 +263,12 @@
               </div>
             </noscript>
           {%- when 'buy_buttons' -%}
-            <div class="product-add-to-cart-btns-wrapper" {{ block.shopify_attributes }}>
+            {% capture price_inside %}
+              {% if block.settings.price_inside %}
+                {%- render 'price', product: product, use_variant: true, show_badges: false, price_class: '' -%} - 
+              {% endif %}
+            {% endcapture %}
+            <div class="{% if block.settings.price_inside %}price-inside-btn {% endif %}product-add-to-cart-btns-wrapper" {{ block.shopify_attributes }}>
               <product-form class="product-form">
                 {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -267,9 +280,9 @@
                     {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                     >
                         {%- if product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.add_to_cart' | t }}
+                          {{price_inside}}{{ 'products.product.add_to_cart' | t }}
                         {%- else -%}
-                          {{ 'products.product.sold_out' | t }}
+                          {{price_inside}}{{ 'products.product.sold_out' | t }}
                         {%- endif -%}
                     </button>
                     {%- if block.settings.show_dynamic_checkout -%}
@@ -303,81 +316,6 @@
 
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
           
-            {%- unless product.has_only_default_variant -%}
-              {%- if block.settings.picker_type == 'button' -%}
-                <variant-radios class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                  {%- for option in product.options_with_values -%}
-                      <fieldset class="js product-form__input">
-                        <legend class="form__label">{{ option.name }}</legend>
-                        {%- for value in option.values -%}
-                          <input type="radio" id="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}"
-                                name="{{ option.name }}"
-                                value="{{ value | escape }}"
-                                form="product-form-{{ section.id }}"
-                                {% if option.selected_value == value %}checked{% endif %}
-                          >
-                          <label for="{{ section.id }}-{{ option.name }}-{{ forloop.index0 }}">
-                            {{ value }}
-                          </label>
-                        {%- endfor -%}
-                      </fieldset>
-                  {%- endfor -%}
-                  <script type="application/json">
-                    {{ product.variants | json }}
-                  </script>
-                </variant-radios>
-              {%- else -%}
-                <variant-selects class="no-js-hidden" data-section="{{ section.id }}" data-url="{{ product.url }}" {{ block.shopify_attributes }}>
-                  {%- for option in product.options_with_values -%}
-                    <div class="product-form__input product-form__input--dropdown">
-                      <label class="form__label" for="Option-{{ section.id }}-{{ forloop.index0 }}">
-                        {{ option.name }}
-                      </label>
-                      <div class="select">
-                        <select id="Option-{{ section.id }}-{{ forloop.index0 }}"
-                          class="select__select"
-                          name="options[{{ option.name | escape }}]"
-                          form="product-form-{{ section.id }}"
-                        >
-                          {%- for value in option.values -%}
-                            <option value="{{ value | escape }}" {% if option.selected_value == value %}selected="selected"{% endif %}>
-                              {{ value }}
-                            </option>
-                          {%- endfor -%}
-                        </select>
-                        {% render 'icon-caret' %}
-                      </div>
-                    </div>
-                  {%- endfor -%}
-
-                  <script type="application/json">
-                    {{ product.variants | json }}
-                  </script>
-                </variant-selects>
-              {%- endif -%}
-            {%- endunless -%}
-
-            <noscript>
-              <div class="product-form__input{% if product.has_only_default_variant %} hidden{% endif %}">
-                <label class="form__label" for="Variants-{{ section.id }}">{{ 'products.product.product_variants' | t }}</label>
-                <div class="select">
-                  <select name="id" id="Variants-{{ section.id }}" class="select__select" form="product-form">
-                    {%- for variant in product.variants -%}
-                      <option
-                        {% if variant == product.selected_or_first_available_variant %}selected="selected"{% endif %}
-                        {% if variant.available == false %}disabled{% endif %}
-                        value="{{ variant.id }}"
-                      >
-                        {{ variant.title }}
-                        {%- if variant.available == false %} - {{ 'products.product.sold_out' | t }}{% endif %}
-                        - {{ variant.price | money | strip_html }}
-                      </option>
-                    {%- endfor -%}
-                  </select>
-                  {% render 'icon-caret' %}
-                </div>
-              </div>
-            </noscript>
           {%- when 'explore' -%}
             {% assign explore_active = true %}
             <div class="product-explore-btn">Click to explore</div>
@@ -392,10 +330,18 @@
             </div>
           {%- when 'buy_edition' -%}
             <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">BUY EDITION</a></div>
+          {%- when 'availability' -%}
+            <div class="product-availability">
+              <div class="product-availability-title">AVAILABILITY:</div>
+              <div class="product-availability-content">{{ product.metafields.my_fields.availability }}</div>
+            </div>
           {%- endcase -%}
         {%- endfor -%}
       </div>
     </div>
+    {% if p_description_trigger %}
+      {{ p_description }}
+    {% endif %}
   </div>
   {%- render 'cart-notification' -%}
 
@@ -561,79 +507,79 @@
       <div class="addtocart-scroll--link"><a href="#ProductInfo-{{ section.id }}" class="button button--secondary">SHOP NOW</a></div>
     </div>
   </div>
-<style>
-  .addtocart-scroll-wrapper{
-    display: none;
-    position: fixed;
-    width: 100%;
-    background-color: white;
-    top: 0;
-    z-index: 9;
-    color: black;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-shadow: 0px 5px 10px -10px #000000;
-    max-width: unset;
-  }
-  .addtocart-scroll--left{
-    display: inline-block;
-    width: calc(50% - 3px);
-    text-align: left;
-    vertical-align: middle;
-  }
-  .addtocart-scroll--right{
-    display: inline-block;
-    width: calc(50% - 3px);
-    text-align: right;
-    vertical-align: middle;
-  }
-  .addtocart-scroll-wrapper > div > div{
-    display: inline-block;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--title{
-    text-align: left;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--price{
-    text-align: right;
-    vertical-align: middle;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--price .price-item{
-    color: black;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--link{
-    text-align: right;
-  }
-</style>
-<script>
-var onlyOnceChecker = true;
-$(window).on('scroll',function(){
-    var $home = $('#ProductInfo-{{ section.id }}');
-    var divBottom     = $home.offset().top + $home.height(); 
-    var windowTop    = $(window).scrollTop();
+  <style>
+    .addtocart-scroll-wrapper{
+      display: none;
+      position: fixed;
+      width: 100%;
+      background-color: white;
+      top: 0;
+      z-index: 9;
+      color: black;
+      font-weight: bold;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-shadow: 0px 5px 10px -10px #000000;
+      max-width: unset;
+    }
+    .addtocart-scroll--left{
+      display: inline-block;
+      width: calc(50% - 3px);
+      text-align: left;
+      vertical-align: middle;
+    }
+    .addtocart-scroll--right{
+      display: inline-block;
+      width: calc(50% - 3px);
+      text-align: right;
+      vertical-align: middle;
+    }
+    .addtocart-scroll-wrapper > div > div{
+      display: inline-block;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--title{
+      text-align: left;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--price{
+      text-align: right;
+      vertical-align: middle;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--price .price-item{
+      color: black;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--link{
+      text-align: right;
+    }
+  </style>
+  <script>
+  var onlyOnceChecker = true;
+  $(window).on('scroll',function(){
+      var $home = $('#ProductInfo-{{ section.id }}');
+      var divBottom     = $home.offset().top + $home.height(); 
+      var windowTop    = $(window).scrollTop();
 
-    if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
-      var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
-      $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
-      onlyOnceChecker = false;
-    }
-    else{onlyOnceChecker = false;}
+      if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
+        var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
+        $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
+        onlyOnceChecker = false;
+      }
+      else{onlyOnceChecker = false;}
 
-    if($('#shopify-section-header').hasClass('shopify-section-header-sticky') && $('#shopify-section-header').hasClass('shopify-section-header-hidden')){
-      $('.addtocart-scroll-wrapper').css('top','0px');
-    }
-    else{
-      var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
-      $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
-    }
+      if($('#shopify-section-header').hasClass('shopify-section-header-sticky') && $('#shopify-section-header').hasClass('shopify-section-header-hidden')){
+        $('.addtocart-scroll-wrapper').css('top','0px');
+      }
+      else{
+        var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
+        $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
+      }
 
-    if (divBottom >= windowTop) {
-        $('.addtocart-scroll-wrapper').slideUp();
-    } else {
-        $('.addtocart-scroll-wrapper').slideDown();
-    }
-});
-</script>
+      if (divBottom >= windowTop) {
+          $('.addtocart-scroll-wrapper').slideUp();
+      } else {
+          $('.addtocart-scroll-wrapper').slideDown();
+      }
+  });
+  </script>
 {% endif %}
 
 
@@ -823,22 +769,159 @@ $(window).on('scroll',function(){
 {% endif %}
 
 <style>
-.product-explore-buy-edition{
-  margin: 50px 0 10px;
-}
-.product-explore-buy-edition a{
-  padding: 20px 30px;
-  letter-spacing: 4px;
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.75);
-  text-decoration: none;
-  border: 1px solid #af1111;
-}
-.product-explore-buy-edition a:hover{
-  background-color: #af1111;
-  color: white;
-}
+  /* explore button css */
+  .product-explore-buy-edition{
+    margin: 50px 0 10px;
+  }
+  .product-explore-buy-edition a{
+    padding: 20px 30px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    border: 1px solid #af1111;
+  }
+  .product-explore-buy-edition a:hover{
+    background-color: #af1111;
+    color: white;
+  }
+
+  /* default template css */
+  .product__title{
+    text-transform: uppercase;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 50px;
+  }
+  .product__text.subtitle{
+    margin: 0 0 20px;
+    padding: 0;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 10px;
+  }
+  .product__info-container .product-form__input{
+    border-top: 1px solid;
+    text-transform: uppercase;
+    padding: 10px 10px 0;
+    max-width: 100%;
+  }
+  .product__info-container .product-form__input.product-form__quantity{
+    border-bottom: 1px solid;
+    padding-bottom: 25px;
+  }
+  .product__info-container .product-form__input label{
+    display: inline-block;
+    width: 40%;
+    max-width: 100%;
+    letter-spacing: 2px;
+    font-size: 16px;
+  }
+  .product__info-container .product-form__input .select{
+    display: inline-block;
+    width: calc(60% - 7px);
+    max-width: 100%;
+  }
+  .product__info-container .product-form__input .quantity{
+    float: right;
+    width: calc(60% - (7px + 1.5rem));
+    max-width: 100%;
+    margin: 0 0 0 1.5rem;
+  }
+  .product__info-container .product-form__input .select > select{
+    box-shadow: unset;
+    letter-spacing: 2px;
+    font-size: 16px;
+    text-transform: uppercase;
+  }
+  .product-availability .product-availability-title{
+    font-weight: bold;
+  }
+  .product__description_below{
+    margin: 40px 0 5px;
+    background-image: linear-gradient(#000000, #000000), linear-gradient(#000000, #000000), linear-gradient(#000000, #000000), linear-gradient(#000000, #000000);
+    background-repeat: no-repeat;
+    background-size: 20px 3px;
+    background-position: top left, top right, bottom left, bottom right;
+    border: solid #000000;
+    border-width: 0 3px;
+    display: inline-block;
+    padding: 10px 20px;
+  }
 </style>
+
+{% comment %} - UNLESS CONTENT BELOW ONLY FOR DEFAULT TEMPLATE - {% endcomment %}
+{% unless template contains '.' %}
+<style>
+  .product-recommendations__heading{
+    text-align: center;
+    color: black;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper{
+    text-align: center;
+    padding: 20px;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper a{
+    color: black;
+    text-decoration: none;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper .card-information__text{
+    text-transform: uppercase;
+    font-size: 22px;
+    text-decoration: none;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper .price{
+    justify-content: center;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper:hover{
+    background-color: #00000045;
+    box-shadow: 5px 5px 0 0 #ffffff;
+  }
+
+
+  body .product__info-container *:not(.product-form__submit):not(.price-item):not(.field__input):not(.field__label):not(.button):not(.icon):not(path){
+    color: black!important;
+    border-color: black!important;
+  }
+  body #MainContent .product .product__info-container share-button span.share-button__message{
+    color: white!important;
+  }
+  .product__description_below{
+    color: black;
+  }
+  s.price-item.price-item--regular{
+    color: #555;
+  }
+  .product-form__submit{
+    background-color: black;
+    text-transform: uppercase;
+  }
+  .product-form__submit:hover{
+    background-color: #202020;
+  }
+  @media screen and (min-width: 750px){
+    .product__media-list .product__media-item{
+      padding: 20px;
+    }
+    .product__media-list .product__media-item modal-opener{
+      box-shadow: -5px 5px 5px -2px #424242;
+    }
+    .product__media-list .product__media-item modal-opener:hover{
+      box-shadow: unset;
+    }
+    .product__media-list .product__media-item:first-child{
+      padding: 0;
+    }
+    .grid--2-col-tablet .grid__item {
+      width: calc(25% - 1rem / 2);
+    }
+    .product__media-item:first-child {
+      width: 100%;
+    }
+  }
+</style>
+{% endunless %}
 
 {% schema %}
 {
@@ -889,7 +972,9 @@ $(window).on('scroll',function(){
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+      ]
     },
     {
       "type": "quantity_selector",
@@ -930,13 +1015,29 @@ $(window).on('scroll',function(){
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "price_inside",
+          "default": true,
+          "label": "Price inside button",
+          "info": "Price will display inside the add to cart button"
         }
       ]
     },
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "description_outside",
+          "default": true,
+          "label": "Description move below content",
+          "info": "Description moves outside columns & below product content"
+        }
+      ]
     },
     {
       "type": "share",
@@ -1105,7 +1206,14 @@ $(window).on('scroll',function(){
       "limit": 1,
       "settings": [
       ]
-    },   
+    },
+    {
+      "type": "availability",
+      "name": "Availability",
+      "limit": 1,
+      "settings": [
+      ]
+    },
     {
       "type": "popup",
       "name": "t:sections.main-product.blocks.popup.name",
