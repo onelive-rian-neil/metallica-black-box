@@ -95,7 +95,7 @@
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
-        "slider_adaptiveHeight": false,
+        "slider_adaptiveHeight": true,
         "title": "COLLECTION 2",
         "text_color_overwrite": "#333333",
         "image_title_width": "",
