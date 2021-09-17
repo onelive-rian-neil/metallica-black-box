@@ -6,13 +6,15 @@
         "af90708f-0466-4166-b0dd-1823dea55840": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_02_1000x800_8c7b0c0e-b96c-477f-8d53-ce2060a7f8a8.jpg"
           }
         },
         "2be77a3d-05ca-4461-94f9-e483c02bc389": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_01_1000x800_e01f6d17-8d50-4f2e-a71b-09a8488407b4.jpg"
           }
         }
       },
