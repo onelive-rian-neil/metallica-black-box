@@ -1,5 +1,28 @@
 {
   "sections": {
+    "1631888432d34002f1": {
+      "type": "olm-slider",
+      "blocks": {
+        "2be77a3d-05ca-4461-94f9-e483c02bc389": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
+          }
+        },
+        "af90708f-0466-4166-b0dd-1823dea55840": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "2be77a3d-05ca-4461-94f9-e483c02bc389",
+        "af90708f-0466-4166-b0dd-1823dea55840"
+      ],
+      "settings": {
+      }
+    },
     "1629228300f5af320f": {
       "type": "image-banner",
       "settings": {
@@ -147,6 +170,7 @@
     }
   },
   "order": [
+    "1631888432d34002f1",
     "1629228300f5af320f",
     "162999708568073e49",
     "16299966134f7e0982",
