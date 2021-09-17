@@ -98,11 +98,19 @@
         "site-background-image-attachment": "fixed",
         "site-background-text-color": "#ffffff"
       }
+    },
+    "16318889419f7d48eb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.product__info-wrapper{    padding-bottom: 50px;}\n<\/style>",
+        "full_width": false
+      }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "1631044019e6f62eee"
+    "1631044019e6f62eee",
+    "16318889419f7d48eb"
   ]
 }
