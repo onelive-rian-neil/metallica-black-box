@@ -9,24 +9,24 @@
             "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg"
           }
         },
-        "2be77a3d-05ca-4461-94f9-e483c02bc389": {
-          "type": "select",
-          "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
-          }
-        },
         "40041900-2e81-49df-a6e7-7592fd54f0a2": {
           "type": "select",
           "settings": {
             "desktop-img": "shopify:\/\/shop_images\/Slider_03_1920x1459_41621714-09ad-40ae-a6f7-edf50e801444.jpg",
             "mobile-img": "shopify:\/\/shop_images\/Slider_03_1000x800_3ac7d616-90de-4cac-a78e-756deb102aad.jpg"
           }
+        },
+        "2be77a3d-05ca-4461-94f9-e483c02bc389": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
+          }
         }
       },
       "block_order": [
         "af90708f-0466-4166-b0dd-1823dea55840",
-        "2be77a3d-05ca-4461-94f9-e483c02bc389",
-        "40041900-2e81-49df-a6e7-7592fd54f0a2"
+        "40041900-2e81-49df-a6e7-7592fd54f0a2",
+        "2be77a3d-05ca-4461-94f9-e483c02bc389"
       ],
       "settings": {
       }
