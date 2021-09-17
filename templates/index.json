@@ -128,7 +128,8 @@
     "16319019840bfd0649": {
       "type": "image-banner-no-text",
       "settings": {
-        "image": "shopify:\/\/shop_images\/metallica_40th_1659x857_c644b8e0-054f-41c8-b06d-8e296fbff0fe.jpg",
+        "image": "shopify:\/\/shop_images\/metallica_40th_1659x857_bba3863c-d847-4e23-b3dc-6cf3118451ee.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/metallica_40th_1000x1000_698395c9-a2f1-4177-99a9-70bc3f82bfab.jpg",
         "banner_url": "",
         "margin_top": "30",
         "margin_bottom": "30",
@@ -138,8 +139,8 @@
     "1629996636dc8e6157": {
       "type": "image-banner-no-text",
       "settings": {
-        "image": "shopify:\/\/shop_images\/theart_banner_1659x857_d6962c4b-11b2-4220-86ab-fd06e820dbd4.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/TheArtBanner_1000x1000_135f7140-4b53-4b6f-9f62-2449bf0fbbbb.jpg",
+        "image": "shopify:\/\/shop_images\/theart_banner_1659x857_71eefe34-e7e5-4811-a233-29250ca8a339.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/TheArtBanner_1000x1000_52177152-8a65-4c13-8773-5912ecaa49da.jpg",
         "banner_url": "shopify:\/\/collections\/merch",
         "margin_top": "30px",
         "margin_bottom": "30px",
