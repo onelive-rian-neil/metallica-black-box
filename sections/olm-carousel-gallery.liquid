@@ -160,9 +160,9 @@
         right: -35px;
     } 
     
-      #Banner-template--{{ section.id }} {
-        background-imge: url({{ section.settings.image_background_mobile | img_url: 'master' }}) !important;
-      }
+    #Banner-{{ section.id }} {
+      background-image: url({{ section.settings.image_background_mobile | img_url: 'master' }}) !important;
+    }
     {% if section.settings.image_background_mobile != blank %}         
     {% endif %}
   }
