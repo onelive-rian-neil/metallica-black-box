@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+
+
+<div class="slider" >
+    <!-- Indicators -->
+  
+  
+        {% for block in section.blocks %}   
+          <div class="item slide-{{ forloop.index }} {% if forloop.first == true %}active{% endif %}">
+            <img class="desktop-image" src="{{ block.settings.desktop-img | img_url: 'master' }}" alt="">
+            <img class="mobile-image" src="{{ block.settings.mobile-img | img_url: 'master' }}" alt="">
+
+          </div>
+        {% endfor %}
+  
+  </div>
+  
+  <style>
+      .slider img {
+          width:100%;
+      }
+    .slider .mobile-image {
+        display: none;
+    }
+  @media (max-width:768px) {
+    .slider .mobile-image {
+        display: block;
+    }
+    .slider .desktop-image {
+        display: block;
+    }
+  }
+  </style> 
+  
+
+<script>
+  $( document ).ready(function() {
+    $('.slider').slick({
+        adaptiveHeight: true
+    });
+  });
+
+</script>
+
+{% schema %} 
+{
+  "name": "OLM Slider",
+  "class": "spaced-section spaced-section--full-width",
+  "settings": [
+  ],
+  "blocks": [ 
+    {
+        "type": "select",
+        "name": "Slider",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "desktop-img",
+                "label": "Desktop Image"
+            },
+            {
+                "type": "image_picker",
+                "id": "mobile-img",
+                "label": "Mobile image"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "OLM Slider"
+    }
+  ]  
+}
+{% endschema %}
