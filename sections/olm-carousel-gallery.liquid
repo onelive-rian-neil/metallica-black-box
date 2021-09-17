@@ -160,13 +160,14 @@
         right: -35px;
     } 
     {% if section.settings.mobile_image != blank %}   
-      #Banner-{{ section.id }} {
-        background-imge:{{ section.settings.image_background_mobile | img_url: 'master' }};
+      #Banner-template--{{ section.id }} {
+        background-imge: url({{ section.settings.image_background_mobile | img_url: 'master' }}) !important;
       }
     {% endif %}
   }
 </style>
 	
+
 <style>
   #Banner-{{ section.id }} .slick-slide{
     padding: 0 25px;
