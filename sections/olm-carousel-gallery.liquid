@@ -159,7 +159,7 @@
     #Banner-template--{{ section.id }}  button.slick-arrow.slick-next {
         right: -35px;
     } 
-    {% if section.settings.mobile_image != blank %}   
+    {% if section.settings.image_background_mobile != blank %}   
       #Banner-template--{{ section.id }} {
         background-imge: url({{ section.settings.image_background_mobile | img_url: 'master' }}) !important;
       }
