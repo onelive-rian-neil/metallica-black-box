@@ -3,28 +3,29 @@
     "1631888432d34002f1": {
       "type": "olm-slider",
       "blocks": {
-        "2be77a3d-05ca-4461-94f9-e483c02bc389": {
-          "type": "select",
-          "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
-          }
-        },
         "af90708f-0466-4166-b0dd-1823dea55840": {
           "type": "select",
           "settings": {
             "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg"
           }
+        },
+        "2be77a3d-05ca-4461-94f9-e483c02bc389": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
+          }
         }
       },
       "block_order": [
-        "2be77a3d-05ca-4461-94f9-e483c02bc389",
-        "af90708f-0466-4166-b0dd-1823dea55840"
+        "af90708f-0466-4166-b0dd-1823dea55840",
+        "2be77a3d-05ca-4461-94f9-e483c02bc389"
       ],
       "settings": {
       }
     },
     "1629228300f5af320f": {
       "type": "image-banner",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/banner.jpg",
         "desktop_text_box_position": "center",
@@ -119,7 +120,7 @@
     "1629996636dc8e6157": {
       "type": "image-banner-no-text",
       "settings": {
-        "image": "shopify:\/\/shop_images\/banner4.jpg",
+        "image": "shopify:\/\/shop_images\/theart_banner_1659x857_d6962c4b-11b2-4220-86ab-fd06e820dbd4.jpg",
         "mobile_image": "shopify:\/\/shop_images\/TheArtBanner_1000x1000_2c06f86f-90ed-4035-a559-89c73625d6ca.jpg",
         "banner_url": "shopify:\/\/collections\/merch",
         "margin_top": "30px",
