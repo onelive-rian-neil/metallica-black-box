@@ -8,8 +8,9 @@
         {% for block in section.blocks %}   
           <div class="item slide-{{ forloop.index }} {% if forloop.first == true %}active{% endif %}">
             <img class="desktop-image" src="{{ block.settings.desktop-img | img_url: 'master' }}" alt="">
-            <img class="mobile-image" src="{{ block.settings.mobile-img | img_url: 'master' }}" alt="">
-
+            {% if block.settings.mobile-img != blank %}
+                <img class="mobile-image" src="{{ block.settings.mobile-img | img_url: 'master' }}" alt="">
+            {% endif %}
           </div>
         {% endfor %}
   
@@ -27,7 +28,7 @@
         display: block;
     }
     .slider .desktop-image {
-        display: block;
+        display: none;
     }
   }
   </style> 
