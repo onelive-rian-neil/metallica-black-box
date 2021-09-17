@@ -135,6 +135,7 @@
     line-height: normal;
     text-align: center;
   }
+
   @media only screen and (max-width: 768px) {
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
       text-decoration: none;
@@ -189,6 +190,9 @@
   #Banner-{{ section.id }} .slick-next:before{
     content: "\f054";
     font-size: 40px;
+  }
+  #Banner-{{ section.id }} .slick-slide img, #Banner-{{ section.id }} .carousel-gallery--item:hover a.carousel-gallery--link:before {
+    border: 1px solid;
   }
 </style>
 
