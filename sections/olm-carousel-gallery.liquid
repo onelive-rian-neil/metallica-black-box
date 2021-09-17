@@ -161,7 +161,7 @@
     } 
     {% if section.settings.mobile_image != blank %}   
       #Banner-template--{{ section.id }} {
-        background-imge:{{ section.settings.image_background_mobile | img_url: 'master' }} !important;
+        background-imge: url({{ section.settings.image_background_mobile | img_url: 'master' }}) !important;
       }
     {% endif %}
   }
