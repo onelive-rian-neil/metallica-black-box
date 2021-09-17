@@ -11,6 +11,7 @@
         "description": {
           "type": "description",
           "settings": {
+            "description_outside": true
           }
         },
         "price": {
@@ -32,7 +33,8 @@
         "buy_buttons": {
           "type": "buy_buttons",
           "settings": {
-            "show_dynamic_checkout": false
+            "show_dynamic_checkout": false,
+            "price_inside": false
           }
         }
       },
@@ -48,7 +50,7 @@
         "enable_sticky_info": true,
         "enable_video_looping": false,
         "enable_addtocart_scroller": true,
-        "enable_stacked": true
+        "product_page_layout": "1__2"
       }
     },
     "product-recommendations": {
@@ -75,7 +77,8 @@
         "page-background": "shopify:\/\/shop_images\/Store.jpg",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
-        "site-background-image-attachment": "fixed"
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#fff"
       }
     }
   },
