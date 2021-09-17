@@ -122,8 +122,8 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/metallica_40th_1659x857_c644b8e0-054f-41c8-b06d-8e296fbff0fe.jpg",
         "banner_url": "",
-        "margin_top": "",
-        "margin_bottom": "",
+        "margin_top": "30",
+        "margin_bottom": "30",
         "page_width": false
       }
     },
