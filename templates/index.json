@@ -6,29 +6,19 @@
         "af90708f-0466-4166-b0dd-1823dea55840": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg",
-            "mobile-img": "shopify:\/\/shop_images\/Slider_02_1000x800_8c7b0c0e-b96c-477f-8d53-ce2060a7f8a8.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg"
           }
         },
         "2be77a3d-05ca-4461-94f9-e483c02bc389": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/banner.jpg",
-            "mobile-img": "shopify:\/\/shop_images\/Slider_01_1000x800_e01f6d17-8d50-4f2e-a71b-09a8488407b4.jpg"
-          }
-        },
-        "743ad3b7-914d-4135-9bf8-45db81cbec76": {
-          "type": "select",
-          "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/Slider_03_1920x1459_41621714-09ad-40ae-a6f7-edf50e801444.jpg",
-            "mobile-img": "shopify:\/\/shop_images\/Slider_03_1000x800_3ac7d616-90de-4cac-a78e-756deb102aad.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
           }
         }
       },
       "block_order": [
         "af90708f-0466-4166-b0dd-1823dea55840",
-        "2be77a3d-05ca-4461-94f9-e483c02bc389",
-        "743ad3b7-914d-4135-9bf8-45db81cbec76"
+        "2be77a3d-05ca-4461-94f9-e483c02bc389"
       ],
       "settings": {
       }
@@ -130,7 +120,7 @@
     "16319019840bfd0649": {
       "type": "image-banner-no-text",
       "settings": {
-        "image": "shopify:\/\/shop_images\/metallica_40th_1659x857_d3117592-d5a1-4e48-a3b7-02a6b800ee6d.jpg",
+        "image": "shopify:\/\/shop_images\/metallica_40th_1659x857_c644b8e0-054f-41c8-b06d-8e296fbff0fe.jpg",
         "banner_url": "",
         "margin_top": "",
         "margin_bottom": "",
