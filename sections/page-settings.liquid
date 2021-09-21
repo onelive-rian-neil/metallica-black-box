@@ -5,7 +5,13 @@ body {
     background-repeat:{{ section.settings.site-background-image-repeat }};
     background-size:{{ section.settings.site-background-image-size }};
 }
-
+{% if section.settings.site-background-text-color != "transparent" %}
+  body #MainContent .collection-header-wrapper h2.title,
+  body #MainContent .collection-gallery-body{
+    color: {{ section.settings.site-background-text-color }}!important;
+    border-color: {{ section.settings.site-background-text-color }}!important;
+  }
+{% endif %}
 </style>
 
 {% schema %}
@@ -88,7 +94,7 @@ body {
         "type": "color",
         "id": "site-background-text-color",
         "label": "Page Text Color Override",
-        "default": "#fff",
+        "default": "transparent",
         "info": "Page Text Color Override"
     }
   ],
