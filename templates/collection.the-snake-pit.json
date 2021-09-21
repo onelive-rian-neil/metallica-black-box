@@ -14,21 +14,21 @@
         "page_width": false,
         "margin_top": "",
         "margin_bottom": "",
-        "title": "Featured gallery",
+        "title": "THE SNAKE PiT",
         "image_title_width": "",
-        "body": "",
-        "grid_layout": "a",
-        "grid_effect": "Hapi"
+        "body": "<p>IT’S ALL ABOUT THE FANS! A SHOWCASE OF FAN RELATED ARTIFACTS,<br\/>COLLECTIONS AND STORIES ABOUT THE BLACK ALBUM. <\/p>",
+        "grid_layout": "c",
+        "grid_effect": "Bes"
       }
     },
     "163172697793c8b0cb": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/artifact_bkg.jpg",
+        "page-background": "shopify:\/\/shop_images\/Collection_Example_2.jpg",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
-        "site-background-text-color": "#fff"
+        "site-background-text-color": "#ffffff"
       }
     }
   },
