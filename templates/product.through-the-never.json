@@ -102,7 +102,7 @@
     "16318889419f7d48eb": {
       "type": "custom-liquid",
       "settings": {
-        "custom_liquid": "<style>\n.product__info-wrapper{    padding-bottom: 50px;}\n<\/style>",
+        "custom_liquid": "<style>\n.product__info-wrapper{    padding-bottom: 50px;}\nh1.product__title,.product__description.rte,div.product-explore-btn,.product-explore-buy-edition a{color: black;}\n<\/style>",
         "full_width": false
       }
     }
