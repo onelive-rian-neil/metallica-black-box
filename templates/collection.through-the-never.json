@@ -19,7 +19,8 @@
         "body": "<p>ELEMENTS OF PROGRESSION. FROM THE BAND’S FORMATIONS TO THE RELEASE OF<br\/>THE BLACK ALBUM. A TREND OF REMARKABLE TRANSFORMATIONS THAT CONTINUES TODAY.<\/p>",
         "grid_layout": "c",
         "grid_effect": "Nut",
-        "grid_color_effect": false
+        "grid_color_effect": true,
+        "grid_spacing": false
       }
     },
     "163172697793c8b0cb": {
