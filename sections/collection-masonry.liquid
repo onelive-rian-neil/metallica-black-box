@@ -129,15 +129,25 @@
   #Banner-{{ section.id }} .grid__item:hover .carousel-gallery--text{
     display: block;
   }
-  {% if section.settings.grid_layout == 'a' %}
+  
+  
+  
+  {% if section.settings.grid_spacing %}
   @media screen and (min-width: 70em){
     main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
-      width: calc((100% / 3) - 20px);
       margin: 0 2.5px;
       padding: 0;
     }
     main.collection-gallery-main .grid .grid__item:nth-child(n+5){
       margin-top: -27.5px;
+    }
+  }
+  {% endif %}
+  
+  {% if section.settings.grid_layout == 'a' %}
+  @media screen and (min-width: 70em){
+    main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
+      width: calc((100% / 3) - 20px);
     }
   }
   {% endif %}
