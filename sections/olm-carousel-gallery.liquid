@@ -143,12 +143,14 @@
   }
 
   @media only screen and (max-width: 768px) {
-    .carousel-gallery-heading--image{
-      display: none;
-    }
-    .carousel-gallery-heading--image-mobile{
-      display: block;
-    }
+    {% if section.settings.image_title_mobile != blank %}
+      .carousel-gallery-heading--image{
+        display: none;
+      }
+      .carousel-gallery-heading--image-mobile{
+        display: block;
+      }
+    {% endif %}
     #Banner-{{ section.id }}{
       padding: 25px;
     }
