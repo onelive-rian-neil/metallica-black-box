@@ -17,8 +17,8 @@
         "title": "FUEL & FIRE",
         "image_title_width": "",
         "body": "<p>INSPIRATION AND COLLABORATION<br\/>POURS FUEL ON THE FIRE OF CREATIVITY<\/p>",
-        "grid_layout": "c",
-        "grid_effect": "Hapi",
+        "grid_layout": "a",
+        "grid_effect": "Isis",
         "grid_color_effect": false
       }
     },
@@ -29,7 +29,7 @@
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
-        "site-background-text-color": "#ffffff"
+        "site-background-text-color": "#FFFFFF"
       }
     }
   },
