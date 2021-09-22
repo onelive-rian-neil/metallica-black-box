@@ -17,8 +17,9 @@
         "title": "THE SNAKE PiT",
         "image_title_width": "",
         "body": "<p>IT’S ALL ABOUT THE FANS! A SHOWCASE OF FAN RELATED ARTIFACTS,<br\/>COLLECTIONS AND STORIES ABOUT THE BLACK ALBUM. <\/p>",
-        "grid_layout": "c",
-        "grid_effect": "Bes"
+        "grid_layout": "a",
+        "grid_effect": "Bes",
+        "grid_color_effect": false
       }
     },
     "163172697793c8b0cb": {
