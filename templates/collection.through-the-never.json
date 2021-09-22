@@ -17,8 +17,9 @@
         "title": "THROUGH THE NEVER",
         "image_title_width": "",
         "body": "<p>ELEMENTS OF PROGRESSION. FROM THE BAND’S FORMATIONS TO THE RELEASE OF<br\/>THE BLACK ALBUM. A TREND OF REMARKABLE TRANSFORMATIONS THAT CONTINUES TODAY.<\/p>",
-        "grid_layout": "a",
-        "grid_effect": "Nut"
+        "grid_layout": "c",
+        "grid_effect": "Nut",
+        "grid_color_effect": false
       }
     },
     "163172697793c8b0cb": {
@@ -28,7 +29,7 @@
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
-        "site-background-text-color": "rgba(0,0,0,0)"
+        "site-background-text-color": "#000000"
       }
     }
   },
