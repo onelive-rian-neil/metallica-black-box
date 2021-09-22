@@ -12,6 +12,9 @@
       {% if section.settings.image_title != blank %}
         <h2 class="title">
           {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
+          {% if section.settings.image_title_mobile != blank %}
+          	{{ section.settings.image_title_mobile | img_url: 'master' | img_tag: section.settings.image_title_mobile.alt, 'carousel-gallery-heading--image-mobile' }}
+          {% endif %}
         </h2>
       {% else %}
         <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
@@ -135,8 +138,20 @@
     line-height: normal;
     text-align: center;
   }
+  .carousel-gallery-heading--image-mobile{
+    display: none;
+  }
 
   @media only screen and (max-width: 768px) {
+    .carousel-gallery-heading--image{
+      display: none;
+    }
+    .carousel-gallery-heading--image-mobile{
+      display: block;
+    }
+    #Banner-{{ section.id }}{
+      padding: 25px;
+    }
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
       text-decoration: none;
     }
@@ -308,6 +323,12 @@
       "id": "image_title",
       "label": "Title image",
       "info": "replaces heading text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_title_mobile",
+      "label": "Title mobile image",
+      "info": "replaces heading text for mobile"
     },
     {
       "type": "text",
