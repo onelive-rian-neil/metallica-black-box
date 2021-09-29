@@ -152,6 +152,13 @@
         display: block;
       }
     {% endif %}
+
+    {% if section.settings.image_background_mobile != blank %}
+      #Banner-{{ section.id }}, #Banner-template--{{ section.id }} {
+        background-position-x: center;
+      }
+    {% endif %}   
+     
     #Banner-{{ section.id }}{
       padding: 25px;
     }
