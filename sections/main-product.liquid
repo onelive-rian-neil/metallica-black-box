@@ -318,18 +318,22 @@
           
           {%- when 'explore' -%}
             {% assign explore_active = true %}
-            <div class="product-explore-btn">Click to explore</div>
-            <div class="product-explore-popup-wrapper">
-              <div class="product-explore-popup-container">
-                <div class="product-explore-x">x</div>
-                <div class="product-explore-subtext">{{ product.metafields.my_fields.artifact_explore_subheader }}</div>
-                <div class="product-explore-title">{{ product.metafields.my_fields.artifact_explore_title }}</div>
-                <div class="product-explore-video">{{ product.metafields.my_fields.artifact_explore_video_embed }}</div>
-                <div class="product-explore-description">{{ product.metafields.my_fields.artifact_explore_description }}</div>
+            {% if product.metafields.my_fields.artifact_explore_video_embed != blank or product.metafields.my_fields.artifact_explore_description != blank %}
+              <div class="product-explore-btn">Click to explore</div>
+              <div class="product-explore-popup-wrapper">
+                <div class="product-explore-popup-container">
+                  <div class="product-explore-x">x</div>
+                  <div class="product-explore-subtext">{{ product.metafields.my_fields.artifact_explore_subheader }}</div>
+                  <div class="product-explore-title">{{ product.metafields.my_fields.artifact_explore_title }}</div>
+                  <div class="product-explore-video">{{ product.metafields.my_fields.artifact_explore_video_embed }}</div>
+                  <div class="product-explore-description">{{ product.metafields.my_fields.artifact_explore_description }}</div>
+                </div>
               </div>
-            </div>
+            {% endif %} 
           {%- when 'buy_edition' -%}
-            <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">BUY EDITION</a></div>
+            {% if product.metafields.my_fields.artifact_explore_buy_url != blank %}
+              <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">BUY EDITION</a></div>
+            {% endif %}
           {%- when 'availability' -%}
             <div class="product-availability">
               <div class="product-availability-title">AVAILABILITY:</div>
