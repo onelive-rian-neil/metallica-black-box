@@ -40,7 +40,11 @@
             {%- for product in collection.products -%}
               <div class="grid__item">
                 <a href="{{ product.url }}" class="grid__link">
-                  {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
+                  {% if product.metafields.my_fields.collection_p_img_overwrite != blank %}
+                    {{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
+                  {% else %}
+                    {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
+                  {% endif %}
                   <div class="carousel-gallery--text carousel-gallery-product--text">
                     {{ product.title }}
                     {% comment %} {% render 'price', product: block.settings.product_pick, price_class: '' %} {% endcomment %}
