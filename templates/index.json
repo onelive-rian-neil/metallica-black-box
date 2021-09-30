@@ -1,5 +1,15 @@
 {
   "sections": {
+    "16330346172fe501ed": {
+      "type": "video",
+      "settings": {
+        "heading": "",
+        "auto_play": true,
+        "video_url": "https:\/\/www.youtube.com\/watch?v=tAGnKpE4NCI&ab_channel=Metallica",
+        "description": "",
+        "full_width": true
+      }
+    },
     "1631888432d34002f1": {
       "type": "olm-slider",
       "blocks": {
@@ -193,6 +203,7 @@
     }
   },
   "order": [
+    "16330346172fe501ed",
     "1631888432d34002f1",
     "1629228300f5af320f",
     "162999708568073e49",
