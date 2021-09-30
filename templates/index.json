@@ -20,7 +20,8 @@
         "2be77a3d-05ca-4461-94f9-e483c02bc389": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/banner.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_01_1000x800_e01f6d17-8d50-4f2e-a71b-09a8488407b4.jpg"
           }
         }
       },
