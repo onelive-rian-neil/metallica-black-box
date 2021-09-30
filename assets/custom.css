@@ -341,7 +341,7 @@ padding-left:0!important;
     grid-template-columns: minmax(auto, 100%) minmax(40rem, 36rem);
     /*grid-template-columns: minmax(auto, 93rem) minmax(40rem, 36rem);*/
   }
-
+}
 
 #shopify-section-header #menu-drawer .list-menu > li {
   display: block!important;
