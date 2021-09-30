@@ -6,7 +6,8 @@
         "af90708f-0466-4166-b0dd-1823dea55840": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_02_1000x800_8c7b0c0e-b96c-477f-8d53-ce2060a7f8a8.jpg"
           }
         },
         "40041900-2e81-49df-a6e7-7592fd54f0a2": {
