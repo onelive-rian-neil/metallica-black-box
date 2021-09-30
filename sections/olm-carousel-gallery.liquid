@@ -12,6 +12,9 @@
       {% if section.settings.image_title != blank %}
         <h2 class="title">
           {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
+          {% if section.settings.image_title_mobile != blank %}
+          	{{ section.settings.image_title_mobile | img_url: 'master' | img_tag: section.settings.image_title_mobile.alt, 'carousel-gallery-heading--image-mobile' }}
+          {% endif %}
         </h2>
       {% else %}
         <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
@@ -135,7 +138,30 @@
     line-height: normal;
     text-align: center;
   }
+  .carousel-gallery-heading--image-mobile{
+    display: none;
+    width: 100%;
+  }
+
   @media only screen and (max-width: 768px) {
+    {% if section.settings.image_title_mobile != blank %}
+      .carousel-gallery-heading--image{
+        display: none;
+      }
+      .carousel-gallery-heading--image-mobile{
+        display: block;
+      }
+    {% endif %}
+
+    {% if section.settings.image_background_mobile != blank %}
+      #Banner-{{ section.id }}, #Banner-template--{{ section.id }} {
+        background-position-x: center;
+      }
+    {% endif %}   
+     
+    #Banner-{{ section.id }}{
+      padding: 25px;
+    }
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
       text-decoration: none;
     }
@@ -150,9 +176,25 @@
       font-size: 18px;
       margin: 10px auto;
     }
+    #Banner-template--{{ section.id }} .slick-slide {
+        padding: 0;
+    }
+    #Banner-template--{{ section.id }} button.slick-arrow.slick-prev {
+        left: -40px;
+    }
+    #Banner-template--{{ section.id }}  button.slick-arrow.slick-next {
+        right: -35px;
+    } 
+    
+    #Banner-{{ section.id }} {
+      background-image: url({{ section.settings.image_background_mobile | img_url: 'master' }}) !important;
+    }
+    {% if section.settings.image_background_mobile != blank %}         
+    {% endif %}
   }
 </style>
 	
+
 <style>
   #Banner-{{ section.id }} .slick-slide{
     padding: 0 25px;
@@ -174,8 +216,13 @@
     content: "\f054";
     font-size: 40px;
   }
+
   #Banner-template--{{ section.id }} .carousel-gallery--text {
     line-height: 100%;
+
+  #Banner-{{ section.id }} .slick-slide img, #Banner-{{ section.id }} .carousel-gallery--item:hover a.carousel-gallery--link:before {
+    border: 1px solid;
+
   }
 </style>
 
@@ -293,6 +340,12 @@
       "info": "replaces heading text"
     },
     {
+      "type": "image_picker",
+      "id": "image_title_mobile",
+      "label": "Title mobile image",
+      "info": "replaces heading text for mobile"
+    },
+    {
       "type": "text",
       "id": "image_title_width",
       "label": "Title image width",
@@ -303,6 +356,11 @@
       "id": "image_background",
       "label": "Background Image"
     },
+    {
+      "type": "image_picker",
+      "id": "image_background_mobile",
+      "label": "Mobile Background Image"
+    },    
     {
       "type": "checkbox",
       "id": "enble-borders",

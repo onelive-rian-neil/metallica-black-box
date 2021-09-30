@@ -1,7 +1,41 @@
 {
   "sections": {
+    "1631888432d34002f1": {
+      "type": "olm-slider",
+      "blocks": {
+        "af90708f-0466-4166-b0dd-1823dea55840": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_02_1000x800_8c7b0c0e-b96c-477f-8d53-ce2060a7f8a8.jpg"
+          }
+        },
+        "40041900-2e81-49df-a6e7-7592fd54f0a2": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/Slider_03_1920x1459_41621714-09ad-40ae-a6f7-edf50e801444.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_03_1000x800_3ac7d616-90de-4cac-a78e-756deb102aad.jpg"
+          }
+        },
+        "2be77a3d-05ca-4461-94f9-e483c02bc389": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/banner.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/Slider_01_1000x800_e01f6d17-8d50-4f2e-a71b-09a8488407b4.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "af90708f-0466-4166-b0dd-1823dea55840",
+        "40041900-2e81-49df-a6e7-7592fd54f0a2",
+        "2be77a3d-05ca-4461-94f9-e483c02bc389"
+      ],
+      "settings": {
+      }
+    },
     "1629228300f5af320f": {
       "type": "image-banner",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/banner.jpg",
         "desktop_text_box_position": "center",
@@ -25,30 +59,30 @@
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/imge_3.jpg",
-            "title": "PRODUCT",
-            "link": "shopify:\/\/products\/test-product"
+            "title": "WHERE I LAY MY HEAD IS HOME",
+            "link": "shopify:\/\/collections\/where-i-lay-my-head-is-home"
           }
         },
         "a0c766f7-d218-4d71-9cf8-ab20b688464f": {
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/imge_2.jpg",
-            "title": "STORE PAGE",
-            "link": "shopify:\/\/pages\/store"
+            "title": "FUEL & FIRE",
+            "link": "shopify:\/\/collections\/fuel-fire"
           }
         },
         "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/imge_3.jpg",
-            "title": "PRODUCT",
-            "link": "shopify:\/\/products\/test-product"
+            "title": "SNAKE PIT",
+            "link": "shopify:\/\/collections\/the-snake-pit"
           }
         },
         "4f82678f-2651-4715-a4be-f4846422a7fc": {
           "type": "collection_picker",
           "settings": {
-            "collection_pick": "apparel",
+            "collection_pick": "through-the-never",
             "collection_pick_override_image": "shopify:\/\/shop_images\/imge_2.jpg"
           }
         }
@@ -69,8 +103,10 @@
         "slider_adaptiveHeight": false,
         "title": "THE BLACK ALBUM",
         "image_title": "shopify:\/\/shop_images\/black_album-text.png",
+        "image_title_mobile": "shopify:\/\/shop_images\/BlackAlbum_mobile-title.png",
         "image_title_width": "100%",
         "image_background": "shopify:\/\/shop_images\/black_album-background.jpg",
+        "image_background_mobile": "shopify:\/\/shop_images\/BlackAlbum_bkg.jpg",
         "enble-borders": false,
         "border-width": "",
         "border-style": "",
@@ -84,17 +120,30 @@
     "16299966134f7e0982": {
       "type": "image-banner-no-text",
       "settings": {
-        "image": "shopify:\/\/shop_images\/banner3.jpg",
-        "banner_url": "shopify:\/\/collections\/apparel",
+        "image": "shopify:\/\/shop_images\/blackalbum_live_1659x857_3b2c4fef-7a19-4be0-8279-a9df0317a07f.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/BlackAlbumLive_1000x1000_24de4cc4-91b3-4fd6-ba41-9fe7299fed63.jpg",
+        "banner_url": "shopify:\/\/collections\/video-audio",
         "margin_top": "30px",
         "margin_bottom": "30px",
+        "page_width": true
+      }
+    },
+    "16319019840bfd0649": {
+      "type": "image-banner-no-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/metallica_40th_1659x857_bba3863c-d847-4e23-b3dc-6cf3118451ee.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/metallica_40th_1000x1000_698395c9-a2f1-4177-99a9-70bc3f82bfab.jpg",
+        "banner_url": "",
+        "margin_top": "30",
+        "margin_bottom": "30",
         "page_width": true
       }
     },
     "1629996636dc8e6157": {
       "type": "image-banner-no-text",
       "settings": {
-        "image": "shopify:\/\/shop_images\/banner4.jpg",
+        "image": "shopify:\/\/shop_images\/theart_banner_1659x857_71eefe34-e7e5-4811-a233-29250ca8a339.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/TheArtBanner_1000x1000_52177152-8a65-4c13-8773-5912ecaa49da.jpg",
         "banner_url": "shopify:\/\/collections\/merch",
         "margin_top": "30px",
         "margin_bottom": "30px",
@@ -129,10 +178,11 @@
         "slider_animation": "slide",
         "slider_speed": 6,
         "slider_adaptiveHeight": false,
-        "title": "THE SHOP",
-        "text_color_overwrite": "",
+        "title": "THE BLACK BOX SHOP",
+        "text_color_overwrite": "#000000",
         "image_title_width": "",
         "view_all": true,
+        "override_url": "shopify:\/\/pages\/store",
         "enable_bg_image": true,
         "image_background": "shopify:\/\/shop_images\/Store.jpg",
         "site-background-image-position": "center top",
@@ -143,9 +193,11 @@
     }
   },
   "order": [
+    "1631888432d34002f1",
     "1629228300f5af320f",
     "162999708568073e49",
     "16299966134f7e0982",
+    "16319019840bfd0649",
     "1629996636dc8e6157",
     "162998923071cf02fd",
     "1630594482a7bb6acf"

@@ -3,6 +3,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "vendor": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "{{ product.vendor }}",
+            "text_style": "uppercase"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -11,45 +19,62 @@
         "description": {
           "type": "description",
           "settings": {
-            "description_outside": true
+            "description_outside": false
           }
         },
         "price": {
           "type": "price",
+          "disabled": true,
           "settings": {
           }
         },
         "variant_picker": {
           "type": "variant_picker",
+          "disabled": true,
           "settings": {
-            "picker_type": "dropdown"
+            "picker_type": "button"
           }
         },
         "quantity_selector": {
           "type": "quantity_selector",
+          "disabled": true,
           "settings": {
           }
         },
         "buy_buttons": {
           "type": "buy_buttons",
+          "disabled": true,
           "settings": {
             "show_dynamic_checkout": false,
-            "price_inside": false
+            "price_inside": true
+          }
+        },
+        "e8cc4151-ad65-457f-86df-0842f9ee8001": {
+          "type": "explore",
+          "settings": {
+          }
+        },
+        "b6caa77d-22ce-4215-8d92-111648597978": {
+          "type": "buy_edition",
+          "settings": {
           }
         }
       },
       "block_order": [
+        "vendor",
         "title",
         "description",
         "price",
         "variant_picker",
         "quantity_selector",
-        "buy_buttons"
+        "buy_buttons",
+        "e8cc4151-ad65-457f-86df-0842f9ee8001",
+        "b6caa77d-22ce-4215-8d92-111648597978"
       ],
       "settings": {
         "enable_sticky_info": true,
         "enable_video_looping": false,
-        "enable_addtocart_scroller": true,
+        "enable_addtocart_scroller": false,
         "product_page_layout": "1__2"
       }
     },
@@ -64,28 +89,28 @@
         "show_vendor": false
       }
     },
-    "1628788463b3762000": {
-      "type": "custom-liquid",
-      "settings": {
-        "custom_liquid": "<style>\nbutton, section.page-width{max-width: 90rem;color: black!important;text-transform: uppercase;}\n.price, label, h1.product__title{color: black!important; font-weight: bold;}\n.price--on-sale .price-item--regular{ font-weight: bold;color: #555;} select,quantity-input{ font-weight: bold;background-color: white!important;text-transform: uppercase!important;color: black!important; border: 2px solid #000!important;box-shadow: unset!important;font-weight: bold!important;}\n.product-form__submit{background-color: black!important;color: white!important; letter-spacing: 3px}\n.product-form__submit:hover{background-color: white!important;color: black!important;}\n.price--large {font-size: 2.8rem;}\n<\/style>",
-        "full_width": false
-      }
-    },
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/Store.jpg",
+        "page-background": "shopify:\/\/shop_images\/Collection_Example_4.jpg",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
-        "site-background-text-color": "#fff"
+        "site-background-text-color": "#000000"
+      }
+    },
+    "16318889419f7d48eb": {
+      "type": "custom-liquid",
+      "settings": {
+        "custom_liquid": "<style>\n.product__info-wrapper{    padding-bottom: 50px;}\nh1.product__title,.product__description.rte,div.product-explore-btn,.product-explore-buy-edition a{color: black;}\n<\/style>",
+        "full_width": false
       }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "1628788463b3762000",
-    "1631044019e6f62eee"
+    "1631044019e6f62eee",
+    "16318889419f7d48eb"
   ]
 }

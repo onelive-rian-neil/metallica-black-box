@@ -410,11 +410,11 @@
   #shopify-section-header{
     background-color: {{ section.settings.background_color }};
     color: {{ section.settings.text_color }};
+    z-index: 9;
   }
   {% if section.settings.header_position == 'fixed' %}
     #shopify-section-header{
       position: sticky;
-      z-index: 3;
       top: -1px;
     }
   {% endif %}
@@ -515,7 +515,11 @@
     #shopify-section-header .list-menu > li{
       display: block;
     }
+    .template-index .header-wrapper{
+      background: #000;
+    } 
   }{% endcomment %}
+
 </style>
                       
 

@@ -1,0 +1,121 @@
+{
+  "sections": {
+    "16305997925fc5dcae": {
+      "type": "olm-carousel-gallery",
+      "blocks": {
+        "a60841ba-35a6-4536-a239-8552f4916b50": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": "apparel"
+          }
+        },
+        "3c78b470-b869-4233-9c2a-c6608a4417a4": {
+          "type": "product_picker",
+          "settings": {
+            "product_pick": "test-product"
+          }
+        },
+        "c08053d7-3cdf-436f-ba04-e2140f6e0618": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": "merch"
+          }
+        },
+        "6e543274-a5c1-45ef-9af4-f6caffaef5b3": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/black-product.jpg",
+            "title": "test",
+            "link": "#"
+          }
+        }
+      },
+      "block_order": [
+        "a60841ba-35a6-4536-a239-8552f4916b50",
+        "3c78b470-b869-4233-9c2a-c6608a4417a4",
+        "c08053d7-3cdf-436f-ba04-e2140f6e0618",
+        "6e543274-a5c1-45ef-9af4-f6caffaef5b3"
+      ],
+      "settings": {
+        "page_width": true,
+        "margin_top": "10px",
+        "margin_bottom": "10px",
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": false,
+        "title": "SAMPLE COLLECTION",
+        "image_title_width": "",
+        "site-background-image-position": "center center",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed"
+      }
+    },
+    "1628788335a88b53d2": {
+      "type": "image-banner",
+      "disabled": true,
+      "blocks": {
+        "1628788335a88b53d2-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image banner"
+          }
+        },
+        "1628788335a88b53d2-1": {
+          "type": "text",
+          "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template."
+          }
+        },
+        "1628788335a88b53d2-2": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Button label",
+            "button_link_1": "",
+            "button_style_secondary_1": false,
+            "button_label_2": "Button label",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "1628788335a88b53d2-0",
+        "1628788335a88b53d2-1",
+        "1628788335a88b53d2-2"
+      ],
+      "settings": {
+        "desktop_text_box_position": "center",
+        "color_scheme": "background-1",
+        "stack_images_on_mobile": true,
+        "adapt_height_first_image": false
+      }
+    },
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": true
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "add_image_padding": false,
+        "show_vendor": false,
+        "enable_filtering": false,
+        "enable_sorting": false
+      }
+    }
+  },
+  "order": [
+    "16305997925fc5dcae",
+    "1628788335a88b53d2",
+    "banner",
+    "product-grid"
+  ]
+}

@@ -9,6 +9,8 @@
 <link rel="stylesheet" href="{{ 'component-cart-notification.css' | asset_url }}" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="{{ 'component-deferred-media.css' | asset_url }}" media="print" onload="this.media='all'">
 
+{% assign explore_active = false %}
+
 {%- assign first_3d_model = product.media | where: "media_type", "model" | first -%}
 {%- if first_3d_model -%}
   {{ 'component-product-model.css' | asset_url | stylesheet_tag }}
@@ -18,7 +20,7 @@
 
 <section class="page-width">
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-    <div class="grid__item product__media-wrapper">
+    <div class="grid__item product__media-wrapper grid__layout_{{ section.settings.product_page_layout }}">
       <slider-component class="slider-mobile-gutter">
         <a class="skip-to-content-link button visually-hidden" href="#ProductInfo-{{ section.id }}">
           {{ "accessibility.skip_to_product_info" | t }}
@@ -64,10 +66,9 @@
         </button>
       {%- endif -%}
     </div>
-    <div class="product__info-wrapper grid__item">
+    <div class="product__info-wrapper grid__item grid__layout_{{ section.settings.product_page_layout }}">
       <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
-
         {%- for block in section.blocks -%}
           {%- case block.type -%}
           {%- when '@app' -%}
@@ -91,11 +92,19 @@
               {%- endform -%}
             </div>
           {%- when 'description' -%}
-            {%- if product.description != blank -%}
-              <div class="product__description rte">
-                {{ product.description }}
-              </div>
-            {%- endif -%}
+            {% capture p_description %}
+              {%- if product.description != blank -%}
+                <div class="product__description rte{% if block.settings.description_outside %} product__description_below{% endif %}">
+                  {{ product.description }}
+                </div>
+              {%- endif -%}
+            {% endcapture %}
+            {% if block.settings.description_outside %}
+              {% assign p_description_trigger = true %}
+            {% else %}
+              {% assign p_description_trigger = false %}
+              {{ p_description }}
+            {% endif %}
           {%- when 'collapsible_tab' -%}
             <div class="product__accordion accordion" {{ block.shopify_attributes }}>
               <details>
@@ -254,7 +263,12 @@
               </div>
             </noscript>
           {%- when 'buy_buttons' -%}
-            <div class="product-add-to-cart-btns-wrapper" {{ block.shopify_attributes }}>
+            {% capture price_inside %}
+              {% if block.settings.price_inside %}
+                {%- render 'price', product: product, use_variant: true, show_badges: false, price_class: '' -%} - 
+              {% endif %}
+            {% endcapture %}
+            <div class="{% if block.settings.price_inside %}price-inside-btn {% endif %}product-add-to-cart-btns-wrapper" {{ block.shopify_attributes }}>
               <product-form class="product-form">
                 {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
@@ -266,9 +280,9 @@
                     {% if product.selected_or_first_available_variant.available == false %}disabled{% endif %}
                     >
                         {%- if product.selected_or_first_available_variant.available -%}
-                          {{ 'products.product.add_to_cart' | t }}
+                          {{price_inside}}{{ 'products.product.add_to_cart' | t }}
                         {%- else -%}
-                          {{ 'products.product.sold_out' | t }}
+                          {{price_inside}}{{ 'products.product.sold_out' | t }}
                         {%- endif -%}
                     </button>
                     {%- if block.settings.show_dynamic_checkout -%}
@@ -301,10 +315,37 @@
             </div>
 
             <script src="{{ 'pickup-availability.js' | asset_url }}" defer="defer"></script>
+          
+          {%- when 'explore' -%}
+            {% assign explore_active = true %}
+            {% if product.metafields.my_fields.artifact_explore_video_embed != blank or product.metafields.my_fields.artifact_explore_description != blank %}
+              <div class="product-explore-btn">Click to explore</div>
+              <div class="product-explore-popup-wrapper">
+                <div class="product-explore-popup-container">
+                  <div class="product-explore-x">x</div>
+                  <div class="product-explore-subtext">{{ product.metafields.my_fields.artifact_explore_subheader }}</div>
+                  <div class="product-explore-title">{{ product.metafields.my_fields.artifact_explore_title }}</div>
+                  <div class="product-explore-video">{{ product.metafields.my_fields.artifact_explore_video_embed }}</div>
+                  <div class="product-explore-description">{{ product.metafields.my_fields.artifact_explore_description }}</div>
+                </div>
+              </div>
+            {% endif %} 
+          {%- when 'buy_edition' -%}
+            {% if product.metafields.my_fields.artifact_explore_buy_url != blank %}
+              <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">BUY EDITION</a></div>
+            {% endif %}
+          {%- when 'availability' -%}
+            <div class="product-availability">
+              <div class="product-availability-title">AVAILABILITY:</div>
+              <div class="product-availability-content">{{ product.metafields.my_fields.availability }}</div>
+            </div>
           {%- endcase -%}
         {%- endfor -%}
       </div>
     </div>
+    {% if p_description_trigger %}
+      {{ p_description }}
+    {% endif %}
   </div>
   {%- render 'cart-notification' -%}
 
@@ -413,9 +454,9 @@
 
   {% assign sizechart = section.blocks | where: "type", "sizechart" %}
   {%- for block in sizechart -%}
-        <h1 class="h2">{{ block.settings.page.title }}</h1>
-        {{ block.settings.size_chart }}
-    {%- endfor -%}  
+    <h1 class="h2">{{ block.settings.page.title }}</h1>
+    {{ block.settings.size_chart }}
+  {%- endfor -%}  
 </section>
 
 {% javascript %}
@@ -470,142 +511,421 @@
       <div class="addtocart-scroll--link"><a href="#ProductInfo-{{ section.id }}" class="button button--secondary">SHOP NOW</a></div>
     </div>
   </div>
-<style>
-  .addtocart-scroll-wrapper{
-    display: none;
-    position: fixed;
-    width: 100%;
-    background-color: white;
-    top: 0;
-    z-index: 9;
-    color: black;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    box-shadow: 0px 5px 10px -10px #000000;
-    max-width: unset;
-  }
-  .addtocart-scroll--left{
-    display: inline-block;
-    width: calc(50% - 3px);
-    text-align: left;
-    vertical-align: middle;
-  }
-  .addtocart-scroll--right{
-    display: inline-block;
-    width: calc(50% - 3px);
-    text-align: right;
-    vertical-align: middle;
-  }
-  .addtocart-scroll-wrapper > div > div{
-    display: inline-block;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--title{
-    text-align: left;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--price{
-    text-align: right;
-    vertical-align: middle;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--price .price-item{
-    color: black;
-  }
-  .addtocart-scroll-wrapper .addtocart-scroll--link{
-    text-align: right;
-  }
-</style>
-<script>
-var onlyOnceChecker = true;
-$(window).on('scroll',function(){
-    var $home = $('#ProductInfo-{{ section.id }}');
-    var divBottom     = $home.offset().top + $home.height(); 
-    var windowTop    = $(window).scrollTop();
+  <style>
+    .addtocart-scroll-wrapper{
+      display: none;
+      position: fixed;
+      width: 100%;
+      background-color: white;
+      top: 0;
+      z-index: 9;
+      color: black;
+      font-weight: bold;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      box-shadow: 0px 5px 10px -10px #000000;
+      max-width: unset;
+    }
+    .addtocart-scroll--left{
+      display: inline-block;
+      width: calc(50% - 3px);
+      text-align: left;
+      vertical-align: middle;
+    }
+    .addtocart-scroll--right{
+      display: inline-block;
+      width: calc(50% - 3px);
+      text-align: right;
+      vertical-align: middle;
+    }
+    .addtocart-scroll-wrapper > div > div{
+      display: inline-block;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--title{
+      text-align: left;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--price{
+      text-align: right;
+      vertical-align: middle;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--price .price-item{
+      color: black;
+    }
+    .addtocart-scroll-wrapper .addtocart-scroll--link{
+      text-align: right;
+    }
+  </style>
+  <script>
+  var onlyOnceChecker = true;
+  $(window).on('scroll',function(){
+      var $home = $('#ProductInfo-{{ section.id }}');
+      var divBottom     = $home.offset().top + $home.height(); 
+      var windowTop    = $(window).scrollTop();
 
-    if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
-      var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
-      $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
-      onlyOnceChecker = false;
-    }
-    else{onlyOnceChecker = false;}
+      if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
+        var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
+        $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
+        onlyOnceChecker = false;
+      }
+      else{onlyOnceChecker = false;}
 
-    if($('#shopify-section-header').hasClass('shopify-section-header-sticky') && $('#shopify-section-header').hasClass('shopify-section-header-hidden')){
-      $('.addtocart-scroll-wrapper').css('top','0px');
-    }
-    else{
-      var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
-      $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
-    }
+      if($('#shopify-section-header').hasClass('shopify-section-header-sticky') && $('#shopify-section-header').hasClass('shopify-section-header-hidden')){
+        $('.addtocart-scroll-wrapper').css('top','0px');
+      }
+      else{
+        var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
+        $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
+      }
 
-    if (divBottom >= windowTop) {
-        $('.addtocart-scroll-wrapper').slideUp();
-    } else {
-        $('.addtocart-scroll-wrapper').slideDown();
-    }
-});
-</script>
+      if (divBottom >= windowTop) {
+          $('.addtocart-scroll-wrapper').slideUp();
+      } else {
+          $('.addtocart-scroll-wrapper').slideDown();
+      }
+  });
+  </script>
 {% endif %}
 
-{% if section.settings.enable_stacked %}
+
+
+  {% if section.settings.product_page_layout == '1__2' %}
+    <style>
+      @media only screen and (min-width: 750px) {
+        #MainContent .product > .grid__item.grid__layout_1__2 {
+          width: 50%;
+          max-width: unset;
+          float: left;
+        }  
+      }
+    </style>
+  {% elsif section.settings.product_page_layout == '3__4' %}
+    <style>
+
+    </style>
+  {% elsif section.settings.product_page_layout == 'stacked' %}
+    <style>
+      @media only screen and (min-width: 750px) {
+        #MainContent .product > .grid__item{
+          width: 100%;
+          max-width: unset;
+          padding: 0;
+          text-align: center;
+        }
+        #MainContent .product ul.product__media-list{
+          display: inline-block;
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        #MainContent .product .product__description{
+          text-align: left;
+        }
+        #MainContent .product .product__title{
+          text-transform: uppercase;
+        }
+        #MainContent .product ul.product__media-list > li.product__media-item{
+          width: calc(25% - 50px);
+              display: inline-block;
+          flex-grow: unset;
+          flex-shrink: unset;
+          scroll-snap-align: unset;
+        }
+        #MainContent .product ul.product__media-list > li.product__media-item:first-child{
+          width: 100%;
+          margin-bottom: 50px;
+        }
+        .product-priceform-wrapper{
+          display: none;
+        }
+        .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
+          width: calc(50% - 3px);
+          display: inline-block;
+          vertical-align: middle;
+          text-align: center;
+        }
+        quantity-input.quantity{
+          margin: 0 auto;
+        }
+      }
+      @media (max-width:992px) and (min-width:750px) {
+        .product .price{
+          align-items: center;
+          justify-content: center;
+        }
+      }
+      @media only screen and (min-width: 992px) {
+        #MainContent .product ul.product__media-list > li.product__media-item{
+          width: calc(25% - 100px);
+        }
+        .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
+          width: calc(25% - 2px);
+        }
+      }
+    </style>
+  {% endif %}
+
+{% if explore_active %}
+  <style>
+    .product__info-container--sticky{
+      z-index: 6;
+    }
+    .product-explore-btn{
+      cursor: pointer;
+    }
+    .product-explore-btn:before{
+      content: "+";
+      font-size: 25px;
+      border-radius: 100%;
+      color: #ffffff;
+      background-color: #af1111;
+      padding: 0px 10px;
+      margin-right: 10px;
+    }
+    .product-explore-btn:hover{
+      color: white;
+    }
+    .product-explore-btn:hover:before{
+      box-shadow: 0px 0px 2px 4px #af11118c;
+      animation: pulse-black 2s infinite;
+    }
+    .product-explore-popup-wrapper{
+      display: none;
+      background: #f5f5f5;
+      color: black;
+      font-size: 12px;
+      position: absolute;
+      top: 0px;
+      margin: 0;
+      padding: 50px;
+      width: 100%;
+      z-index: 9;
+    }
+    .product-explore-x{
+      cursor: pointer;
+      font-size: 40px;
+      top: 0px;
+      position: absolute;
+      right: 20px;
+      color: #5d5d5d;
+    }
+    .product-explore-x:hover{
+      color: black;
+    }
+    .product-explore-subtext{
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+    .product-explore-title{
+      font-size: 40px;
+      font-weight: bold;
+      line-height: 36px;
+      margin: 10px 0 0;
+    }
+    .product-explore-video iframe{
+      width: 100%!important;
+    }
+    @media only screen and (max-width: 768px) {
+      .product-explore-popup-wrapper{
+        position: fixed;
+        overflow: scroll;
+        height: 100vh;
+        padding: 70px 35px 10px 20px;
+      }
+      .product-explore-video iframe{
+        height: 450px!important;
+        margin: 20px 0;
+      }
+      .product-explore-x{
+        right: 30px;
+      }
+    }
+    @media only screen and (max-width: 501px) {
+      .product-explore-video iframe{
+        height: 250px!important;
+      }
+    }
+    @keyframes pulse-black {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(175, 17, 17, 0.7);
+      }
+      
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(175, 17, 17, 0);
+      }
+      
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(175, 17, 17, 0);
+      }
+    }
+  </style>
+  <script>
+  $( document ).ready(function() {
+    $( '.product-explore-btn' ).click(function() {
+      $('.product-explore-popup-wrapper').slideDown();
+    });
+    $( '.product-explore-x' ).click(function() {
+      $('.product-explore-popup-wrapper').slideUp();
+    });
+  });
+  </script>
+{% endif %}
+
 <style>
-@media only screen and (min-width: 750px) {
-  #MainContent .product > .grid__item{
-    width: 100%;
-    max-width: unset;
+  /* explore button css */
+  .product-explore-buy-edition{
+    margin: 50px 0 10px;
+  }
+  .product-explore-buy-edition a{
+    padding: 20px 30px;
+    letter-spacing: 4px;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+    border: 1px solid #af1111;
+  }
+  .product-explore-buy-edition a:hover{
+    background-color: #af1111;
+    color: white;
+  }
+
+  /* default template css */
+  .product__title{
+    text-transform: uppercase;
+    padding-bottom: 0;
+    margin-bottom: 0;
+    font-size: 50px;
+  }
+  .product__text.subtitle{
+    margin: 0 0 20px;
     padding: 0;
-    text-align: center;
+    font-size: 22px;
+    font-style: italic;
+    font-weight: bold;
+    line-height: 10px;
   }
-  #MainContent .product ul.product__media-list{
+  .product__info-container .product-form__input{
+    border-top: 1px solid;
+    text-transform: uppercase;
+    padding: 10px 10px 0;
+    max-width: 100%;
+  }
+  .product__info-container .product-form__input.product-form__quantity{
+    border-bottom: 1px solid;
+    padding-bottom: 25px;
+  }
+  .product__info-container .product-form__input label{
     display: inline-block;
-    width: 100%;
-    margin-bottom: 50px;
+    width: 40%;
+    max-width: 100%;
+    letter-spacing: 2px;
+    font-size: 16px;
   }
-  #MainContent .product .product__description{
-    text-align: left;
+  .product__info-container .product-form__input .select{
+    display: inline-block;
+    width: calc(60% - 7px);
+    max-width: 100%;
   }
-  #MainContent .product .product__title{
+  .product__info-container .product-form__input .quantity{
+    float: right;
+    width: calc(60% - (7px + 1.5rem));
+    max-width: 100%;
+    margin: 0 0 0 1.5rem;
+  }
+  .product__info-container .product-form__input .select > select{
+    box-shadow: unset;
+    letter-spacing: 2px;
+    font-size: 16px;
     text-transform: uppercase;
   }
-  #MainContent .product ul.product__media-list > li.product__media-item{
-    width: calc(25% - 50px);
-        display: inline-block;
-    flex-grow: unset;
-    flex-shrink: unset;
-    scroll-snap-align: unset;
+  .product-availability .product-availability-title{
+    font-weight: bold;
   }
-  #MainContent .product ul.product__media-list > li.product__media-item:first-child{
-    width: 100%;
-    margin-bottom: 50px;
-  }
-  .product-priceform-wrapper{
-    display: none;
-  }
-  .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
-    width: calc(50% - 3px);
+  .product__description_below{
+    margin: 40px 0 5px;
+    background-image: linear-gradient(#000000, #000000), linear-gradient(#000000, #000000), linear-gradient(#000000, #000000), linear-gradient(#000000, #000000);
+    background-repeat: no-repeat;
+    background-size: 20px 3px;
+    background-position: top left, top right, bottom left, bottom right;
+    border: solid #000000;
+    border-width: 0 3px;
     display: inline-block;
-    vertical-align: middle;
+    padding: 10px 20px;
+  }
+</style>
+
+{% comment %} - UNLESS CONTENT BELOW ONLY FOR DEFAULT TEMPLATE - {% endcomment %}
+{% unless template contains '.' %}
+<style>
+  .product-recommendations__heading{
     text-align: center;
+    color: black;
   }
-  quantity-input.quantity{
-    margin: 0 auto;
+  .product-recommendations .grid li.grid__item > .card-wrapper{
+    text-align: center;
+    padding: 20px;
   }
-}
-@media (max-width:992px) and (min-width:750px) {
-  .product .price{
-    align-items: center;
+  .product-recommendations .grid li.grid__item > .card-wrapper a{
+    color: black;
+    text-decoration: none;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper .card-information__text{
+    text-transform: uppercase;
+    font-size: 22px;
+    text-decoration: none;
+  }
+  .product-recommendations .grid li.grid__item > .card-wrapper .price{
     justify-content: center;
   }
-}
-@media only screen and (min-width: 992px) {
-  #MainContent .product ul.product__media-list > li.product__media-item{
-    width: calc(25% - 100px);
+  .product-recommendations .grid li.grid__item > .card-wrapper:hover{
+    background-color: #00000045;
+    box-shadow: 5px 5px 0 0 #ffffff;
   }
-  .product-price-wrapper, variant-selects, .product-form__quantity, .product-add-to-cart-btns-wrapper{
-    width: calc(25% - 2px);
-  }
-}
-</style>
-{% endif %}
 
+
+  body .product__info-container *:not(.product-form__submit):not(.price-item):not(.field__input):not(.field__label):not(.button):not(.icon):not(path){
+    color: black!important;
+    border-color: black!important;
+  }
+  body #MainContent .product .product__info-container share-button span.share-button__message{
+    color: white!important;
+  }
+  .product__description_below{
+    color: black;
+  }
+  s.price-item.price-item--regular{
+    color: #555;
+  }
+  .product-form__submit{
+    background-color: black;
+    text-transform: uppercase;
+  }
+  .product-form__submit:hover{
+    background-color: #202020;
+  }
+  @media screen and (min-width: 750px){
+    .product__media-list .product__media-item{
+      padding: 20px;
+    }
+    .product__media-list .product__media-item modal-opener{
+      box-shadow: -5px 5px 5px -2px #424242;
+    }
+    .product__media-list .product__media-item modal-opener:hover{
+      box-shadow: unset;
+    }
+    .product__media-list .product__media-item:first-child{
+      padding: 0;
+    }
+    .grid--2-col-tablet .grid__item {
+      width: calc(25% - 1rem / 2);
+    }
+    .product__media-item:first-child {
+      width: 100%;
+    }
+  }
+</style>
+{% endunless %}
 
 {% schema %}
 {
@@ -656,7 +976,9 @@ $(window).on('scroll',function(){
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+      ]
     },
     {
       "type": "quantity_selector",
@@ -697,13 +1019,29 @@ $(window).on('scroll',function(){
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_dynamic_checkout.info"
+        },
+        {
+          "type": "checkbox",
+          "id": "price_inside",
+          "default": true,
+          "label": "Price inside button",
+          "info": "Price will display inside the add to cart button"
         }
       ]
     },
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "description_outside",
+          "default": true,
+          "label": "Description move below content",
+          "info": "Description moves outside columns & below product content"
+        }
+      ]
     },
     {
       "type": "share",
@@ -858,7 +1196,28 @@ $(window).on('scroll',function(){
           "default": "Welcome to my Section"
         }
       ]
-    },        
+    },
+    {
+      "type": "explore",
+      "name": "Expore Button & popup",
+      "limit": 1,
+      "settings": [
+      ]
+    }, 
+    {
+      "type": "buy_edition",
+      "name": "Expore Buy Edition",
+      "limit": 1,
+      "settings": [
+      ]
+    },
+    {
+      "type": "availability",
+      "name": "Availability",
+      "limit": 1,
+      "settings": [
+      ]
+    },
     {
       "type": "popup",
       "name": "t:sections.main-product.blocks.popup.name",
@@ -903,11 +1262,23 @@ $(window).on('scroll',function(){
       "info": "useful for mobile when content is at the top"
     },
     {
-      "type": "checkbox",
-      "id": "enable_stacked",
-      "default": true,
-      "label": "Stack content?",
-      "info": "stack product images and content"
+      "type": "select",
+      "id": "product_page_layout",
+      "label": "Product page layout options",
+      "options": [
+        {
+          "value": "1__2",
+          "label": "half width"
+        },
+        {
+          "value": "3__4",
+          "label": "three quarters width"
+        },        
+        {
+          "value": "stacked",
+          "label": "stacked"
+        }
+      ]
     }
   ]
 }

@@ -1,0 +1,42 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "disabled": true,
+      "settings": {
+        "show_collection_description": false,
+        "show_collection_image": true
+      }
+    },
+    "collection-masonry": {
+      "type": "collection-masonry",
+      "settings": {
+        "page_width": false,
+        "margin_top": "",
+        "margin_bottom": "",
+        "title": "COLLECTION 5",
+        "image_title_width": "",
+        "body": "<p>ELEMENTS OF PROGRESSION. FROM THE BAND’S FORMATIONS TO THE RELEASE OF<br\/>THE BLACK ALBUM. A TREND OF REMARKABLE TRANSFORMATIONS THAT CONTINUES TODAY.<\/p>",
+        "grid_layout": "c",
+        "grid_effect": "Nut",
+        "grid_color_effect": false,
+        "grid_spacing": false
+      }
+    },
+    "163172697793c8b0cb": {
+      "type": "page-settings",
+      "settings": {
+        "page-background": "shopify:\/\/shop_images\/Collection_Example_4.jpg",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#000000"
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "collection-masonry",
+    "163172697793c8b0cb"
+  ]
+}

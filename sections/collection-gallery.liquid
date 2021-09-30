@@ -1,0 +1,537 @@
+{{ 'normalize.css' | asset_url | stylesheet_tag }}
+{{ 'collection-gallery.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %}">
+  <div style="background-image: url({{section.settings.image_background | img_url: 'master'}});" id="Banner-{{ section.id }}" class="banner{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank%} banner--stacked{% endif %}{% if section.settings.adapt_height_first_image and section.settings.image != blank %} banner--adapt{% endif %}">
+    <div class="collection-header-wrapper{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}">
+      {% if section.settings.image_title != blank %}
+        <h2 class="title">
+          {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
+        </h2>
+      {% else %}
+        <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
+      {% endif %}
+    </div>
+    <div class="collection-gallery-body">
+      {{ section.settings.body }}
+    </div>
+
+		<main class="collection-gallery-main" data-grid_effect="{{ section.settings.grid_effect }}">
+			<div class="content content--center">
+				<div class="grid grid--type-{{ section.settings.grid_layout }} grid--hidden">
+					<div class="grid__sizer"></div>
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+            {%- when 'collection_picker' -%}
+              <div class="grid__item">
+                <a {% if block.settings.collection_pick.url != blank %}href="{{ block.settings.collection_pick.url }}"{% endif %} class="grid__link">
+                  {% if block.settings.collection_pick_override_image != blank %}
+                    {{ block.settings.collection_pick_override_image | img_url: 'master' | img_tag: block.settings.collection_pick_override_image.alt, 'grid__img' }}
+                  {% else %}
+                    {{ block.settings.collection_pick.featured_image | img_url: 'master' | img_tag: block.settings.collection_pick.featured_image.alt, 'grid__img' }}
+                  {% endif %}
+                  <div class="carousel-gallery--text carousel-gallery-collection--text">{{ block.settings.collection_pick.title }}</div>
+                </a>
+              </div>
+            {%- when 'product_picker' -%}
+              <div class="grid__item">
+                <a {% if block.settings.product_pick.url != blank %}href="{{ block.settings.product_pick.url }}"{% endif %} class="grid__link">
+                  {% if block.settings.product_pick_override_image != blank %}
+                    {{ block.settings.product_pick_override_image | img_url: 'master' | img_tag: block.settings.product_pick_override_image.alt, 'grid__img' }}
+                  {% else %}
+                    {{ block.settings.product_pick.featured_image | img_url: 'master' | img_tag: block.settings.product_pick.featured_image.alt, 'grid__img' }}
+                  {% endif %}
+                  <div class="carousel-gallery--text carousel-gallery-product--text">
+                    {{ block.settings.product_pick.title }}
+                    {% render 'price', product: block.settings.product_pick, price_class: '' %}
+                  </div>
+                </a>
+              </div>
+            {%- when 'image_picker' -%}
+              <div class="grid__item">
+                {% if block.settings.image_hover == "drop" %}
+                  <a class="grid__link pater" {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %}>
+                    <div class="pater__img" style="background-image: url({{ block.settings.image | img_url: 'master' }})">.</div>
+                    <div class="pater__content">
+                      <h2 class="pater__title" aria-label="fullstory">{{ block.settings.title }}</h2>
+                      <p class="pater__desc">{{ block.settings.description }}</p>
+                      <span class="pater__call">{{ block.settings.call }}</span>
+                    </div>
+                    <style>#Banner-{{ section.id }} main.collection-gallery-main .pater::after{content:'{{ block.settings.label }}';}</style>
+                  </a>
+                {% else %}
+                  <a {% if block.settings.link != blank %}href="{{ block.settings.link }}"{% endif %} class="grid__link">
+                    {{ block.settings.image | img_url: 'master' | img_tag: block.settings.image.alt, 'grid__img' }}
+                    <div class="carousel-gallery--text carousel-gallery-image--text">
+                      <h2 class="pater__title" aria-label="fullstory">{{ block.settings.title }}</h2>
+                      <p class="pater__desc">{{ block.settings.description }}</p>
+                      <span class="pater__call">{{ block.settings.call }}</span>
+                    </div>
+                  </a>
+                {% endif %}
+              </div>
+            {%- endcase -%}
+          {%- endfor -%}
+				</div>
+			</div>
+		</main>
+
+
+  </div>
+</div> 
+
+<style>
+.olm-collection-gallery{width: 100%;}
+{% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
+  #Banner-{{ section.id }}{
+    min-height: unset;
+    background-position: {{ section.settings.site-background-image-position }};
+    background-size: {{ section.settings.site-background-image-size }};
+    background-repeat: {{ section.settings.site-background-image-repeat }};
+    background-attachment: {{ section.settings.site-background-image-attachment }};
+    flex-direction: unset;
+    width: 100%;
+    padding: 50px;
+  }
+  {% if section.settings.margin_top != blank %}
+    #Banner-{{ section.id }} .banner-wrapper-carousel {
+      margin-top:{{ section.settings.margin_top }}!important;
+    }
+  {% endif %}
+  {% if section.settings.margin_bottom != blank %}
+    #Banner-{{ section.id }} .banner-wrapper-carousel {
+      margin-bottom:{{ section.settings.margin_bottom }}!important;
+    }
+  {% endif %}
+  #Banner-{{ section.id }} .collection-header-wrapper{
+    clear: both;
+    text-align: center;
+  }
+  #Banner-{{ section.id }} .collection-header-wrapper h2.title{
+    padding-bottom: 0;
+  }
+  #Banner-{{ section.id }} .collection-gallery-body{
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  #Banner-{{ section.id }} .price{
+    text-align: center;
+    line-height: normal; 
+    display: block;
+    margin: 10px 0 0;
+  }
+  #Banner-{{ section.id }} .price--on-sale .price__sale{
+    display: block;
+  }
+  #Banner-{{ section.id }} .price--on-sale .price__sale > *{
+    display: inline-block;
+  }
+  #Banner-{{ section.id }} .price dd {
+    margin: 0;
+  }
+
+  #Banner-{{ section.id }} .carousel-gallery--text {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    color: white;
+    text-align: center;
+    width: 100%;
+  }
+  #Banner-{{ section.id }} .grid__item:hover a.grid__link:before{
+    content: "";
+    background-color: #000000;
+    opacity: 0.6;
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: absolute;
+  }
+  #Banner-{{ section.id }} .grid__item:hover .carousel-gallery--text{
+    display: block;
+  }
+  @media only screen and (max-width: 768px) {
+    #Banner-{{ section.id }} .grid__item a.grid__link{
+      text-decoration: none;
+      padding-bottom: 10px;
+    }
+    #Banner-{{ section.id }} .carousel-gallery--text{
+      display: block;
+      position: unset;
+      text-align: center;
+      top: 0;
+      left: 0;
+      transform: translate(0%,0%);
+      line-height: 20px;
+      font-size: 18px;
+      margin: 10px auto;
+    }
+  }
+</style>
+	
+<script src="{{ 'imagesloaded.pkgd.min.js' | asset_url }}"></script>
+<script src="{{ 'masonry.pkgd.min.js' | asset_url }}"></script>
+<script src="{{ 'anime.min.js' | asset_url }}"></script>
+<script src="{{ 'main.js' | asset_url }}"></script>
+<script>
+  function process_init_event_coll_gall(evt){
+    $.ajax({
+      type: "GET",
+      url: "{{ 'main.js' | asset_url }}",
+      dataType: "script",
+      async: false
+    });
+  }$(document).on('shopify:section:load', process_init_event_coll_gall )
+</script>
+
+{% schema %} 
+{
+  "name": "OLM Collection Gallery",
+  "class": "olm-collection-gallery spaced-section spaced-section--full-width",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "page_width",
+      "label": "Constrain to page width" 
+    },
+    {
+      "type": "text",
+      "id": "margin_top",
+      "label": "Margin top"
+    },
+    { 
+      "type": "text",
+      "id": "margin_bottom",
+      "label": "Margin bottom"
+    },
+    {
+      "type": "header",
+      "content": "Header settings"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Featured gallery",
+      "label": "t:sections.featured-collection.settings.title.label"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_title",
+      "label": "Title image",
+      "info": "replaces heading text"
+    },
+    {
+      "type": "text",
+      "id": "image_title_width",
+      "label": "Title image width",
+      "info": "use % or px"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body text"
+    },
+    {
+      "type": "header",
+      "content": "Background settings"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_background",
+      "label": "Background Image"
+    },
+    {
+      "type": "select",
+      "id": "site-background-image-position",
+      "label": "Site background image position",
+      "options": [
+        {
+          "value": "left top",
+          "label": "left top"
+        },
+        {
+          "value": "left center",
+          "label": "left center"
+        },
+        {
+          "value": "left bottom",
+          "label": "left bottom"
+        },
+        {
+          "value": "right top",
+          "label": "right top"
+        },
+        {
+          "value": "right center",
+          "label": "right center"
+        },
+        {
+          "value": "right bottom",
+          "label": "right bottom"
+        },
+        {
+          "value": "center top",
+          "label": "center top"
+        },
+        {
+          "value": "center center",
+          "label": "center center"
+        },
+        {
+          "value": "center bottom",
+          "label": "center bottom"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "site-background-image-size",
+      "label": "Site background image size",
+      "options": [
+        {
+          "value": "auto",
+          "label": "auto"
+        },
+        {
+          "value": "100% auto",
+          "label": "100% auto"
+        },
+        {
+          "value": "contain",
+          "label": "contain"
+        },
+        {
+          "value": "cover",
+          "label": "cover"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "site-background-image-repeat",
+      "label": "Site background image repeat",
+      "options": [
+        {
+          "value": "repeat",
+          "label": "repeat"
+        },
+        {
+          "value": "repeat-x",
+          "label": "repeat-x"
+        },
+        {
+          "value": "repeat-y",
+          "label": "repeat-y"
+        },
+        {
+          "value": "no-repeat",
+          "label": "no-repeat"
+        },
+        {
+          "value": "inherit",
+          "label": "inherit"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "site-background-image-attachment",
+      "label": "Site background image attachment",
+      "options": [
+        {
+          "value": "scroll",
+          "label": "scroll"
+        },
+        {
+          "value": "fixed",
+          "label": "fixed"
+        }
+      ]
+    },
+    {
+      "type": "header",
+      "content": "Grid settings"
+    },
+    {
+      "type": "select",
+      "id": "grid_layout",
+      "label": "Grid layout type",
+      "options": [
+        {
+          "value": "a",
+          "label": "Grid A"
+        },
+        {
+          "value": "b",
+          "label": "Grid B"
+        },
+        {
+          "value": "c",
+          "label": "Grid C"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "grid_effect",
+      "label": "Grid load effect",
+      "options": [
+        {
+          "value": "Hapi",
+          "label": "Hapi - Popin"
+        },
+        {
+          "value": "Amun",
+          "label": "Amun - Slide up"
+        },
+        {
+          "value": "Kek",
+          "label": "Kek - Close line left side"
+        },
+        {
+          "value": "Isis",
+          "label": "Isis - Mix slide in"
+        },
+        {
+          "value": "Montu",
+          "label": "Montu - Fade drop in"
+        },
+        {
+          "value": "Osiris",
+          "label": "Osiris - Twirl fade in"
+        },
+        {
+          "value": "Satet",
+          "label": "Satet - Pop in splash"
+        },
+        {
+          "value": "Atum",
+          "label": "Atum - Fly in right side"
+        },
+        {
+          "value": "Ra",
+          "label": "Ra - Bounce slide up"
+        },
+        {
+          "value": "Sobek",
+          "label": "Sobek - Confetti bottom fly in"
+        },
+        {
+          "value": "Ptah",
+          "label": "Ptah - Rotate fade in"
+        },
+        {
+          "value": "Bes",
+          "label": "Bes - quick zoom fade in"
+        },
+        {
+          "value": "Seker",
+          "label": "Seker - Pop in zoom"
+        },
+        {
+          "value": "Nut",
+          "label": "Nut - Zoom fade in"
+        },
+        {
+          "value": "Shu",
+          "label": "Shu - Border fade in"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "collection_picker",
+      "name": "collection",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection_pick",
+          "label": "collection"
+        },
+        {
+          "type": "image_picker",
+          "id": "collection_pick_override_image",
+          "label": "Collection image override"
+        }  
+      ]
+    },
+    {
+      "type": "product_picker",
+      "name": "product",
+      "settings": [
+        {
+          "type": "product",
+          "id": "product_pick",
+          "label": "Pick a product"
+        },
+        {
+          "type": "image_picker",
+          "id": "product_pick_override_image",
+          "label": "Product image override"
+        }        
+      ]
+    },
+    {
+      "type": "image_picker",
+      "name": "image",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image block"
+        },
+        {
+          "type": "select",
+          "id": "image_hover",
+          "label": "Hover effect",
+          "options": [
+            {
+              "value": "hover",
+              "label": "Hover text"
+            },
+            {
+              "value": "drop",
+              "label": "Dropdown image"
+            }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description for image block"
+        },
+        {
+          "type": "text",
+          "id": "call",
+          "label": "Call to action text"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label for image block"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link for image block"
+        }
+      ]
+    }    
+  ],
+  "presets": [
+    {
+      "name": "OLM Collection Gallery"
+    }
+  ]  
+}
+{% endschema %}
