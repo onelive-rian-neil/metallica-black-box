@@ -375,6 +375,9 @@
      color: #000;
      text-align: left;
      text-transform: uppercase;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
 }
  .single-collection .single-collection-product .single-collection-product-price {
      margin-bottom: 1em;
