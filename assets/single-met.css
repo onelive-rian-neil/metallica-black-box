@@ -391,6 +391,9 @@
    margin: 0 0 10px 0;
     padding: 0;
     line-height: 1;
+       text-transform: uppercase;
+    font-size: 22px;
+    text-decoration: none;
 }
  .single-collection-product-price {
      margin: 0;
