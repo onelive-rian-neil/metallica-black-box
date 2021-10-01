@@ -644,6 +644,7 @@
   background-repeat: no-repeat;
   filter: grayscale(100%);
   position:relative;
+  background:url(//cdn.shopify.com/s/files/1/0581/0159/6351/t/8/assets/audiobanner.jpg?v=1541499175769321682);
 }
 .single-page-header:after {
   content: "";
