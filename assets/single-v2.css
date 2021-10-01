@@ -399,27 +399,13 @@ a {
   margin: 15px auto 30px;
 }
 
-.single-livestream {
-  padding: 15px;
-  box-sizing: border-box;
-}
-@media screen and (max-width: 670px) {
-  .single-livestream {
-    padding: 0;
-  }
-}
 .single-livestream .single-livestream-player {
-  max-width: 1440px;
+  max-width: 100%;
 }
 
 .single-livestream .single-livestream-player.chat-disabled {
   max-width: 1322px;
   margin: 0 auto;
-}
-
-.single-livestream .single-livestream-player #single-player {
-  border-radius: 8px;
-  overflow: hidden;
 }
 
 .single-collection {
