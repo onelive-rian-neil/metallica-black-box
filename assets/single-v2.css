@@ -548,6 +548,7 @@ a {
   background-repeat: no-repeat;
   filter: grayscale(100%);
   position:relative;
+  z-index:2;
 }
 .single-page-header:after {
   content: "";
