@@ -108,7 +108,10 @@ SOFTWARE.
     {% comment %}
       <!-- Fans With Tickets -->
     {% endcomment %}
-    <div class="single-livestream {{ page.handle }}">
+    <div class="single-livestream {{ page.handle 
+      <div class="single-page-header">
+        <h1>{{ page.title }}</h1>
+      </div>
       <div id="single-livestream-player"
            class="single-grid-item single-livestream-player {% if chat_enabled == 'false' %}chat-disabled{% endif %}">
         <script src="https://{{ livestream_host }}/assets/livestream-embed.js?id={{ livestream_id }}&customerEmail={{ customer.email }}{% if bypass_token_used %}&token={{ token }}{% endif %}" type="text/javascript"></script>
