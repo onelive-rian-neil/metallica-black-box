@@ -120,7 +120,7 @@ SOFTWARE.
         {{ page.content }}
       </div>
       <div class="single-grid-item single-collection">
-        <h2>BLACK ALBUM LIVE - MERCH TABLE</h2>
+        <div class="single-collection">
         {% for product in collections[collection_handle].products %}
   <div class="single-collection-product row-count-{{ product_row_count }}">
     <a href="{{ product.url }}"
@@ -169,6 +169,7 @@ SOFTWARE.
     </div>
   </div>
         {%- endfor -%}
+        </div>
       </div>
     </div>
     {% assign livestream = true %}
