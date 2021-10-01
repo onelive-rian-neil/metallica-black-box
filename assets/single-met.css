@@ -16,7 +16,7 @@
 }
  .single-grid-item {
      margin: 0 auto 2em;
-     max-width: 1092px;
+     max-width: 95%;
 }
  .single-col {
      float: left;
@@ -354,6 +354,7 @@
      max-width: 100%;
      margin-bottom: 4em;
 }
+
  .single-collection {
      display: flex;
      justify-content: center;
