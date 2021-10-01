@@ -682,3 +682,7 @@
     background-color: #00000045;
     box-shadow: 5px 5px 0 0 #ffffff;
   }
+
+img.single-collection-product-img {
+    max-width: 100%;
+}
