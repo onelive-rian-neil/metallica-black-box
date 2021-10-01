@@ -121,9 +121,10 @@ SOFTWARE.
       </div>
       <div class="single-grid-item collection-wrap">
         <h2 style="text-align: center;">BLACK ALBUM LIVE - MERCH TABLE</h2>
-        <div class="single-collection">
+        <div class="grid grid--2-col grid--3-col-tablet grid--4-col-desktop grid--quarter-max">
         {% for product in collections[collection_handle].products %}
-  <div class="single-collection-product row-count-{{ product_row_count }}">
+  <div class="grid__item">
+    <div class="card-wrapper">
     <a href="{{ product.url }}"
        target="_blank">
       <img class="single-collection-product-img"
@@ -167,6 +168,7 @@ SOFTWARE.
                class="single-align-center button btn">
       </form>
 
+    </div>
     </div>
   </div>
         {%- endfor -%}
