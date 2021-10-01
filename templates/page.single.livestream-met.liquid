@@ -121,9 +121,9 @@ SOFTWARE.
       </div>
       <div class="single-grid-item product-recommendations">
         <h2 style="text-align: center;">BLACK ALBUM LIVE - MERCH TABLE</h2>
-        <div class="grid grid--2-col grid--3-col-tablet grid--4-col-desktop grid--quarter-max">
+        <ul class="grid grid--2-col grid--3-col-tablet grid--4-col-desktop grid--quarter-max">
         {% for product in collections[collection_handle].products %}
-  <div class="grid__item">
+  <li class="grid__item">
     <div class="card-wrapper">
     <a href="{{ product.url }}"
        target="_blank">
@@ -170,9 +170,9 @@ SOFTWARE.
 
     </div>
     </div>
-  </div>
+  </li>
         {%- endfor -%}
-        </div>
+        </ul>
       </div>
     </div>
     {% assign livestream = true %}
