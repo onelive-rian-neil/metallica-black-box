@@ -548,7 +548,6 @@ a {
   background-repeat: no-repeat;
   filter: grayscale(100%);
   position:relative;
-  z-index:2;
 }
 .single-page-header:after {
   content: "";
@@ -561,7 +560,10 @@ a {
 }
 .single-page-header h1 {
   margin-bottom: 0;
+  position: relative;
+  z-index: 2;
 }
+
 .single-page-header.munich-germany-10-10-91 {
   background:url({{ 'audiobanner.jpg' | asset_url }});
 }
