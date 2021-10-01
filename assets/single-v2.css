@@ -544,7 +544,7 @@ a {
     background-color: #000;
   padding: 4em 0;
   background-position: center;
-  background-size" cover;
+  background-size: cover;
   background-repeat:none;
   filter: grayscale(100%);
 }
