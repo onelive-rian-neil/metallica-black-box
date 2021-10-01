@@ -548,5 +548,5 @@ a {
   margin-bottom: 0;
 }
 .single-page-header.munich-germany-10-10-91 {
-  background-image: url("{{ 'audiobanner.jpg' | asset }}");
+  background:url({{ 'audiobanner.jpg' | asset_url }});
 }
