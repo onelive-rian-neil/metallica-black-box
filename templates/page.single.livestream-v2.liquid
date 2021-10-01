@@ -121,45 +121,52 @@ SOFTWARE.
       </div>
       <div class="single-grid-item single-collection">
         {% for product in collections[collection_handle].products %}
-          <div class="single-collection-product row-count-{{ product_row_count }}">
-            <a href="{{ product.url }}"
-               target="_blank">
-              <img class="single-collection-product-img"
-                   src="{{ product.featured_image | img_url: '640x640' }}"
-                   alt="{{ product.featured_image.alt }}" />
-              <h4 class="single-collection-product-title">{{ product.title }}</h4>
-              <p class="single-collection-product-price"
-                 id="single-product-price-{{product.id}}">{{ product.variants.first.price | money }}</p>
-            </a>
-            <form action="/cart/add"
-                  method="post"
-                  enctype="multipart/form-data"
-                  id="product_form_{{product.id}}">
-              {% if product.variants.size > 1 %}
-                <select name="id"
-                        class="single-variant-select"
-                        id="single-variant-select-{{product.id}}"
-                        onchange="setPrice(this.options[this.selectedIndex]);">
-                  {% for variant in product.variants %}
-                    {% if variant.available == true %}
-                      <option value="{{variant.id}}"
-                              data-price="{{variant.price | money }}"
-                              data-product-id="{{product.id}}">{{ variant.title }}</option>
-                    {% endif %}
-                  {% endfor %}
-                </select>
-              {% else %}
-                <input type="hidden"
-                       name="id"
-                       value="{{ product.variants.first.id }}" />
-              {% endif %}
-              <input type="submit"
-                     name="add"
-                     id="add"
-                     value="Add to Cart"
-                     class="button">
-            </form>
-          </div>
+  <div class="single-collection-product row-count-{{ product_row_count }}">
+    <a href="{{ product.url }}"
+       target="_blank">
+      <img class="single-collection-product-img"
+           src="{{ product.featured_image | img_url: '640x640' }}"
+           alt="{{ product.featured_image.alt }}" />
+    </a>
+    <div class="product-info">
+      <a href="{{ product.url }}"
+         target="_blank">
+        <h4 class="single-collection-product-title">{{ product.title }}</h4>
+        <p class="single-collection-product-price"
+           id="single-product-price-{{product.id}}">{{ product.variants.first.price | money }}</p>
+      </a>
+      <form action="/cart/add"
+            method="post"
+            enctype="multipart/form-data"
+            id="product_form_{{product.id}}"
+            class="product-form">
+        {% if product.variants.size > 1 %}
+        <select name="id"
+                class="single-variant-select"
+                id="single-variant-select-{{product.id}}"
+                onchange="setPrice(this.options[this.selectedIndex]);">
+          {% for variant in product.variants %}
+          {% if variant.available == true %}
+          <option value="{{variant.id}}"
+                  data-price="{{variant.price | money }}"
+                  data-product-id="{{product.id}}">{{ variant.title }}</option>
+          {% endif %}
+          {% endfor %}
+        </select>
+        {% else %}
+        <input type="hidden"
+               name="id"
+               value="{{ product.variants.first.id }}" />
+        {% endif %}
+        <input type="submit"
+               name="add"
+               id="add"
+               value="Add to Cart"
+               class="single-align-center button btn">
+      </form>
+
+    </div>
+  </div>
         {%- endfor -%}
       </div>
     </div>
