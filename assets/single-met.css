@@ -388,7 +388,9 @@
 }
  .single-collection-product-title {
      color: #000;
-     margin: 0;
+   margin: 0 0 10px 0;
+    padding: 0;
+    line-height: 1;
 }
  .single-collection-product-price {
      margin: 0;
