@@ -516,129 +516,9 @@
      padding-top: 0;
 }
 /*# sourceMappingURL=single-v2.css.map */
+
 /*Custom Theme Styles*/
- .schedule-table {
-     padding: 5px;
-}
- .tg {
-     border-collapse: collapse;
-     border-spacing: 0;
-}
- .tg th h3 {
-     color: #000;
-     margin-bottom: 15px;
-     text-align: center;
-}
- .tg a {
-     text-decoration: none !important;
-}
- .tg td {
-     border-color: black;
-     border-style: solid;
-     border-width: 3px;
-     overflow: hidden;
-     padding: 15px 15px;
-     word-break: normal;
-}
- .tg .tg-0lax {
-     text-align: left;
-     vertical-align: center 
-}
- .tg .yellow a h3, .tg .yellow a h4, .tg .orange a h3, .tg .orange a h4 {
-     color: black 
-}
- .tg .blue {
-     background-color: #00aad4;
-     text-align: left;
-     vertical-align: bottom 
-}
- .tg .yellow {
-     background-color: #ffc20e;
-     text-align: left;
-     vertical-align: bottom;
-}
- .tg .pink {
-     background-color: #ef4c84;
-     text-align: left;
-     vertical-align: bottom 
-}
- .tg .orange {
-     background-color: #f5821f;
-     text-align: left;
-     vertical-align: bottom 
-}
- td h3, td h4 {
-     margin: 0px;
-}
- #shopify-section-template--15156974059705__163270981936b800a4 {
-     background-color: white;
-     position: relative;
-}
- .single-schedule {
-     background-color: #fff;
-     color: #000;
-     padding-top: 5rem;
-     padding-bottom: 5rem;
-}
- .table-title {
-     display: flex;
-     justify-content: space-between;
-     align-items: center;
-}
- .next, .day-2 {
-     padding: 5px 10px;
-     color:#000;
-}
- a.header__heading-link .h2 {
-   font-family: acumin-pro-wide,sans-serif;
-   font-weight: 800;
-   font-style: normal;
-   color: #fff;
-   font-size: 5rem;
-}
- @media screen and (max-width: 640px) {
-     a.header__heading-link {
-         width: 220px;
-    }
-     table.tg {
-         table-layout: fixed;
-    }
-}
- .header__inline-menu {
-     padding-left: 40px;
-}
- .list-menu__item {
-     text-transform: uppercase;
-     font-size: 2rem;
-     letter-spacing: 0;
-     color: #fff;
-     font-family: acumin-pro-wide,sans-serif !important;
-     font-weight: 700;
-     font-style: normal;
-     padding-bottom: 5px;
-}
- .list-menu--inline {
-     display: flex !important;
-     justify-content: space-evenly;
-}
- .list-menu li a {
-     border-bottom: 2px solid #ffc20e;
-}
- .list-menu li:first-of-type a {
-     border-bottom: 2px solid #02abd4;
-}
- .list-menu li:last-of-type a {
-     border-bottom: 2px solid #ef4c84;
-}
- h1, h2, h3, .h3, h4, .h4, h5, .h5, h6, body {
-     font-family: acumin-pro-wide,sans-serif !important;
-     font-weight: 700;
-     font-style: normal;
-     text-transform: uppercase;
-}
- .header__menu-item:hover span {
-     text-decoration: none;
-}
+
  .card-information {
      background-color: #fff;
      margin: 0 !important;
@@ -666,14 +546,6 @@
      background: rgb(18,18,18);
      background: linear-gradient(0deg, rgba(18,18,18,1) 0%, rgba(18,18,18,0) 100%) !important;
      opacity: 1 !important;
-}
- #shopify-section-template--15144821031097__163270981936b800a4 {
-     background-color: #fff;
-}
- .single-scroll-content {
-     background-color: white;
-     max-width: 100%;
-     padding: 40px 0;
 }
  .page-section {
      margin: 0 auto 40px;
