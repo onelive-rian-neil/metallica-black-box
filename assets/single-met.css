@@ -688,7 +688,9 @@
 
   .product-recommendations .grid li.grid__item > .card-wrapper:hover .single-collection-product-img{
     transform: scale(1.03);
+    transition: transform .2s linear 0s;
   }
 img.single-collection-product-img {
     max-width: 100%;
+    transition: transform .2s linear 0s;
 }
