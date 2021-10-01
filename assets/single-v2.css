@@ -534,3 +534,15 @@ a {
 }
 
 /*# sourceMappingURL=single-v2.css.map */
+
+/* Metallica */
+
+.single-page-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000;
+}
+.single-page-header h1 {
+  margin-bottom: 0;
+}
