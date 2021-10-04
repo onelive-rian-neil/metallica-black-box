@@ -21,6 +21,12 @@
     "social_instagram_link": "#",
     "favicon": "shopify:\/\/shop_images\/favicon.png",
     "klaviyo-snippet-div": "XPrEBM",
+    "checkout_logo_image": "shopify:\/\/shop_images\/download.png",
+    "checkout_logo_position": "center",
+    "checkout_logo_size": "large",
+    "checkout_body_background_color": "#ffffff",
+    "checkout_input_background_color_mode": "white",
+    "checkout_accent_color": "#1490e4",
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
