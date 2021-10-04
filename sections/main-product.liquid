@@ -19,6 +19,14 @@
 {%- endif -%}
 
 <section class="page-width">
+
+  {% if collection %}
+    <section class="product-arrows-wrapper">
+        <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>{{ '❮' | link_to: collection.previous_product }}</div>
+        <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>{{ '❯' | link_to: collection.next_product }}</div>
+    </section>
+  {% endif %}
+
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper grid__layout_{{ section.settings.product_page_layout }}">
       <slider-component class="slider-mobile-gutter">
@@ -77,6 +85,23 @@
             <p class="product__text{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}" {{ block.shopify_attributes }}>
               {{- block.settings.text -}}
             </p>
+          {%- when 'breadcrumb' -%}
+          {% if collection %}
+
+            {% for c in collection.products %}
+              {% if c.title == product.title %}
+              {% assign count = forloop.index %}
+              {% endif %}
+            {% endfor %}
+
+            <div class="sup-title-wrapper">
+              <span class="sup-title-collection">{{ collection.title | link_to: collection.url }}</span><span class="sup-title-type">{{ product.type }}</span><span class="sup-title-count">{{ count }} OF {{ collection.all_products_count }}</span>
+            </div>
+
+          {% else %}
+            <div class="sup-title-wrapper"><span class="sup-title-type">{{ product.type }}</span></div>
+          {% endif %}
+
           {%- when 'title' -%}
             <h1 class="product__title" {{ block.shopify_attributes }}>
               {{ product.title | escape }}
@@ -556,37 +581,48 @@
       text-align: right;
     }
   </style>
-  <script>
-  var onlyOnceChecker = true;
-  $(window).on('scroll',function(){
-      var $home = $('#ProductInfo-{{ section.id }}');
-      var divBottom     = $home.offset().top + $home.height(); 
-      var windowTop    = $(window).scrollTop();
-
-      if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
-        var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
-        $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
-        onlyOnceChecker = false;
-      }
-      else{onlyOnceChecker = false;}
-
-      if($('#shopify-section-header').hasClass('shopify-section-header-sticky') && $('#shopify-section-header').hasClass('shopify-section-header-hidden')){
-        $('.addtocart-scroll-wrapper').css('top','0px');
-      }
-      else{
-        var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
-        $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
-      }
-
-      if (divBottom >= windowTop) {
-          $('.addtocart-scroll-wrapper').slideUp();
-      } else {
-          $('.addtocart-scroll-wrapper').slideDown();
-      }
-  });
-  </script>
 {% endif %}
 
+  <script>
+    var onlyOnceChecker = true;
+    $(window).on('scroll',function(){
+
+
+        var $home = $('#ProductInfo-{{ section.id }}');
+        var divBottom     = $home.offset().top + $home.height(); 
+        var windowTop    = $(window).scrollTop();
+
+      if ((divBottom - 200) >= windowTop) {
+          $('.product-arrows-wrapper').show();
+      } else {
+          $('.product-arrows-wrapper').hide();
+      }
+
+      {% if section.settings.enable_addtocart_scroller %}
+        if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
+          var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
+          $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
+          onlyOnceChecker = false;
+        }
+        else{onlyOnceChecker = false;}
+
+        if($('#shopify-section-header').hasClass('shopify-section-header-sticky') && $('#shopify-section-header').hasClass('shopify-section-header-hidden')){
+          $('.addtocart-scroll-wrapper').css('top','0px');
+        }
+        else{
+          var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
+          $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
+        }
+
+        if (divBottom >= windowTop) {
+            $('.addtocart-scroll-wrapper').slideUp();
+        } else {
+            $('.addtocart-scroll-wrapper').slideDown();
+        }
+      });
+    {% endif %}
+
+  </script>
 
 
   {% if section.settings.product_page_layout == '1__2' %}
@@ -774,6 +810,64 @@
 {% endif %}
 
 <style>
+  ul.product__media-list.grid.grid--peek.list-unstyled.slider.slider--mobile{
+    margin: 0!important;
+  }
+  .page-width{
+    padding: 0 50px;
+  }
+  .product-arrows-wrapper #product-arrows-left, 
+  .product-arrows-wrapper #product-arrows-right{
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 25px;
+  }
+  .product-arrows-wrapper #product-arrows-left a, 
+  .product-arrows-wrapper #product-arrows-right a{
+    color: black;
+    text-decoration: none;
+  }
+  .product-arrows-wrapper #product-arrows-left.disabled a,
+  .product-arrows-wrapper #product-arrows-right.disabled a{
+    cursor: not-allowed;
+    color: grey;
+    pointer-events: none;
+  }
+  .product-arrows-wrapper #product-arrows-left{
+    left: 15px;
+  }
+  .product-arrows-wrapper #product-arrows-right{
+    right: 15px;
+  }
+  .sup-title-wrapper {
+    text-transform: uppercase;
+    font-size: 20px;
+  }
+  .sup-title-wrapper .sup-title-collection a{
+    text-decoration: none;
+  }
+  .sup-title-wrapper .sup-title-collection:after {
+    content: '/';
+    color: #000;
+    margin: 0 5px;
+  }
+  .sup-title-wrapper .sup-title-type {
+    color: yellow;
+  }
+  .sup-title-wrapper .sup-title-type a {
+    color: yellow;
+  }
+  .sup-title-wrapper .sup-title-type:after {
+    content: '/';
+    color: #000;
+    margin: 0 5px;
+  }
+  .sup-title-wrapper .sup-title-count {
+    color: #c0c0c0;
+  }
+  
   /* explore button css */
   .product-explore-buy-edition{
     margin: 50px 0 10px;
@@ -797,6 +891,8 @@
     padding-bottom: 0;
     margin-bottom: 0;
     font-size: 50px;
+    margin-top: 0;
+    padding-top: 0;
   }
   .product__text.subtitle{
     margin: 0 0 20px;
@@ -927,6 +1023,17 @@
   }
 </style>
 {% endunless %}
+
+<script>
+  $( document ).ready(function() {
+    $( '.product-explore-btn' ).click(function() {
+      $('.product-explore-popup-wrapper').slideDown();
+    });
+    $( '.product-explore-x' ).click(function() {
+      $('.product-explore-popup-wrapper').slideUp();
+    });
+  });
+</script>
 
 {% schema %}
 {
@@ -1208,6 +1315,13 @@
     {
       "type": "buy_edition",
       "name": "Expore Buy Edition",
+      "limit": 1,
+      "settings": [
+      ]
+    },
+    {
+      "type": "breadcrumb",
+      "name": "Breadcrumb",
       "limit": 1,
       "settings": [
       ]
