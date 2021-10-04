@@ -62,8 +62,8 @@
           "type": "image_picker",
           "settings": {
             "image": "shopify:\/\/shop_images\/black-product.jpg",
-            "title": "STORE PAGE",
-            "link": "shopify:\/\/pages\/store"
+            "title": "Riff Em All",
+            "link": "shopify:\/\/collections\/riffem-all"
           }
         },
         "178220f5-cf8d-41f7-8503-125f2159fa55": {
