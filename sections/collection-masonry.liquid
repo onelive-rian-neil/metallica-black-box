@@ -24,19 +24,15 @@
             {%- for product in collection.products -%}
               {% cycle '<div class="custom-grid__row">','','' %}
               {% cycle '','','','<div class="custom-grid__row-left-wrapper">','','' %}
-                <div class="grid__item custom-grid__item" style="background-image: url({{ product.featured_image | img_url: 'master' }})">
-                  {% if product.metafields.my_fields.collection_p_img_overwrite != blank %}
-                    {{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
-                  {% else %}
-                    {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
-                  {% endif %}
+                <div class="grid__item custom-grid__item" style="{% if product.metafields.my_fields.collection_p_img_overwrite != blank %}background-image: url({{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' }}){% else %}background-image: url({{ product.featured_image | img_url: 'master' }}){% endif %}">
+                  {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img_mobile' }}
                   <a href="{{ product.url }}" class="grid__link">
                     <div class="carousel-gallery--text carousel-gallery-product--text">
                       {{ product.title }}
                     </div>
                   </a>
                 </div>
-              {% cycle '','','','','</div>','','' %} 
+              {% cycle '','','','','</div>','' %} 
               {% cycle '','','</div>' %} 
             {%- endfor -%}
           {% else %}
