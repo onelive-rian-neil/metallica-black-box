@@ -23,7 +23,7 @@
         <div class="slider-blocks-wrapper" id="Slider-{{ section.id }}" role="list" data-speed="{{section.settings.slider_speed}}000" data-fade="{{sliderAnimation}}" data-adaptiveHeight="{{section.settings.slider_adaptiveHeight}}">
           {%- for product in collection.products limit: section.settings.collection_pick_limit -%}
             <div class="carousel-gallery--item">
-              <a href="{{ product.url }}" class="carousel-gallery--link">
+              <a href="{{ product.url | within: collection }}" class="carousel-gallery--link">
                 {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'carousel-gallery--image' }}
                 <div class="carousel-gallery--hover_wrapper">
                   <div class="carousel-gallery--title">{{ product.title }}</div>
