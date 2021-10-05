@@ -66,22 +66,6 @@
             "link": "shopify:\/\/collections\/where-i-lay-my-head-is-home"
           }
         },
-        "a0c766f7-d218-4d71-9cf8-ab20b688464f": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/fuelandfire.jpg",
-            "title": "FUEL & FIRE",
-            "link": "shopify:\/\/collections\/fuel-fire"
-          }
-        },
-        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
-          "type": "image_picker",
-          "settings": {
-            "image": "shopify:\/\/shop_images\/snakepit.jpg",
-            "title": "SNAKE PIT",
-            "link": "shopify:\/\/collections\/the-snake-pit"
-          }
-        },
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953": {
           "type": "image_picker",
           "settings": {
@@ -96,14 +80,30 @@
             "collection_pick": "through-the-never",
             "collection_pick_override_image": "shopify:\/\/shop_images\/throughthenever.jpg"
           }
+        },
+        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/snakepit.jpg",
+            "title": "SNAKE PIT",
+            "link": "shopify:\/\/collections\/the-snake-pit"
+          }
+        },
+        "a0c766f7-d218-4d71-9cf8-ab20b688464f": {
+          "type": "image_picker",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/fuelandfire.jpg",
+            "title": "FUEL & FIRE",
+            "link": "shopify:\/\/collections\/fuel-fire"
+          }
         }
       },
       "block_order": [
         "178220f5-cf8d-41f7-8503-125f2159fa55",
-        "a0c766f7-d218-4d71-9cf8-ab20b688464f",
-        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e",
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953",
-        "4f82678f-2651-4715-a4be-f4846422a7fc"
+        "4f82678f-2651-4715-a4be-f4846422a7fc",
+        "3c5cb24b-22be-4296-9ecb-3c5e533ced9e",
+        "a0c766f7-d218-4d71-9cf8-ab20b688464f"
       ],
       "settings": {
         "page_width": true,
