@@ -61,7 +61,7 @@
         "178220f5-cf8d-41f7-8503-125f2159fa55": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/whereilaymyhead.jpg",
+            "image": "shopify:\/\/shop_images\/whereilay_eb2035a2-8756-4d0f-bec1-635414bd761a.jpg",
             "title": "WHERE I LAY MY HEAD IS HOME",
             "link": "shopify:\/\/collections\/where-i-lay-my-head-is-home"
           }
@@ -69,7 +69,7 @@
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/riffemall_ae5319c7-520f-4a37-b0c6-96eb2b95ada5.jpg",
+            "image": "shopify:\/\/shop_images\/riffemall_03e9fbdc-b292-44f3-a374-4b4281a6c717.jpg",
             "title": "RIFF EM ALL",
             "link": "shopify:\/\/collections\/riffem-all"
           }
@@ -78,13 +78,13 @@
           "type": "collection_picker",
           "settings": {
             "collection_pick": "through-the-never",
-            "collection_pick_override_image": "shopify:\/\/shop_images\/throughthenever_3cb0b920-3143-41a5-ab1e-c7eae024e55b.jpg"
+            "collection_pick_override_image": "shopify:\/\/shop_images\/throughthenever_a5b17526-77d3-447c-8baa-c4091298868b.jpg"
           }
         },
         "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/snakepit.jpg",
+            "image": "shopify:\/\/shop_images\/snakepit_098c67a4-a6c2-41d0-9488-f933c6d93ff9.jpg",
             "title": "SNAKE PIT",
             "link": "shopify:\/\/collections\/the-snake-pit"
           }
@@ -92,7 +92,7 @@
         "a0c766f7-d218-4d71-9cf8-ab20b688464f": {
           "type": "image_picker",
           "settings": {
-            "image": "shopify:\/\/shop_images\/fuelandfire.jpg",
+            "image": "shopify:\/\/shop_images\/fuelfire.jpg",
             "title": "FUEL & FIRE",
             "link": "shopify:\/\/collections\/fuel-fire"
           }
