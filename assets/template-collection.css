@@ -789,7 +789,8 @@ input.mobile-facets__checkbox {
 .mobile-facets__sort .select__select {
   box-shadow: none;
 }
-.template-collection .card-information__text.h5 {
+.template-collection .card-information__text.h5,
+.template-search .card-information__text.h5 {
   padding: 5px 0 10px;
   font-size: 20px;
 }
