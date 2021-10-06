@@ -92,7 +92,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
-        "collection_pick": "through-the-never",
+        "collection_pick": "",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
