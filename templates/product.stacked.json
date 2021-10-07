@@ -3,6 +3,11 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "da09039d-27d1-4bfb-8923-7c1f08839bf7": {
+          "type": "breadcrumb",
+          "settings": {
+          }
+        },
         "title": {
           "type": "title",
           "settings": {
@@ -39,6 +44,7 @@
         }
       },
       "block_order": [
+        "da09039d-27d1-4bfb-8923-7c1f08839bf7",
         "title",
         "description",
         "price",
@@ -78,7 +84,7 @@
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
-        "site-background-text-color": "#fff"
+        "site-background-text-color": "#ffffff"
       }
     }
   },
