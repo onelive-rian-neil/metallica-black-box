@@ -3,8 +3,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "b8d1f5a4-9e6c-4dfa-bfbc-02cd3a28d165": {
+          "type": "breadcrumb",
+          "settings": {
+          }
+        },
         "vendor": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.vendor }}",
             "text_style": "uppercase"
@@ -49,12 +55,14 @@
           "type": "buy_buttons",
           "disabled": true,
           "settings": {
-            "show_dynamic_checkout": true
+            "show_dynamic_checkout": true,
+            "price_inside": true
           }
         },
         "description": {
           "type": "description",
           "settings": {
+            "description_outside": true
           }
         },
         "share": {
@@ -64,6 +72,7 @@
         }
       },
       "block_order": [
+        "b8d1f5a4-9e6c-4dfa-bfbc-02cd3a28d165",
         "vendor",
         "title",
         "subtitle",
@@ -78,7 +87,8 @@
       "settings": {
         "enable_sticky_info": true,
         "enable_video_looping": false,
-        "enable_addtocart_scroller": true
+        "enable_addtocart_scroller": true,
+        "product_page_layout": "1__2"
       }
     },
     "product-recommendations": {
@@ -104,7 +114,8 @@
         "page-background": "shopify:\/\/shop_images\/fashionable-man-by-textured-wall.jpg",
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll"
+        "site-background-image-attachment": "scroll",
+        "site-background-text-color": "transparent"
       }
     }
   },
