@@ -3,6 +3,11 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "cc9ac9e0-8813-4c67-a92c-597b33894cdd": {
+          "type": "breadcrumb",
+          "settings": {
+          }
+        },
         "vendor": {
           "type": "text",
           "disabled": true,
@@ -61,6 +66,7 @@
         }
       },
       "block_order": [
+        "cc9ac9e0-8813-4c67-a92c-597b33894cdd",
         "vendor",
         "title",
         "description",
