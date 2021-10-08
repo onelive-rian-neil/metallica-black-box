@@ -136,6 +136,27 @@
         "site-background-image-repeat": "repeat",
         "site-background-image-attachment": "scroll"
       }
+    },
+    "1633697668bb246eea": {
+      "type": "olm-carousel-collection",
+      "settings": {
+        "page_width": false,
+        "collection_pick": "",
+        "collection_pick_limit": 6,
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": true,
+        "title": "Photo Collection",
+        "text_color_overwrite": "",
+        "image_title_width": "",
+        "view_all": true,
+        "override_url": "",
+        "enable_bg_image": false,
+        "site-background-image-position": "left top",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
+      }
     }
   },
   "order": [
@@ -144,6 +165,7 @@
     "1631219449ebf9b3e2",
     "16311175450f61b827",
     "16318103445a64017d",
-    "16318071439345de0b"
+    "16318071439345de0b",
+    "1633697668bb246eea"
   ]
 }
