@@ -84,7 +84,7 @@
           "background_color": "#000000",
           "text_color": "#ffffff",
           "homepage_transparents": true,
-          "header_position": "sticky"
+          "header_position": "fixed"
         }
       },
       "footer": {
