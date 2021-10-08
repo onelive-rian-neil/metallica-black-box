@@ -84,7 +84,7 @@
           "background_color": "#000000",
           "text_color": "#ffffff",
           "homepage_transparents": true,
-          "header_position": "sticky"
+          "header_position": "fixed"
         }
       },
       "footer": {
@@ -94,7 +94,7 @@
             "type": "link_list",
             "settings": {
               "heading": "",
-              "menu": "main-menu"
+              "menu": "footer-left-menu"
             }
           },
           "f100aadb-aa81-4727-8735-f1c096a44b34": {
@@ -122,7 +122,7 @@
         "settings": {
           "color_scheme": "background-1",
           "newsletter_enable": true,
-          "newsletter_heading": "Sign up to our emails",
+          "newsletter_heading": "join the blackbox mailing list",
           "show_social": false,
           "enable_country_selector": true,
           "enable_language_selector": true,

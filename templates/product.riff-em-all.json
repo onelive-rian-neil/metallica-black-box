@@ -37,7 +37,7 @@
           "type": "variant_picker",
           "disabled": true,
           "settings": {
-            "picker_type": "button"
+            "picker_type": "dropdown"
           }
         },
         "quantity_selector": {
@@ -102,7 +102,7 @@
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
-        "site-background-text-color": "#000000"
+        "site-background-text-color": "#333333"
       }
     },
     "16318889419f7d48eb": {

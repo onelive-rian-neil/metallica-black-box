@@ -7,12 +7,16 @@
     },
     "162878861534ee3ebe": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "VOD RENTAL",
         "collection": "accessories",
         "products_to_show": 4,
         "show_view_all": true,
         "swipe_on_mobile": false,
+        "background_parallax": false,
+        "add_section_padding": false,
+        "color_overwrite": "",
         "image_ratio": "square",
         "show_secondary_image": false,
         "add_image_padding": false,
@@ -21,12 +25,16 @@
     },
     "162878866025e5cea1": {
       "type": "featured-collection",
+      "disabled": true,
       "settings": {
         "title": "Merch From other shows",
         "collection": "frontpage",
         "products_to_show": 4,
         "show_view_all": true,
         "swipe_on_mobile": false,
+        "background_parallax": false,
+        "add_section_padding": false,
+        "color_overwrite": "",
         "image_ratio": "square",
         "show_secondary_image": false,
         "add_image_padding": false,
@@ -35,6 +43,7 @@
     },
     "1628788638c9727d88": {
       "type": "image-banner",
+      "disabled": true,
       "blocks": {
         "1628788638c9727d88-0": {
           "type": "heading",

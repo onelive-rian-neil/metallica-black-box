@@ -272,6 +272,9 @@
             <div class="{% if block.settings.price_inside %}price-inside-btn {% endif %}product-add-to-cart-btns-wrapper" {{ block.shopify_attributes }}>
               <product-form class="product-form">
                 {%- form 'product', product, id: product_form_id, class: 'form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+
+                <div id="infiniteoptions-container"></div>
+
                   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
                   <div class="product-form__buttons">
                     <button
@@ -562,19 +565,23 @@
   <script>
     var onlyOnceChecker = true;
     $(window).on('scroll',function(){
+      var windowTop    = $(window).scrollTop();
 
+      var $home2 = $('#shopify-section-{{ section.id }} div.product');
+      var divBottom2     = $home2.offset().top + $home2.height(); 
 
-        var $home = $('#ProductInfo-{{ section.id }}');
-        var divBottom     = $home.offset().top + $home.height(); 
-        var windowTop    = $(window).scrollTop();
-
-      if ((divBottom - 200) >= windowTop) {
+      console.log(divBottom2 +" >= "+ windowTop);
+      if ((divBottom2 - 400) >= windowTop) {
           $('.product-arrows-wrapper').show();
       } else {
           $('.product-arrows-wrapper').hide();
       }
 
       {% if section.settings.enable_addtocart_scroller %}
+
+        var $home = $('#ProductInfo-{{ section.id }}');
+        var divBottom     = $home.offset().top + $home.height(); 
+
         if(onlyOnceChecker && $('.header-wrapper').hasClass('header-wrapper-fixed')){
           var heightCalcfixed = $('.header-wrapper').outerHeight() - 1;
           $('.addtocart-scroll-wrapper').css('top',heightCalcfixed+'px');
@@ -595,8 +602,8 @@
         } else {
             $('.addtocart-scroll-wrapper').slideDown();
         }
-      });
     {% endif %}
+    });
 
   </script>
 
@@ -808,7 +815,7 @@
   }
   .product-arrows-wrapper #product-arrows-left a:hover, 
   .product-arrows-wrapper #product-arrows-right a:hover{
-    color: #000000;
+    color: #555555;
   }
   .product-arrows-wrapper #product-arrows-left.disabled a,
   .product-arrows-wrapper #product-arrows-right.disabled a{
@@ -824,7 +831,7 @@
   }
   .sup-title-wrapper {
     text-transform: uppercase;
-    font-size: 20px;
+    font-size: 1em;
   }
   .sup-title-wrapper .sup-title-collection a{
     text-decoration: none;
@@ -833,16 +840,20 @@
   body main#MainContent div.product__info-container div.sup-title-wrapper span.sup-title-collection a:hover{
     color: #1099a4!important;
   }
-  .sup-title-wrapper .sup-title-collection:after {
-    content: '/';
-    color: inherit;
-    margin: 0 5px;
-  }
-  .sup-title-wrapper .sup-title-type:after {
-    content: '/';
-    color: inherit;
-    margin: 0 5px;
-  }
+  {% if collection %}
+    .sup-title-wrapper .sup-title-collection:after {
+      content: '/';
+      color: inherit;
+      margin: 0 5px;
+    }
+  {% endif %}
+  {% unless product.type == blank %}
+    .sup-title-wrapper .sup-title-type:after {
+      content: '/';
+      color: inherit;
+      margin: 0 5px;
+    }
+  {% endunless %}
   .sup-title-wrapper .sup-title-count {
     color: #c0c0c0;
   }
@@ -869,7 +880,7 @@
     text-transform: uppercase;
     padding-bottom: 0;
     margin-bottom: 0;
-    font-size: 50px;
+    font-size: 2em;
     margin-top: 0;
     padding-top: 0;
   }
@@ -919,9 +930,8 @@
     font-weight: bold;
   }
   .product__description_below{
-    width: 100%;
     font-size: 19px;
-    margin: 40px 0 5px;
+    margin: 40px auto 5px;
     background-image: linear-gradient(#000000, #000000), linear-gradient(#000000, #000000), linear-gradient(#000000, #000000), linear-gradient(#000000, #000000);
     background-repeat: no-repeat;
     background-size: 20px 3px;
@@ -934,6 +944,16 @@
   .product__description{
     font-size: 17px;
     font-weight: 600;
+  }
+  .product__description h4 {
+    color: inherit;
+    font-size: inherit;
+  }
+  #infiniteoptions-container input {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    margin: 0 0 25px;
   }
 </style>
 

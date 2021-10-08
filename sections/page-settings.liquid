@@ -11,7 +11,17 @@ body {
     color: {{ section.settings.site-background-text-color }}!important;
     border-color: {{ section.settings.site-background-text-color }}!important;
   }
+  .product__info-container,
+  .product__info-container .product__title, 
+  .sup-title-wrapper a,
+  .sup-title-count,
+  .product-price-wrapper .price--on-sale .price-item--regular,
+  .product-price-wrapper .price-item .price-item--sale,
+  .product-price-wrapper .price {
+    color: {{ section.settings.site-background-text-color }}!important;
+  }
 {% endif %}
+
 </style>
 
 {% schema %}
