@@ -1,308 +1,407 @@
-{{ 'normalize.css' | asset_url | stylesheet_tag }}
-{{ 'collection-gallery.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+{%- paginate collection.products by 48 -%}
+  {{ 'normalize.css' | asset_url | stylesheet_tag }}
+  {{ 'collection-gallery.css' | asset_url | stylesheet_tag }}
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 
-<div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %}">
-  <div id="Banner-{{ section.id }}" class="banner">
-    <div class="collection-header-wrapper{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}">
-      {% if section.settings.image_title != blank %}
-        <h2 class="title">
-          {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
-        </h2>
-      {% else %}
-        <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
-      {% endif %}
-    </div>
-    <div class="collection-gallery-body">
-      {{ section.settings.body }}
-    </div>
+  <div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %} infinite-product-scroll-wrap">
+    <div id="Banner-{{ section.id }}" class="banner">
+      <div class="collection-header-wrapper{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}">
+        {% if section.settings.image_title != blank %}
+          <h2 class="title">
+            {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
+          </h2>
+        {% else %}
+          <h2 class="title{% if section.settings.title == blank %} title--no-heading{% endif %}">{{ section.settings.title | escape }}</h2>
+        {% endif %}
+      </div>
+      <div class="collection-gallery-body">
+        {{ section.settings.body }}
+      </div>
 
-		<main class="collection-gallery-main" data-grid_effect="{{ section.settings.grid_effect }}">
-			<div class="content content--center">
-				<div class="grid grid--type-{{ section.settings.grid_layout }} grid--hidden">
-          {% if section.settings.grid_layout == 'custom' %}
-            {%- for product in collection.products -%}
-              {% cycle '<div class="custom-grid__row">','','' %}
-              {% cycle '','','','<div class="custom-grid__row-left-wrapper">','','' %}
-                <div class="grid__item custom-grid__item" style="{% if product.metafields.my_fields.collection_p_img_overwrite != blank %}background-image: url({{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' }}){% else %}background-image: url({{ product.featured_image | img_url: 'master' }}){% endif %}">
-                  <a href="{{ product.url | within: collection }}" class="grid__link">
-                    {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img_mobile' }}
+      <main class="collection-gallery-main" data-grid_effect="{{ section.settings.grid_effect }}">
+        <div class="content content--center">
+          <div class="grid grid--type-{{ section.settings.grid_layout }} grid--hidden">
+            {% if section.settings.grid_layout == 'custom' %}
+              {%- for product in collection.products -%}
+                {% cycle '<div class="custom-grid__row" data-aos="fade-up">','','' %}
+                {% cycle '','','','<div class="custom-grid__row-left-wrapper">','','' %}
+                  <div class="grid__item custom-grid__item" style="{% if product.metafields.my_fields.collection_p_img_overwrite != blank %}background-image: url({{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' }}){% else %}background-image: url({{ product.featured_image | img_url: 'master' }}){% endif %}">
+                    <a href="{{ product.url | within: collection }}" class="grid__link">
+                      {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img_mobile' }}
                     </a> 
+                    <a href="{{ product.url | within: collection }}" class="grid__link">
+                      <div class="carousel-gallery--text carousel-gallery-product--text">
+                        {{ product.title }}
+                      </div>
+                    </a>
+                  </div>
+                {% cycle '','','','','</div>','' %} 
+                {% cycle '','','</div>' %} 
+              {%- endfor -%}
+            {% else %}
+              <div class="grid__sizer"></div>
+              {%- for product in collection.products -%}
+                <div class="grid__item">
                   <a href="{{ product.url | within: collection }}" class="grid__link">
+                    {% if product.metafields.my_fields.collection_p_img_overwrite != blank %}
+                      {{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
+                    {% else %}
+                      {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
+                    {% endif %}
                     <div class="carousel-gallery--text carousel-gallery-product--text">
                       {{ product.title }}
+                      {% comment %} {% render 'price', product: block.settings.product_pick, price_class: '' %} {% endcomment %}
                     </div>
                   </a>
                 </div>
-              {% cycle '','','','','</div>','' %} 
-              {% cycle '','','</div>' %} 
-            {%- endfor -%}
-          {% else %}
-            <div class="grid__sizer"></div>
-            {%- for product in collection.products -%}
-              <div class="grid__item">
-                <a href="{{ product.url | within: collection }}" class="grid__link">
-                  {% if product.metafields.my_fields.collection_p_img_overwrite != blank %}
-                    {{ product.metafields.my_fields.collection_p_img_overwrite | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
-                  {% else %}
-                    {{ product.featured_image | img_url: 'master' | img_tag: product.featured_image.alt, 'grid__img' }}
-                  {% endif %}
-                  <div class="carousel-gallery--text carousel-gallery-product--text">
-                    {{ product.title }}
-                    {% comment %} {% render 'price', product: block.settings.product_pick, price_class: '' %} {% endcomment %}
-                  </div>
-                </a>
-              </div>
-            {%- endfor -%}
-          {% endif %}
-				</div>
-			</div>
-		</main>
+              {%- endfor -%}
+            {% endif %}
+          </div>
+        </div>
+      </main>
 
 
-  </div>
-</div> 
+    </div>
+  </div> 
 
-<style>
-.olm-collection-gallery{width: 100%;}
-{% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
-  #Banner-{{ section.id }}{
-    min-height: unset;
-    background-position: {{ section.settings.site-background-image-position }};
-    background-size: {{ section.settings.site-background-image-size }};
-    background-repeat: {{ section.settings.site-background-image-repeat }};
-    background-attachment: {{ section.settings.site-background-image-attachment }};
-    flex-direction: unset;
-    width: 100%;
-    padding: 50px;
-  }
-  {% if section.settings.margin_top != blank %}
-    #Banner-{{ section.id }} .banner-wrapper-carousel {
-      margin-top:{{ section.settings.margin_top }}!important;
-    }
-  {% endif %}
-  {% if section.settings.margin_bottom != blank %}
-    #Banner-{{ section.id }} .banner-wrapper-carousel {
-      margin-bottom:{{ section.settings.margin_bottom }}!important;
-    }
-  {% endif %}
-  #Banner-{{ section.id }} .collection-header-wrapper{
-    clear: both;
-    text-align: center;
-  }
-  #Banner-{{ section.id }} .collection-header-wrapper h2.title{
-    padding-bottom: 0;
-  }
-  #Banner-{{ section.id }} .collection-gallery-body{
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  #Banner-{{ section.id }} .price{
-    text-align: center;
-    line-height: normal; 
-    display: block;
-    margin: 10px 0 0;
-  }
-  #Banner-{{ section.id }} .price--on-sale .price__sale{
-    display: block;
-  }
-  #Banner-{{ section.id }} .price--on-sale .price__sale > *{
-    display: inline-block;
-  }
-  #Banner-{{ section.id }} .price dd {
-    margin: 0;
-  }
-
-  #Banner-{{ section.id }} .carousel-gallery--text {
-    display: none;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
-    color: white;
-    text-align: center;
-    width: 100%;
-  }
-  #Banner-{{ section.id }} .grid__item:hover a.grid__link:before{
-    content: "";
-    background-color: #000000;
-    opacity: 0.6;
-    width: 100%;
-    height: 100%;
-    display: block;
-    position: absolute;
-  }
-  #Banner-{{ section.id }} .grid__item:hover .carousel-gallery--text{
-    display: block;
-  }
-  
-  
-  
-  {% if section.settings.grid_spacing %}
-  @media screen and (min-width: 70em){
-    main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
-      margin-left: 2.5px!important;
-      margin-right: 2.5px!important;
-      margin-bottom: 0px!important;
-      padding: 0;
-    }
-    main.collection-gallery-main .grid .grid__item:nth-child(n+5){
-      margin-top: -27.5px;
-    }
-  }
-  {% endif %}
-  
-  {% if section.settings.grid_layout == 'a' %}
-  @media screen and (min-width: 70em){
-    main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
-      width: calc((100% / 3) - 20px);
-      margin: 0 10px;
-    }
-  }
-  {% endif %}
-  {% if section.settings.grid_layout == 'c' %}
-  @media screen and (min-width: 70em){
-    main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
-      margin: 0 5px;
-    }
-  }
-  {% endif %}
-
-
-  {% if section.settings.grid_layout == 'custom' %}
-    main.collection-gallery-main .grid.grid--type-custom{
-      height: auto!important;
-    }
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row{
-
-    }
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__item{
-      float: left;
-      max-width: unset;
-      margin: 0;
-      padding: 0;
-      width: 30%;
-      height: 300px;
-      position: relative!important;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
-    }
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row .custom-grid__item .grid__link{
-      transform: unset!important;
-    }
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__row-left-wrapper{
-      float: left;
-      max-width: unset;
-      margin: 0;
-      padding: 0;
-      width: 30%;
-      height: 600px;
-    }
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__row-left-wrapper > .custom-grid__item{
-      float: left;
-      max-width: unset;
-      margin: 0;
-      padding: 0;
+  <style>
+    .olm-collection-gallery{width: 100%;}
+  {% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
+    #Banner-{{ section.id }}{
+      min-height: unset;
+      background-position: {{ section.settings.site-background-image-position }};
+      background-size: {{ section.settings.site-background-image-size }};
+      background-repeat: {{ section.settings.site-background-image-repeat }};
+      background-attachment: {{ section.settings.site-background-image-attachment }};
+      flex-direction: unset;
       width: 100%;
-      height: 300px;
-      position: relative!important;
-      background-position: center;
-      background-size: cover;
-      background-repeat: no-repeat;
+      padding: 50px;
     }
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row:nth-child(odd) > .custom-grid__item:first-child,
-    main.collection-gallery-main .grid.grid--type-custom .custom-grid__row:nth-child(even) > .custom-grid__item:last-child{
-      width: 70%;
-      height: 600px;
+    {% if section.settings.margin_top != blank %}
+      #Banner-{{ section.id }} .banner-wrapper-carousel {
+        margin-top:{{ section.settings.margin_top }}!important;
+      }
+    {% endif %}
+    {% if section.settings.margin_bottom != blank %}
+      #Banner-{{ section.id }} .banner-wrapper-carousel {
+        margin-bottom:{{ section.settings.margin_bottom }}!important;
+      }
+    {% endif %}
+    #Banner-{{ section.id }} .collection-header-wrapper{
+      clear: both;
+      text-align: center;
     }
-    .grid__img_mobile{
+    #Banner-{{ section.id }} .collection-header-wrapper h2.title{
+      padding-bottom: 0;
+    }
+    #Banner-{{ section.id }} .collection-gallery-body{
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    #Banner-{{ section.id }} .price{
+      text-align: center;
+      line-height: normal; 
+      display: block;
+      margin: 10px 0 0;
+    }
+    #Banner-{{ section.id }} .price--on-sale .price__sale{
+      display: block;
+    }
+    #Banner-{{ section.id }} .price--on-sale .price__sale > *{
+      display: inline-block;
+    }
+    #Banner-{{ section.id }} .price dd {
+      margin: 0;
+    }
+
+    #Banner-{{ section.id }} .carousel-gallery--text {
       display: none;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      color: white;
+      text-align: center;
+      width: 100%;
     }
-    @media only screen and (max-width: 768px) {
-      .grid__img_mobile{
-        display: block;
-        width: 100%;
+    #Banner-{{ section.id }} .grid__item:hover a.grid__link:before{
+      content: "";
+      background-color: #000000;
+      opacity: 0.6;
+      width: 100%;
+      height: 100%;
+      display: block;
+      position: absolute;
+    }
+    #Banner-{{ section.id }} .grid__item:hover .carousel-gallery--text{
+      display: block;
+    }
+    
+    
+    
+    {% if section.settings.grid_spacing %}
+    @media screen and (min-width: 70em){
+      main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
+        margin-left: 2.5px!important;
+        margin-right: 2.5px!important;
+        margin-bottom: 0px!important;
+        padding: 0;
+      }
+      main.collection-gallery-main .grid .grid__item:nth-child(n+5){
+        margin-top: -27.5px;
+      }
+    }
+    {% endif %}
+    
+    {% if section.settings.grid_layout == 'a' %}
+    @media screen and (min-width: 70em){
+      main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
+        width: calc((100% / 3) - 20px);
+        margin: 0 10px;
+      }
+    }
+    {% endif %}
+    {% if section.settings.grid_layout == 'c' %}
+    @media screen and (min-width: 70em){
+      main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer {
+        margin: 0 5px;
+      }
+    }
+    {% endif %}
+
+
+    {% if section.settings.grid_layout == 'custom' %}
+      main.collection-gallery-main .grid.grid--type-custom{
+        height: auto!important;
+      }
+      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row{
+
+      }
+      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__item{
+        float: left;
+        max-width: unset;
+        margin: 0;
+        padding: 0;
+        width: 30%;
+        height: 300px;
+        position: relative!important;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row .custom-grid__item .grid__link{
+        transform: unset!important;
       }
       main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__row-left-wrapper{
-        width: unset!important;
-        height: unset!important;
+        float: left;
+        max-width: unset;
+        margin: 0;
+        padding: 0;
+        width: 30%;
+        height: 600px;
       }
-      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row .custom-grid__item{
-        width: 100%!important;
-        height: unset!important;
-        margin: 0px 0 40px!important;
-        background: none!important;
+      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__row-left-wrapper > .custom-grid__item{
+        float: left;
+        max-width: unset;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 300px;
+        position: relative!important;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
       }
-    }
-  {% endif %}
+      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row:nth-child(odd) > .custom-grid__item:first-child,
+      main.collection-gallery-main .grid.grid--type-custom .custom-grid__row:nth-child(even) > .custom-grid__item:last-child{
+        width: 70%;
+        height: 600px;
+      }
+      .grid__img_mobile{
+        display: none;
+      }
+      @media only screen and (max-width: 768px) {
+        .grid__img_mobile{
+          display: block;
+          width: 100%;
+        }
+        main.collection-gallery-main .grid.grid--type-custom .custom-grid__row > .custom-grid__row-left-wrapper{
+          width: unset!important;
+          height: unset!important;
+        }
+        main.collection-gallery-main .grid.grid--type-custom .custom-grid__row .custom-grid__item{
+          width: 100%!important;
+          height: unset!important;
+          margin: 0px 0 40px!important;
+          background: none!important;
+        }
+      }
+    {% endif %}
 
 
-  @media only screen and (max-width: 768px) {
-    #Banner-{{ section.id }}{
-      padding: 25px;
+    @media only screen and (max-width: 768px) {
+      #Banner-{{ section.id }}{
+        padding: 25px;
+      }
+      #Banner-{{ section.id }} .grid__item a.grid__link{
+        text-decoration: none;
+        padding-bottom: 10px;
+      }
+      #Banner-{{ section.id }} .carousel-gallery--text{
+        display: block;
+        position: unset;
+        text-align: center;
+        top: 0;
+        left: 0;
+        transform: translate(0%,0%);
+        line-height: 20px;
+        font-size: 18px;
+        margin: 10px auto;
+      }
     }
-    #Banner-{{ section.id }} .grid__item a.grid__link{
-      text-decoration: none;
-      padding-bottom: 10px;
+    @media only screen and (max-width: 501px) {
+      #Banner-{{ section.id }}{
+        padding: 10px;
+      }
+      main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer{
+        width: 100%;
+        max-width: 100%;
+        margin: 0 0 20px;
+        padding: 0;
+      }
     }
-    #Banner-{{ section.id }} .carousel-gallery--text{
-      display: block;
-      position: unset;
+
+    .pagination-wrapper{
+      display: none;
+    }
+    .loading-gfx{
+      display: none;
+      margin: 0 auto;
       text-align: center;
-      top: 0;
-      left: 0;
-      transform: translate(0%,0%);
-      line-height: 20px;
-      font-size: 18px;
-      margin: 10px auto;
-    }
-  }
-  @media only screen and (max-width: 501px) {
-    #Banner-{{ section.id }}{
-      padding: 10px;
-    }
-    main.collection-gallery-main .grid .grid__item, main.collection-gallery-main .grid .grid__sizer{
       width: 100%;
-      max-width: 100%;
-      margin: 0 0 20px;
-      padding: 0;
+      clear: both;
     }
-  }
+    .loader {
+      display: block!important;
+      border: 16px solid #f3f3f3; /* Light grey */
+      border-top: 16px solid #3498db; /* Blue */
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      margin: 20px auto 40px;
+      animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    {% if section.settings.grid_color_effect %}
+      img.grid__img{
+        filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */    
+        -webkit-filter: grayscale(100%);
+        -moz-filter: grayscale(100%);
+        -ms-filter: grayscale(100%);
+        filter: grayscale(100%);
+        filter: gray; /* IE 6-9 */ 
+      }
+      a.grid__link:hover img.grid__img{
+        -webkit-filter: none;
+        -moz-filter: none;
+        -ms-filter: none;
+        filter: none;
+      }
+    {% endif %}
+  </style>
+    
+  <script src="{{ 'imagesloaded.pkgd.min.js' | asset_url }}"></script>
+  <script src="{{ 'masonry.pkgd.min.js' | asset_url }}"></script>
+  <script src="{{ 'anime.min.js' | asset_url }}"></script>
+  <script src="{{ 'main.js' | asset_url }}"></script>
+  <script>
+    function process_init_event_coll_gall(evt){
+      $.ajax({
+        type: "GET",
+        url: "{{ 'main.js' | asset_url }}",
+        dataType: "script",
+        async: false
+      });
+    }$(document).on('shopify:section:load', process_init_event_coll_gall )
+  </script>
+
+  {%- if paginate.pages > 1 -%}
+    {% render 'pagination', paginate: paginate, anchor: '', class: '' %}
+  {%- endif -%}
+
+{%- endpaginate -%}
+
+<div class="loading-gfx"><div class="loader"></div></div>
+
+{% if section.settings.grid_layout == 'custom' %}
+  <script type="text/javascript">
+    var timeOutVar = 0;
+    var pageCount = 2;
+    var pageTotal = parseInt($('div.pagination-wrapper ul.pagination__list > li:nth-last-child(2) > a').text());
+
+      if(pageCount <= pageTotal){
+
+        $(window).scroll(function () { 
+          if ($(window).scrollTop() >= $(document).height() - $(window).height() - 850 && timeOutVar == 0 && pageCount <= pageTotal) {
+              timeOutVar = 1;
+              $('.loading-gfx').show();
+
+              var $page = "{{collection.url}}?page="+pageCount;
+              $.get( $page, function( content ) {
+                var $content = $( content ).find('.collection-gallery-main .grid .custom-grid__row');
+                pageCount++;
+                $('.collection-gallery-main .grid').append( $content );
+                setTimeout(function(){ 
+                  $('.loading-gfx').hide();
+                  timeOutVar = 0;
+                }, 1000);
+              });
+          }
+        });
+      }
+
+  </script>
+{% else %}
+  <style>main.collection-gallery-main .grid__item:not([style^="position: absolute"]){display: none;}</style>
+  <script type="text/javascript">
+    var timeOutVar = 0;
+    var pageCount = 2;
+    var pageTotal = parseInt($('div.pagination-wrapper ul.pagination__list > li:nth-last-child(2) > a').text());
+
+      if(pageCount <= pageTotal){
+
+        $(window).scroll(function () { 
+          if ($(window).scrollTop() >= $(document).height() - $(window).height() - 850 && timeOutVar == 0 && pageCount <= pageTotal) {
+              timeOutVar = 1;
+              $('.loading-gfx').show();
+              var $grid = $('.collection-gallery-main .grid').masonry({
+                itemSelector: '.collection-gallery-main .grid .grid__item'
+              });
+
+              var $page = "{{collection.url}}?page="+pageCount;
+              $.get( $page, function( content ) {
+                var $content = $( content ).find('.collection-gallery-main .grid .grid__item');
+                pageCount++;
+                $grid.append( $content );
+                setTimeout(function(){ 
+                  $grid.masonry( 'appended', $content );
+                  $('.loading-gfx').hide();
+                  timeOutVar = 0;
+                }, 1000);
+              });
+          }
+        });
+      }
+
+  </script>
+{% endif %}
 
 
-  {% if section.settings.grid_color_effect %}
-  img.grid__img{
-    filter: url("data:image/svg+xml;utf8,<svg xmlns=\'http://www.w3.org/2000/svg\'><filter id=\'grayscale\'><feColorMatrix type=\'matrix\' values=\'0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0\'/></filter></svg>#grayscale"); /* Firefox 10+, Firefox on Android */    
-    -webkit-filter: grayscale(100%);
-    -moz-filter: grayscale(100%);
-    -ms-filter: grayscale(100%);
-    filter: grayscale(100%);
-    filter: gray; /* IE 6-9 */ 
-  }
-  a.grid__link:hover img.grid__img{
-    -webkit-filter: none;
-    -moz-filter: none;
-    -ms-filter: none;
-    filter: none;
-  }
-  {% endif %}
-</style>
-	
-<script src="{{ 'imagesloaded.pkgd.min.js' | asset_url }}"></script>
-<script src="{{ 'masonry.pkgd.min.js' | asset_url }}"></script>
-<script src="{{ 'anime.min.js' | asset_url }}"></script>
-<script src="{{ 'main.js' | asset_url }}"></script>
-<script>
-  function process_init_event_coll_gall(evt){
-    $.ajax({
-      type: "GET",
-      url: "{{ 'main.js' | asset_url }}",
-      dataType: "script",
-      async: false
-    });
-  }$(document).on('shopify:section:load', process_init_event_coll_gall )
-</script>
 
 {% schema %} 
 {
