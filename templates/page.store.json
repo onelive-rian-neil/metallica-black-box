@@ -147,7 +147,7 @@
         "slider_speed": 6,
         "slider_adaptiveHeight": true,
         "title": "Photo Collection",
-        "text_color_overwrite": "",
+        "text_color_overwrite": "#000000",
         "image_title_width": "",
         "view_all": true,
         "override_url": "",
