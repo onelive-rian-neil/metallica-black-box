@@ -145,7 +145,7 @@
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
-        "slider_adaptiveHeight": true,
+        "slider_adaptiveHeight": false,
         "title": "Photo Collection",
         "text_color_overwrite": "#333333",
         "image_title_width": "",
