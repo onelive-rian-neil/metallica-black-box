@@ -16,10 +16,11 @@
         "margin_bottom": "",
         "title": "WHERE I LAY MY HEAD IS HOME",
         "image_title_width": "",
-        "body": "<p>CITY TO CITY...COUNTRY TO COUNTRY…MULTIPLE CONTINENTS…MILLIONS OF MILES.<br\/>DAY IN DAY OUT FOR MONTHS AT A TIME. A REAL LOOK AT LIFE ON THE ROAD. <\/p>",
+        "body": "<p>LIFE ON THE ROAD <\/p>",
         "grid_layout": "custom",
         "grid_effect": "Kek",
-        "grid_color_effect": false
+        "grid_color_effect": false,
+        "grid_spacing": false
       }
     },
     "163172697793c8b0cb": {
