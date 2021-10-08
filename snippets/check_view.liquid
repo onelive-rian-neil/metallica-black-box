@@ -1,19 +1,39 @@
+{% assign attribute_keyword = 'admin' %}
+{% assign is_admin = false %}
+{% for tag in customer.tags %}
+    {% if tag contains attribute_keyword %}
+      {% if is_admin == false %}
+          {% assign is_admin = true %}
+      {% endif %}
+    {% endif %}
+{% endfor %}
+
+
 {% if content_for_header contains "previewBarInjector.init();" %}
-    <script>
-        console.log("Preview mode view");
-        document.addEventListener("contextmenu", function(e){
-            e.preventDefault();
-        }, false);        
-    </script>  
+    {% if is_admin == false %}
+        <script>
+            console.log("Preview mode view");
+            document.addEventListener("contextmenu", function(e){
+                e.preventDefault();
+            }, false);        
+        </script>  
+    {% endif %}
 {% elsif content_for_header contains "Shopify.designMode" %}
     <script>
         console.log("Customizer view");
     </script>
 {% else %}
-    <script>
-        console.log("Live view");
-        document.addEventListener("contextmenu", function(e){
-            e.preventDefault();
-        }, false);
-    </script>
+    {% if is_admin == false %}
+        <script>
+            console.log("Live view");
+            document.addEventListener("contextmenu", function(e){
+                e.preventDefault();
+            }, false);
+        </script>
+    {% endif %}
 {% endif %}
+
+
+
+
+
