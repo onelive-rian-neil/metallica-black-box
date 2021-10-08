@@ -1,0 +1,19 @@
+{% if content_for_header contains "previewBarInjector.init();" %}
+    <script>
+        console.log("Preview mode view");
+        document.addEventListener("contextmenu", function(e){
+            e.preventDefault();
+        }, false);        
+    </script>  
+{% elsif content_for_header contains "Shopify.designMode" %}
+    <script>
+        console.log("Customizer view");
+    </script>
+{% else %}
+    <script>
+        console.log("Live view");
+        document.addEventListener("contextmenu", function(e){
+            e.preventDefault();
+        }, false);
+    </script>
+{% endif %}
