@@ -51,13 +51,20 @@
             "title": "PRODUCT IMAGE",
             "link": "shopify:\/\/products\/test-product"
           }
+        },
+        "4908a169-1344-42de-80ef-b60aa9c5b31c": {
+          "type": "collection_picker",
+          "settings": {
+            "collection_pick": ""
+          }
         }
       },
       "block_order": [
         "1137db0a-bf22-4fe9-b7ff-57a2b2f6246f",
         "2c20bb63-225f-4a9a-8c3c-b6727ada94ce",
         "37f9da3d-9f80-466a-933c-6186cd6a2f53",
-        "f5ebd490-10f0-49bf-b0c5-5487563eb0ed"
+        "f5ebd490-10f0-49bf-b0c5-5487563eb0ed",
+        "4908a169-1344-42de-80ef-b60aa9c5b31c"
       ],
       "settings": {
         "page_width": false,
