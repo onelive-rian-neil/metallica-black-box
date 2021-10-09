@@ -155,7 +155,7 @@
       "settings": {
         "image": "shopify:\/\/shop_images\/theart_banner_1659x857_71eefe34-e7e5-4811-a233-29250ca8a339.jpg",
         "mobile_image": "shopify:\/\/shop_images\/TheArtBanner_1000x1000_52177152-8a65-4c13-8773-5912ecaa49da.jpg",
-        "banner_url": "shopify:\/\/collections\/merch",
+        "banner_url": "",
         "margin_top": "30px",
         "margin_bottom": "30px",
         "page_width": true
