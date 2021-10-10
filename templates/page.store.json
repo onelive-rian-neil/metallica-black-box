@@ -120,7 +120,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
-        "collection_pick": "handwritten-lyrics",
+        "collection_pick": "lyrics",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
