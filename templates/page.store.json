@@ -141,7 +141,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
-        "collection_pick": "",
+        "collection_pick": "photo-collection",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
@@ -183,7 +183,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
-        "collection_pick": "",
+        "collection_pick": "artwork",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
