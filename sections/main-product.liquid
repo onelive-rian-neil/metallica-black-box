@@ -21,10 +21,43 @@
 <section class="page-width">
 
   {% if collection %}
+            
+    {%- paginate collection.products by 1000 -%}
+
+      {% for c in collection.products %}
+        {% if c.title == product.title %}
+          {% assign count = forloop.index %}
+        {% endif %}
+      {% endfor %}
+
+    {%- endpaginate -%}
+
     <section class="product-arrows-wrapper">
-        <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>{{ '❮' | link_to: collection.previous_product }}</div>
-        <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>{{ '❯' | link_to: collection.next_product }}</div>
+      <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>
+        {{ '❮' | link_to: collection.previous_product }}
+      </div>
+      <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>
+        {{ '❯' | link_to: collection.next_product }}
+      </div>
     </section>
+
+    {% comment %} <section class="product-arrows-wrapper">
+      <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>
+        {% if count != blank and count < 49 %}
+          <a href="{{ collection.previous_product }}?page=2">❮</a>
+        {% else %}
+          {{ '❮' | link_to: collection.previous_product }}
+        {% endif %}
+      </div>
+      <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>
+        {% if count != blank and count < 50 %}
+          {{ '❯' | link_to: collection.next_product }}
+        {% else %}
+          <a href="{{ collection.next_product }}?page=2">❯</a>
+        {% endif %}
+      </div>
+    </section> {% endcomment %}
+    
   {% endif %}
 
   <div class="product grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
@@ -87,12 +120,6 @@
             </p>
           {%- when 'breadcrumb' -%}
           {% if collection %}
-
-            {% for c in collection.products %}
-              {% if c.title == product.title %}
-              {% assign count = forloop.index %}
-              {% endif %}
-            {% endfor %}
 
             <div class="sup-title-wrapper">
               <span class="sup-title-collection">{{ collection.title | link_to: collection.url }}</span><span class="sup-title-type">{{ product.type }}</span><span class="sup-title-count">{{ count }} OF {{ collection.all_products_count }}</span>
@@ -570,7 +597,7 @@
       var $home2 = $('#shopify-section-{{ section.id }} div.product');
       var divBottom2     = $home2.offset().top + $home2.height(); 
 
-      console.log(divBottom2 +" >= "+ windowTop);
+      //console.log(divBottom2 +" >= "+ windowTop);
       if ((divBottom2 - 400) >= windowTop) {
           $('.product-arrows-wrapper').show();
       } else {

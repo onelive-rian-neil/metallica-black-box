@@ -102,7 +102,7 @@
                   </div>
                 {%- when 'newsletter' -%}
                   {%- if block.settings.newsletter_heading != blank -%}
-                  <h2 class="footer-block__heading">{{ section.settings.newsletter_heading }}</h2>
+                  <h2 class="footer-block__heading">{{ block.settings.newsletter_heading }}</h2>
                   {%- endif -%}
 
 
@@ -118,8 +118,9 @@
                     </form>
                     {% elsif section.settings.newsletter-platform == "klaviyo" %}
                       <div class="newsletter-form-wrapper">
-                        <img class="newsletter-arrow" src="{{ 'newsletter-arrow.png' | asset_url }}" alt="">
+                        {% comment %} <img class="newsletter-arrow" src="{{ 'newsletter-arrow.png' | asset_url }}" alt=""> {% endcomment %}
                         <div class="klaviyo-form-{{ settings.klaviyo-snippet-div }}"></div>
+                        <style>.klaviyo-form-{{ settings.klaviyo-snippet-div }}{margin: 10px 0;}.klaviyo-form-{{ settings.klaviyo-snippet-div }} input[type="email"]{border: 0!important;}</style>
                       </div>
 
                     {% else %}
@@ -777,23 +778,6 @@
       ],
       "default": "background-1",
       "label": "t:sections.footer.settings.color_scheme.label"
-    },
-    {
-      "type": "header",
-      "content": "t:sections.footer.settings.header__1.content",
-      "info": "t:sections.footer.settings.header__1.info"
-    },
-    {
-      "type": "checkbox",
-      "id": "newsletter_enable",
-      "default": true,
-      "label": "t:sections.footer.settings.newsletter_enable.label"
-    },
-    {
-      "type": "text",
-      "id": "newsletter_heading",
-      "default": "Join The Black Box list",
-      "label": "t:sections.footer.settings.newsletter_heading.label"
     },
     {
       "type": "header",
