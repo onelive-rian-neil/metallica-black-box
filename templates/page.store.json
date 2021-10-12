@@ -99,7 +99,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
-        "collection_pick": "collection-5",
+        "collection_pick": "commemorative-plaques",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
