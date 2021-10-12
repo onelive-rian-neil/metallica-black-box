@@ -111,11 +111,11 @@
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/fashionable-man-by-textured-wall.jpg",
-        "site-background-image-size": "auto",
-        "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll",
-        "site-background-text-color": "transparent"
+        "page-background": "shopify:\/\/shop_images\/Edited_StoreBG_f176b0f7-5f5b-482f-b78d-53d43da4cca9.jpg",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
+        "site-background-text-color": "#000000"
       }
     }
   },
