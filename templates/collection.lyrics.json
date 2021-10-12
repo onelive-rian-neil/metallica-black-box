@@ -141,7 +141,7 @@
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
         "site-background-image-attachment": "scroll",
-        "site-background-text-color": "transparent"
+        "site-background-text-color": "#000000"
       }
     }
   },
