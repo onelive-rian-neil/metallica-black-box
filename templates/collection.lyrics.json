@@ -137,10 +137,11 @@
     "1631284216e9865d96": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/lyric_background.jpg",
+        "page-background": "shopify:\/\/shop_images\/Edited_StoreBG.jpg",
         "site-background-image-size": "auto",
         "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll"
+        "site-background-image-attachment": "scroll",
+        "site-background-text-color": "transparent"
       }
     }
   },
