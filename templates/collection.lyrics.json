@@ -138,9 +138,9 @@
       "type": "page-settings",
       "settings": {
         "page-background": "shopify:\/\/shop_images\/Edited_StoreBG.jpg",
-        "site-background-image-size": "auto",
-        "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll",
+        "site-background-image-size": "cover",
+        "site-background-image-repeat": "no-repeat",
+        "site-background-image-attachment": "fixed",
         "site-background-text-color": "#000000"
       }
     }
