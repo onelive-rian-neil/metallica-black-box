@@ -508,6 +508,10 @@
   </div>
 </footer>
 <style>
+  a.list-social__link-custom-add {
+    text-decoration: none;
+    font-size: 18px;
+  }
   .footer {
     background-size:cover;
     background-color:transparent;
@@ -565,6 +569,15 @@
   }
   .footer-block.column-2 {
       width: 50%;
+  }
+}
+@media screen and (max-width: 750px) {
+  .footer__content-top.page-width{
+    padding-bottom: 0;
+  }
+  .footer .list-social{
+    justify-content: center;
+    padding-bottom: 30px;
   }
 }
 {% if section.settings.newsletter-platform == "shopify" %}
