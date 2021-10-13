@@ -139,6 +139,7 @@
     },
     "1633697883bd0dc85c": {
       "type": "olm-carousel-collection",
+      "disabled": true,
       "settings": {
         "page_width": true,
         "collection_pick": "memorabilia",
