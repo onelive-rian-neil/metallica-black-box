@@ -17,29 +17,37 @@
         "af90708f-0466-4166-b0dd-1823dea55840": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/METbanner2.jpg",
-            "mobile-img": "shopify:\/\/shop_images\/Slider_02_1000x800_8c7b0c0e-b96c-477f-8d53-ce2060a7f8a8.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/Box_1920x1080_0a8b1d9d-3727-41c3-8524-121f98cc8088.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/box_mobile.jpg"
           }
         },
         "40041900-2e81-49df-a6e7-7592fd54f0a2": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/Slider_03_1920x1459_41621714-09ad-40ae-a6f7-edf50e801444.jpg",
-            "mobile-img": "shopify:\/\/shop_images\/Slider_03_1000x800_3ac7d616-90de-4cac-a78e-756deb102aad.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/thebird_1920x1080_a1b61108-f32f-42c2-834e-5ae4ecc3db66.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/thebird_mobile.jpg"
           }
         },
         "2be77a3d-05ca-4461-94f9-e483c02bc389": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/banner.jpg",
+            "desktop-img": "shopify:\/\/shop_images\/inbox_1920x1080_975e1ccc-173b-4b1a-8067-c2f92ae06064.jpg",
             "mobile-img": "shopify:\/\/shop_images\/Slider_01_1000x800_e01f6d17-8d50-4f2e-a71b-09a8488407b4.jpg"
+          }
+        },
+        "bc2f1c8b-183b-4aba-abf0-e5871c74193a": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/rooftop_1920x1080_fecf5be7-7caf-4ac5-8cb4-fa61b894b3c5.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/rooftop_mobile_9c7555e6-5db7-487f-b2e2-823ee11df177.jpg"
           }
         }
       },
       "block_order": [
         "af90708f-0466-4166-b0dd-1823dea55840",
         "40041900-2e81-49df-a6e7-7592fd54f0a2",
-        "2be77a3d-05ca-4461-94f9-e483c02bc389"
+        "2be77a3d-05ca-4461-94f9-e483c02bc389",
+        "bc2f1c8b-183b-4aba-abf0-e5871c74193a"
       ],
       "settings": {
       }
