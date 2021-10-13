@@ -192,7 +192,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
-        "collection_pick": "frontpage",
+        "collection_pick": "featured",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
