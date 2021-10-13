@@ -137,27 +137,6 @@
         "site-background-image-attachment": "scroll"
       }
     },
-    "16318103445a64017d": {
-      "type": "olm-carousel-collection",
-      "settings": {
-        "page_width": true,
-        "collection_pick": "commemorative-plaques",
-        "collection_pick_limit": 6,
-        "slider_animation": "slide",
-        "slider_speed": 6,
-        "slider_adaptiveHeight": false,
-        "title": "Commemorative Award Plaque",
-        "text_color_overwrite": "#333333",
-        "image_title_width": "",
-        "view_all": false,
-        "override_url": "",
-        "enable_bg_image": false,
-        "site-background-image-position": "left top",
-        "site-background-image-size": "auto",
-        "site-background-image-repeat": "repeat",
-        "site-background-image-attachment": "scroll"
-      }
-    },
     "1633697883bd0dc85c": {
       "type": "olm-carousel-collection",
       "settings": {
@@ -171,6 +150,27 @@
         "text_color_overwrite": "#333333",
         "image_title_width": "",
         "view_all": true,
+        "override_url": "",
+        "enable_bg_image": false,
+        "site-background-image-position": "left top",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
+      }
+    },
+    "16318103445a64017d": {
+      "type": "olm-carousel-collection",
+      "settings": {
+        "page_width": true,
+        "collection_pick": "commemorative-plaques",
+        "collection_pick_limit": 6,
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": false,
+        "title": "Commemorative Award Plaque",
+        "text_color_overwrite": "#333333",
+        "image_title_width": "",
+        "view_all": false,
         "override_url": "",
         "enable_bg_image": false,
         "site-background-image-position": "left top",
@@ -208,8 +208,8 @@
     "16311175450f61b827",
     "16318071439345de0b",
     "1633697668bb246eea",
-    "16318103445a64017d",
     "1633697883bd0dc85c",
+    "16318103445a64017d",
     "1633697971be31af1c"
   ]
 }
