@@ -17,6 +17,8 @@
         "title": "FEATURED COLLECTION",
         "image_title_width": "",
         "body": "",
+        "link_text": "RETURN TO SHOP",
+        "link_url": "shopify:\/\/pages\/store",
         "grid_layout": "c",
         "grid_effect": "Nut",
         "grid_color_effect": false,
