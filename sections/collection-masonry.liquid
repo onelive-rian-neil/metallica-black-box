@@ -6,6 +6,9 @@
   <div class="banner-wrapper-carousel{% if section.settings.page_width %} page-width{% endif %} infinite-product-scroll-wrap">
     <div id="Banner-{{ section.id }}" class="banner">
       <div class="collection-header-wrapper{% if section.settings.title == blank %} title-wrapper-with-link--no-heading{% endif %}">
+        {% if section.settings.link_text != blank %}
+          <div class="collection-breadcrumb"><a href="{{ section.settings.link_url }}">{{ section.settings.link_text }}</a></div>
+        {% endif %}
         {% if section.settings.image_title != blank %}
           <h2 class="title">
             {{ section.settings.image_title | img_url: 'master' | img_tag: section.settings.image_title.alt, 'carousel-gallery-heading--image' }}
@@ -65,6 +68,12 @@
   </div> 
 
   <style>
+    .collection-breadcrumb > a{
+      letter-spacing: 2px;
+      font-size: 14px;
+      color: initial;
+      text-decoration: none;
+    }
     .olm-collection-gallery{width: 100%;}
   {% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
     #Banner-{{ section.id }}{
@@ -449,6 +458,18 @@
       "type": "richtext",
       "id": "body",
       "label": "Body text"
+    },
+    {
+      "type": "text",
+      "id": "link_text",
+      "label": "Text for link",
+      "info": "URL above the heading",
+      "default": "RETURN TO SHOP"
+    },
+    {
+      "type": "url",
+      "id": "link_url",
+      "label": "Link"
     },
     {
       "type": "header",
