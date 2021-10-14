@@ -17,6 +17,8 @@
         "title": "FUEL & FIRE",
         "image_title_width": "",
         "body": "<p>CREATIVE COLLABORATIONS AND SOURCES OF INSPIRATION<\/p>",
+        "link_text": "RETURN TO SHOP",
+        "link_url": "shopify:\/\/pages\/store",
         "grid_layout": "a",
         "grid_effect": "Hapi",
         "grid_color_effect": false,
