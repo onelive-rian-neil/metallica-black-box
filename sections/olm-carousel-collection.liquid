@@ -113,6 +113,13 @@
     font-weight: bold;
   }
   @media only screen and (max-width: 768px) {
+    #Banner-{{ section.id }} h2.title{
+      font-size: 24px;
+      text-align: center;
+    }
+    #Banner-{{ section.id }} a.carousel-view-all{
+      text-align: center;
+    }
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
       text-decoration: none;
     }
@@ -143,7 +150,7 @@
     left: -20px;
   }
   #Banner-{{ section.id }} button.slick-arrow.slick-next{
-    right: -15px;
+    right: -20px;
   }
   #Banner-{{ section.id }} .slick-prev:before{
     content: "\f053";

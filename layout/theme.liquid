@@ -40,6 +40,12 @@
     %}
 
     {% style %}
+      body{
+        visibility: hidden;
+      }
+      body.bkg_body{
+        background: none!important;
+      }
       {{ settings.type_body_font | font_face: font_display: 'swap' }}
       {{ body_font_bold | font_face: font_display: 'swap' }}
       {{ body_font_italic | font_face: font_display: 'swap' }}
@@ -127,7 +133,7 @@
       {% assign current_view = 'live' %}
     {% endif %}
   
-  <body class="{% include 'body-classes' %} current_view-{{current_view}}" >
+  <body class="{% include 'body-classes' %} current_view-{{current_view}} bkg_body" >
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -187,6 +193,8 @@
         headerTransparent.init();
       }$(document).on('shopify:section:load', process_init_event )
     </script>
+
+    <script>$("body").css("visibility", "visible");$('body.bkg_body').removeClass('bkg_body');</script>
     
     {% render 'check_view' %}    
 
