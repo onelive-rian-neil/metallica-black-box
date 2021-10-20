@@ -363,7 +363,7 @@
             {% endif %} 
           {%- when 'buy_edition' -%}
             {% if product.metafields.my_fields.artifact_explore_buy_url != blank %}
-              <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">{% if product.metafields.my_fields.artifact_button_text_overwrite != blank %}{{ my_fields.artifact_button_text_overwrite }}{% else %}BUY EDITION{% endif %}</a>
+              <div class="product-explore-buy-edition"><a href="{{ product.metafields.my_fields.artifact_explore_buy_url }}">{% if product.metafields.my_fields.artifact_button_text_overwrite != blank %}{{ product.metafields.my_fields.artifact_button_text_overwrite }}{% else %}BUY EDITION{% endif %}</a>
               </div>
             {% endif %}
           {%- when 'availability' -%}
