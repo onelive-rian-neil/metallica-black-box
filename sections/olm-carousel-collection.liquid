@@ -34,6 +34,11 @@
           {%- endfor -%}
         </div>
       {% comment %} </slider-component> {% endcomment %}
+
+      {% if section.settings.extra_sub_text != blank %}
+        <div class="extra_sub_text">{{ section.settings.extra_sub_text }}</div>
+      {% endif %}
+
       {% if section.settings.view_all != blank %}
         {% if section.settings.override_url != blank %}
           <a href="{{ section.settings.override_url }}" title="{{ collection.title }}" class="carousel-view-all">VIEW ALL</a>
@@ -47,7 +52,7 @@
 <style>
 {% if section.settings.image_title_width != blank %}#Banner-{{ section.id }} .carousel-gallery-heading--image{width:{{ section.settings.image_title_width }};}{% endif %}
 {% if section.settings.text_color_overwrite != blank %}
-#Banner-{{ section.id }} h2.title{color:{{ section.settings.text_color_overwrite }}!important;}
+#Banner-{{ section.id }} h2.title{text-align: center;color:{{ section.settings.text_color_overwrite }}!important;}
 #Banner-{{ section.id }} .slick-next:before, #Banner-{{ section.id }} .slick-prev:before{color:{{ section.settings.text_color_overwrite }}!important;}
 #Banner-{{ section.id }} a.carousel-view-all{color:{{ section.settings.text_color_overwrite }}!important;}
 {% endif %}
@@ -105,12 +110,26 @@
     display: block;
     color: white;
   }
+  #Banner-{{ section.id }} .extra_sub_text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+    color:{{ section.settings.text_color_overwrite }}!important;
+  }
+  #Banner-{{ section.id }} .extra_sub_text > p{
+    margin-bottom: 0;
+  }
   #Banner-{{ section.id }} a.carousel-view-all{
     text-align: right;
     display: block;
     margin: 20px 25px 0;
     text-decoration: none;
     font-weight: bold;
+    position: absolute;
+    right: 0;
+    bottom: 44px;
   }
   @media only screen and (max-width: 768px) {
     #Banner-{{ section.id }} h2.title{
@@ -119,6 +138,7 @@
     }
     #Banner-{{ section.id }} a.carousel-view-all{
       text-align: center;
+      position: unset;
     }
     #Banner-{{ section.id }} .carousel-gallery--item a.carousel-gallery--link{
       text-decoration: none;
@@ -302,6 +322,12 @@
       "id": "image_title_width",
       "label": "Title image width",
       "info": "use % or px"
+    },
+    {
+      "type": "richtext",
+      "id": "extra_sub_text",
+      "label": "Subtext body",
+      "info": "Text will appear below products"
     },
     {
       "type": "checkbox",
