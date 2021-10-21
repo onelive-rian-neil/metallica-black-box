@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
+  <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 
 
 <div class="slider" >
@@ -23,6 +23,9 @@
     .slider .mobile-image {
         display: none;
     }
+    .slick-next:before, .slick-prev:before {
+      display: none;
+    }
   @media (max-width:768px) {
     .slider .mobile-image {
         display: block;
@@ -37,7 +40,9 @@
 <script>
   $( document ).ready(function() {
     $('.slider').slick({
-        adaptiveHeight: true
+        adaptiveHeight: true,
+        prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
+        nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>"
     });
   });
 
