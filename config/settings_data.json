@@ -103,8 +103,8 @@
           "f100aadb-aa81-4727-8735-f1c096a44b34": {
             "type": "image",
             "settings": {
-              "image": "shopify:\/\/shop_images\/footer-logo.png",
-              "image_width": 100,
+              "image": "shopify:\/\/shop_images\/footer_boxlogo.png",
+              "image_width": 70,
               "alignment": "center"
             }
           },
