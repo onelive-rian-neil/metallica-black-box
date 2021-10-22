@@ -30,9 +30,9 @@
 </div>{% endcapture %}
 
 <footer class="footer color-{{ section.settings.color_scheme }}">
-  <div class="left-character-img characters">
+  {% comment %} <div class="left-character-img characters">
     <img src="{{ 'characters.png' | asset_url }}" alt="">
-  </div>
+  </div> {% endcomment %}
   {%- if section.blocks.size > 0 or section.settings.newsletter_enable or section.settings.show_social -%}
     <div class="footer__content-top page-width">
       {%- if section.blocks.size > 0 -%}
@@ -503,9 +503,9 @@
     </div>
   </div>
 
-  <div class="right-character-img characters">
+  {% comment %} <div class="right-character-img characters">
     <img src="{{ 'character.png' | asset_url }}" alt="">
-  </div>
+  </div> {% endcomment %}
 </footer>
 <style>
   a.list-social__link-custom-add {

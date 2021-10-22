@@ -1,6 +1,8 @@
 .template-collection .banner {
     background: none!important;
 }
+
+
 /* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
   HEADER
@@ -142,12 +144,22 @@ h2.title {
   margin-right:0!important;
 }
 
+/* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
+  HOMEPAGE / INDEX 
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
+
+.template-index #MainContent > .shopify-section .item > img,
+.template-index #MainContent > .shopify-section > .banner-wrapper-carousel,
+.template-index #MainContent > .shopify-section .banner-container img{
+  box-shadow: 0px 5px 5px -3px #000000;
+}
 
 /* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
 Footer 
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
+
 .footer {
   position: relative;
 }
@@ -385,4 +397,16 @@ body:not(.template-index) footer.color-background-1 {
 }
 .template-index .header-wrapper.header-transparent {
     background: #000000e0 !important;
+}
+
+
+
+
+@media screen and (min-width: 992px) {
+  body:not(.template-index) main#MainContent{
+    padding-bottom: 70px;
+  }
+  footer.footer .footer-block__details-content.footer-block-image.center{
+    margin-top: -150px;
+  }
 }
