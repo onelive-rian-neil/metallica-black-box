@@ -51,9 +51,8 @@ SOFTWARE.
 {% assign product_row_count = "3" %}
 {% assign global_tag = "has-ticket" %}
 {% assign video_product_type = pages[page_handle].metafields.single_livestream['video_product_type'] %}
-{% assign rental_period_hours = pages[page_handle].metafields.single_livestream['rental_period_hours'] | plus: 0 %}
-{% assign rental_period = rental_period_hours | times: 3600 %}
 {% assign today_date = 'now' | date: '%s'| plus: 0 %}
+{% assign video_access = customer.metafields.single_video['video_access'] %}
 
 {% if request.path contains token %}
   {% assign bypass_token_used = true %}
@@ -77,7 +76,7 @@ SOFTWARE.
   {% capture login_section %}{% section 'single-login' %}{% endcapture %}
   {{ login_section | replace: 'FAQ_LINK', faq_link }}
 {% else %}
-  {% if customer.tags contains customer_tag or customer.tags contains global_tag or bypass_token_used or shopify_preview_host %}
+  {% if customer.tags contains customer_tag or customer.tags contains global_tag or video_access contains livestream_id or bypass_token_used or shopify_preview_host %}
     {% assign has_ticket = true %}
     {% assign purchase_date = today_date %}
   {% endif %}
@@ -95,16 +94,7 @@ SOFTWARE.
   {% if customer.tags contains "no-ticket" %}
     {% assign has_ticket = false %}
   {% endif %}
-  {% unless bypass_token_used %}
-    {% if video_product_type == "RENTAL" %}
-      {% assign rental_cutoff_date = purchase_date | plus: rental_period %}
-      {% assign rental_cutoff_refresh = rental_cutoff_date | minus: today_date %}
-      {% if today_date > rental_cutoff_date %}
-        {% assign content_expired = true %}
-      {% endif %}
-    {% endif %}
-  {% endunless %}
-  {% if has_ticket and content_expired != true %}
+  {% if has_ticket %}
     {% comment %}
       <!-- Fans With Tickets -->
     {% endcomment %}
@@ -172,13 +162,6 @@ SOFTWARE.
         const productId = selectedItem.attributes['data-product-id'].value
         document.getElementById("single-product-price-" + productId).innerHTML = price;
       };
-      {% unless bypass_token_used %}
-      {% if video_product_type == "RENTAL" and content_expired != true %}
-      setTimeout(function(){
-        location = ''
-      },{{ rental_cutoff_refresh | times: 1000 }});
-      {% endif %}
-      {% endunless %}
     </script>
   {% endif %}
   {% if has_ticket != true %}
