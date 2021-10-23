@@ -104,7 +104,7 @@
             "type": "image",
             "settings": {
               "image": "shopify:\/\/shop_images\/footer_boxlogo_6e598f6b-d5f3-4751-a534-44a22d1399dd.png",
-              "image_width": 70,
+              "image_width": 100,
               "alignment": "center"
             }
           },
