@@ -58,6 +58,10 @@
         {%- endfor -%}
       </div>
     {% comment %} </slider-component> {% endcomment %}
+
+    {% if section.settings.extra_sub_text != blank %}
+      <div class="extra_sub_text">{{ section.settings.extra_sub_text }}</div>
+    {% endif %}
   </div>
 </div>
 
@@ -142,6 +146,20 @@
     display: none;
     width: 100%;
   }
+
+  #Banner-{{ section.id }} .extra_sub_text{
+    text-align: center;
+    font-weight: bold;
+    font-size: 20px;
+    max-width: 80%;
+    margin: 0 auto;
+    margin-top: 25px;
+    color:{{ section.settings.text_color_overwrite }}!important;
+  }
+  #Banner-{{ section.id }} .extra_sub_text > p{
+    margin-bottom: 0;
+  }
+
 
   @media only screen and (max-width: 768px) {
     {% if section.settings.image_title_mobile != blank %}
@@ -355,6 +373,12 @@
       "label": "Title mobile image",
       "info": "replaces heading text for mobile"
     },
+    {
+      "type": "richtext",
+      "id": "extra_sub_text",
+      "label": "Subtext body",
+      "info": "Text will appear below carousel images"
+    },    
     {
       "type": "text",
       "id": "image_title_width",
