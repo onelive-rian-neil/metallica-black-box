@@ -50,6 +50,7 @@
         "bc2f1c8b-183b-4aba-abf0-e5871c74193a"
       ],
       "settings": {
+        "arrows_off": false
       }
     },
     "1629228300f5af320f": {
@@ -115,6 +116,7 @@
       ],
       "settings": {
         "page_width": true,
+        "arrows_off": false,
         "margin_top": "30px",
         "margin_bottom": "30px",
         "slider_animation": "slide",
@@ -123,7 +125,7 @@
         "title": "THE BLACK ALBUM",
         "image_title": "shopify:\/\/shop_images\/blackalbumtext.png",
         "image_title_mobile": "shopify:\/\/shop_images\/blackalbumtext_mobile.png",
-        "extra_sub_text": "<p>ADDITIONAL TEXT GOES HERE<\/p>",
+        "extra_sub_text": "<p>CONTENT FROM THE BAND MEMBERS' PERSONAL COLLECTIONS<\/p>",
         "image_title_width": "100%",
         "image_background": "shopify:\/\/shop_images\/TheBlackAlbumNew_bg_1659x857_2e255aaf-859d-4946-9dad-25b716a80004.jpg",
         "image_background_mobile": "shopify:\/\/shop_images\/TheBlackAlbumNew_bg_1000x1000_070664b3-1d65-4ef8-851b-ff1ef9acc3d8.jpg",
@@ -193,6 +195,7 @@
       "type": "olm-carousel-collection",
       "settings": {
         "page_width": true,
+        "arrows_off": false,
         "collection_pick": "featured",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
