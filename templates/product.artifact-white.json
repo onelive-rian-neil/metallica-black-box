@@ -78,6 +78,7 @@
         "b6caa77d-22ce-4215-8d92-111648597978"
       ],
       "settings": {
+        "arrows_off": false,
         "enable_sticky_info": true,
         "enable_video_looping": false,
         "enable_addtocart_scroller": false,
@@ -98,7 +99,7 @@
     "1631044019e6f62eee": {
       "type": "page-settings",
       "settings": {
-        "page-background": "shopify:\/\/shop_images\/Collection_Example_4.jpg",
+        "page-background": "shopify:\/\/shop_images\/white_bg.jpg",
         "site-background-image-size": "cover",
         "site-background-image-repeat": "no-repeat",
         "site-background-image-attachment": "fixed",
