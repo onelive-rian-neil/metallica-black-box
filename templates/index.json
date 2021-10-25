@@ -123,6 +123,7 @@
         "title": "THE BLACK ALBUM",
         "image_title": "shopify:\/\/shop_images\/blackalbumtext.png",
         "image_title_mobile": "shopify:\/\/shop_images\/blackalbumtext_mobile.png",
+        "extra_sub_text": "<p>ADDITIONAL TEXT GOES HERE<\/p>",
         "image_title_width": "100%",
         "image_background": "shopify:\/\/shop_images\/TheBlackAlbumNew_bg_1659x857_2e255aaf-859d-4946-9dad-25b716a80004.jpg",
         "image_background_mobile": "shopify:\/\/shop_images\/TheBlackAlbumNew_bg_1000x1000_070664b3-1d65-4ef8-851b-ff1ef9acc3d8.jpg",
