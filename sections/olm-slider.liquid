@@ -1,7 +1,7 @@
   <link rel="stylesheet" href="{{ 'component-price.css' | asset_url }}" media="print" onload="this.media='all'">
 
 
-<div class="slider" >
+<div class="slider" id="Banner-{{ section.id }}">
     <!-- Indicators -->
   
   
@@ -17,20 +17,21 @@
   </div>
   
   <style>
-      .slider img {
-          width:100%;
-      }
-    .slider .mobile-image {
+    #Banner-{{ section.id }}.slider img {
+        width:100%;
+    }
+    #Banner-{{ section.id }}.slider .mobile-image {
         display: none;
     }
-    .slick-next:before, .slick-prev:before {
+    #Banner-{{ section.id }} .slick-next:before, 
+    #Banner-{{ section.id }} .slick-prev:before {
       display: none;
     }
   @media (max-width:768px) {
-    .slider .mobile-image {
+    #Banner-{{ section.id }}.slider .mobile-image {
         display: block;
     }
-    .slider .desktop-image {
+    #Banner-{{ section.id }}.slider .desktop-image {
         display: none;
     }
   }
@@ -39,7 +40,7 @@
 
 <script>
   $( document ).ready(function() {
-    $('.slider').slick({
+    $('#Banner-{{ section.id }}.slider').slick({
         adaptiveHeight: true,
         prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
         nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>"
