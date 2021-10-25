@@ -179,10 +179,10 @@
     float: none;
   }
   #Banner-{{ section.id }} button.slick-arrow.slick-prev{
-    left: -20px;
+    left: -25px;
   }
   #Banner-{{ section.id }} button.slick-arrow.slick-next{
-    right: -20px;
+    right: -25px;
   }
   #Banner-{{ section.id }} .slick-prev:before{
     content: "\f053";
@@ -220,8 +220,13 @@
         fade: JSON.parse(sliderAnimation_collection),
         adaptiveHeight: JSON.parse(slider_adaptiveHeight_collection),
         cssEase: 'linear',
-        prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
-        nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>",
+        {% if section.settings.arrows_off %}
+          prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow_off.png' | asset_url }}' ></button>",
+          nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow_off.png' | asset_url }}' ></button>",
+        {% else %}
+          prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
+          nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>",
+        {% endif %}
         responsive: [
           {
             breakpoint: 768,
@@ -262,6 +267,11 @@
       "type": "checkbox",
       "id": "page_width",
       "label": "Constrain to page width" 
+    },
+    {
+        "type": "checkbox",
+        "id": "arrows_off",
+        "label": "Make arrows lighter?"
     },
     {
       "type": "collection",
