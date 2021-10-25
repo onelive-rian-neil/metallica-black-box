@@ -131,6 +131,14 @@
     right: 0;
     bottom: 44px;
   }
+  #Banner-{{ section.id }} .slick-next:before, 
+  #Banner-{{ section.id }} .slick-prev:before {
+    display: none;
+  }
+  #Banner-{{ section.id }} .slick-prev img,
+  #Banner-{{ section.id }} .slick-next img {
+      width:100%;
+  }
   @media only screen and (max-width: 768px) {
     #Banner-{{ section.id }} h2.title{
       font-size: 24px;
@@ -180,10 +188,6 @@
     content: "\f054";
     font-size: 40px;
   }
-  #Banner-{{ section.id }} .slick-next, #Banner-{{ section.id }} .slick-prev{
-    height: auto;
-    width: auto;
-  }
 </style>
 
 {%- assign min = 0 -%}
@@ -212,6 +216,8 @@
         fade: JSON.parse(sliderAnimation_collection),
         adaptiveHeight: JSON.parse(slider_adaptiveHeight_collection),
         cssEase: 'linear',
+        prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
+        nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>",
         responsive: [
           {
             breakpoint: 768,
