@@ -404,9 +404,9 @@ body:not(.template-index) footer.color-background-1 {
 
 @media screen and (min-width: 992px) {
   body:not(.template-index) main#MainContent{
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
   footer.footer .footer-block__details-content.footer-block-image.center{
-    margin-top: -100px;
+    margin-top: -110px;
   }
 }

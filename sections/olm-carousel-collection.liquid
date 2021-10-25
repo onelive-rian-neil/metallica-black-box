@@ -129,7 +129,11 @@
     font-weight: bold;
     position: absolute;
     right: 0;
-    bottom: 44px;
+    {% if section.settings.extra_sub_text != blank %}
+      bottom: 44px;
+    {% else %}
+      bottom: 0px;
+    {% endif %}
   }
   #Banner-{{ section.id }} .slick-next:before, 
   #Banner-{{ section.id }} .slick-prev:before {

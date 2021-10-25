@@ -34,10 +34,12 @@
 
     <section class="product-arrows-wrapper">
       <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>
-        {{ '❮' | link_to: collection.previous_product }}
+        <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
+        {% comment %} {{ '❮' | link_to: collection.previous_product }} {% endcomment %}
       </div>
       <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>
-        {{ '❯' | link_to: collection.next_product }}
+        <a href="{{collection.next_product}}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
+        {% comment %} {{ '❯' | link_to: collection.next_product }} {% endcomment %}
       </div>
     </section>
 
@@ -833,6 +835,15 @@
     top: 50%;
     transform: translateY(-50%);
     font-size: 45px;
+    width: 30px;
+  }
+  .product-arrows-wrapper #product-arrows-left img, 
+  .product-arrows-wrapper #product-arrows-right img{
+    width: 100%;
+  }
+  div#product-arrows-left.disabled,
+  div#product-arrows-right.disabled{
+    opacity: 0.4;
   }
   .product-arrows-wrapper #product-arrows-left a, 
   .product-arrows-wrapper #product-arrows-right a{
