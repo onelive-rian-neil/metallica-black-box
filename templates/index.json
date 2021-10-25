@@ -116,7 +116,7 @@
       ],
       "settings": {
         "page_width": true,
-        "arrows_off": false,
+        "arrows_off": true,
         "margin_top": "30px",
         "margin_bottom": "30px",
         "slider_animation": "slide",
