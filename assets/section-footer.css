@@ -491,6 +491,9 @@ footer details[open] summary ~ * {
     padding-top: 1rem;
     padding-bottom: 1rem;
     margin-top: 0.5rem;
+    -webkit-box-pack: center;  
+    -ms-flex-pack: center;  
+    justify-content: center;        
   }
 }
 
