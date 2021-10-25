@@ -42,8 +42,13 @@
   $( document ).ready(function() {
     $('#Banner-{{ section.id }}.slider').slick({
         adaptiveHeight: true,
-        prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
-        nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>"
+        {% if section.settings.arrows_off %}
+          prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow_off.png' | asset_url }}' ></button>",
+          nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow_off.png' | asset_url }}' ></button>"
+        {% else %}
+          prevArrow:"<button type='button' class='slick-prev pull-left'><img src='{{ 'left-arrow.png' | asset_url }}' ></button>",
+          nextArrow:"<button type='button' class='slick-next pull-right'><img src='{{ 'right-arrow.png' | asset_url }}' ></button>"
+        {% endif %}
     });
   });
 
@@ -54,6 +59,11 @@
   "name": "OLM Slider",
   "class": "spaced-section spaced-section--full-width",
   "settings": [
+    {
+        "type": "checkbox",
+        "id": "arrows_off",
+        "label": "Make arrows lighter?"
+    }
   ],
   "blocks": [ 
     {

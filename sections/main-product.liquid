@@ -34,11 +34,19 @@
 
     <section class="product-arrows-wrapper">
       <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>
-        <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
+        {% if section.settings.arrows_off %}
+          <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow_off.png' | asset_url }}" ></a>
+        {% else %}
+          <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
+        {% endif %}
         {% comment %} {{ '❮' | link_to: collection.previous_product }} {% endcomment %}
       </div>
       <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>
-        <a href="{{collection.next_product}}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
+        {% if section.settings.arrows_off %}
+          <a href="{{collection.next_product}}"><img src="{{ 'right-arrow_off.png' | asset_url }}" ></a>
+        {% else %}
+          <a href="{{collection.next_product}}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
+        {% endif %}
         {% comment %} {{ '❯' | link_to: collection.next_product }} {% endcomment %}
       </div>
     </section>
@@ -841,6 +849,10 @@
   .product-arrows-wrapper #product-arrows-right img{
     width: 100%;
   }
+  .product-arrows-wrapper #product-arrows-left:hover, 
+  .product-arrows-wrapper #product-arrows-right:hover{
+    opacity: 0.8;
+  }
   div#product-arrows-left.disabled,
   div#product-arrows-right.disabled{
     opacity: 0.4;
@@ -1399,6 +1411,11 @@
       "type": "header",
       "content": "t:sections.main-product.settings.header.content",
       "info": "t:sections.main-product.settings.header.info"
+    },
+    {
+        "type": "checkbox",
+        "id": "arrows_off",
+        "label": "Make arrows lighter?"
     },
     {
       "type": "checkbox",
