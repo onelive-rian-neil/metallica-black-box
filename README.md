@@ -60,4 +60,25 @@ Admin>> <br> Online Store>> <br> Themes>>Customize>> <br> Templates dropdown men
  <p align="center">
   <img width="310" alt="Screen Shot 2021-10-27 at 10 32 10 AM" src="https://user-images.githubusercontent.com/68283281/139098137-f9dfb02e-c55b-4f43-9a72-ce57809d2587.png">
  </p>
+ <br>
+ <br>
+ 
+ 
+ <h2 align="center"> Background Image </h2>
+ <h4 align="center">Update background image and depending on image properties, adjust the background image settings as well as text color</h4>
+ <p align="center">
+  <img width="217" height="500" alt="Screen Shot 2021-10-27 at 10 35 37 AM" src="https://user-images.githubusercontent.com/68283281/139098797-59f23f4a-5074-4c46-82c8-4e38091a6b0b.png">
+ </p>
+ 
+<br>
+<br>
+ <h2 align="center"> Featured product image on collection page: </h2>
+ <h4 align="center"> TTo add a different image on Collection template page/grid, go to Shopify Admin>> <br> Products>> <br>Select desired product and go to product settings page>> <br> Metafields>> <br> Upload featured image in Collection - P img Overwrite field.
+ <br>
+ <p align="center">
+  
+  <img width="422" alt="Screen Shot 2021-10-27 at 10 39 41 AM" src="https://user-images.githubusercontent.com/68283281/139099475-707b800c-e5de-481a-a2ab-8a2fe2810f6b.png">
+  </p>
+ <h4 align="center">
+  Adding image through here overwrites the default product image and displays featured uploaded image on Collection page/template. </h4>
  
