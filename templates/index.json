@@ -21,6 +21,13 @@
             "mobile-img": "shopify:\/\/shop_images\/blackbox_new_mobile_5e092e9f-6388-47df-8074-4bbcc6afc84b.jpg"
           }
         },
+        "2679056c-8eeb-49ae-9f90-619c024d5c0e": {
+          "type": "select",
+          "settings": {
+            "desktop-img": "shopify:\/\/shop_images\/cliff_1920x1080_f67c51f1-af45-4b60-b7a1-8a6ffb139641.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/cliff_mobile.jpg"
+          }
+        },
         "40041900-2e81-49df-a6e7-7592fd54f0a2": {
           "type": "select",
           "settings": {
@@ -38,13 +45,14 @@
         "bc2f1c8b-183b-4aba-abf0-e5871c74193a": {
           "type": "select",
           "settings": {
-            "desktop-img": "shopify:\/\/shop_images\/rooftop_1920x1080_fecf5be7-7caf-4ac5-8cb4-fa61b894b3c5.jpg",
-            "mobile-img": "shopify:\/\/shop_images\/rooftop_mobile_9c7555e6-5db7-487f-b2e2-823ee11df177.jpg"
+            "desktop-img": "shopify:\/\/shop_images\/robert_truck_1920x1080_b0b40c7a-b38b-45f4-b525-93b2240f232b.jpg",
+            "mobile-img": "shopify:\/\/shop_images\/robert_truck_mobile.jpg"
           }
         }
       },
       "block_order": [
         "af90708f-0466-4166-b0dd-1823dea55840",
+        "2679056c-8eeb-49ae-9f90-619c024d5c0e",
         "40041900-2e81-49df-a6e7-7592fd54f0a2",
         "2be77a3d-05ca-4461-94f9-e483c02bc389",
         "bc2f1c8b-183b-4aba-abf0-e5871c74193a"
