@@ -31,4 +31,33 @@ Admin>> <br> Online Store>> <br> Themes>>Customize>> <br> Templates dropdown men
  <br>
  <br>
  
+ <h2 align="center">Collection Template Settings and sections</h2>
+ <p align="center">Note:  Cloning will carry over the majority of existing elements/code of existing layout selected for cloning.  Typical settings that you will need to modify/update detailed below: </p>
+<h4 align="center"> To access, follow these steps: <br>
+ Left menu>> <br> Preview>> <br> This allows you to select and assign desired collection to this template by default, displaying home page collection.<br>  Click Change>> <br> Right side sections menu will open>> <br> select and assign desired collection to this template. 
+<br>
+<br>
+<p align="center">
+ <img width="525" alt="Screen Shot 2021-10-27 at 10 23 36 AM" src="https://user-images.githubusercontent.com/68283281/139096659-e314826c-60a9-4e6f-9966-9f90024175bb.png">
+ </p>
+ <br>
+ <br>
+ <h2 align="center">Left Menu Collection Masonry: Right Section settings </h2>
+ <br>
+ <p align="center">
+  <img width="510" alt="Screen Shot 2021-10-27 at 10 26 39 AM" src="https://user-images.githubusercontent.com/68283281/139097142-25512f7f-2858-4a7f-849e-e022fa4b70b6.png">
+ </p>
+ <br>
+ <h4 align="center"> To customize, follow these steps: <br>
+- Header settings>> Heading:  Page/Collection main heading text enter here. <br>
+- Header settings>> Body text: Secondary header text goes here. <br>
+- Grid settings>>Select Grid layout types out of 4: <br>
+          -- Grid A, B & C, 3/4/5 image across respectively. <br> 
+          -- Grid custom 1 large 2 small. <br>
+- Grid Load effect:  Select desired image grid load effect from dropdown options. <br>
+- Note:  Grid load effects does not apply to Grid custom 1 large 2 small layout. <br>
+ </h4>
+ <p align="center">
+  <img width="310" alt="Screen Shot 2021-10-27 at 10 32 10 AM" src="https://user-images.githubusercontent.com/68283281/139098137-f9dfb02e-c55b-4f43-9a72-ce57809d2587.png">
+ </p>
  
