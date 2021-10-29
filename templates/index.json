@@ -91,11 +91,12 @@
             "link": "shopify:\/\/collections\/riffem-all"
           }
         },
-        "4f82678f-2651-4715-a4be-f4846422a7fc": {
-          "type": "collection_picker",
+        "c56f31b3-2962-4bd1-b4f0-eb9dde8e7ee1": {
+          "type": "image_picker",
           "settings": {
-            "collection_pick": "through-the-never",
-            "collection_pick_override_image": "shopify:\/\/shop_images\/throughthenever_800x800_ae1e5133-ebf1-4249-824a-f6e48a263f03.jpg"
+            "image": "shopify:\/\/shop_images\/throughthenever_800x800_ae1e5133-ebf1-4249-824a-f6e48a263f03.jpg",
+            "title": "THROUGH THE NEVER COLLECTION",
+            "link": "shopify:\/\/collections\/through-the-never"
           }
         },
         "3c5cb24b-22be-4296-9ecb-3c5e533ced9e": {
@@ -118,7 +119,7 @@
       "block_order": [
         "178220f5-cf8d-41f7-8503-125f2159fa55",
         "4d020d2d-f72d-4ba1-8e14-e3b3eb5d5953",
-        "4f82678f-2651-4715-a4be-f4846422a7fc",
+        "c56f31b3-2962-4bd1-b4f0-eb9dde8e7ee1",
         "3c5cb24b-22be-4296-9ecb-3c5e533ced9e",
         "a0c766f7-d218-4d71-9cf8-ab20b688464f"
       ],
