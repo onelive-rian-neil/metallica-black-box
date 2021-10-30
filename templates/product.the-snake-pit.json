@@ -78,6 +78,7 @@
         "b6caa77d-22ce-4215-8d92-111648597978"
       ],
       "settings": {
+        "arrows_off": true,
         "enable_sticky_info": true,
         "enable_video_looping": false,
         "enable_addtocart_scroller": false,
