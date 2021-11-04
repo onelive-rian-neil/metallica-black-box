@@ -218,7 +218,7 @@
       "settings": {
         "page_width": true,
         "arrows_off": false,
-        "collection_pick": "",
+        "collection_pick": "tour-posters",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
