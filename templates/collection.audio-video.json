@@ -39,12 +39,14 @@
       ],
       "settings": {
         "page_width": true,
+        "arrows_off": false,
         "margin_top": "10px",
         "margin_bottom": "10px",
         "slider_animation": "slide",
         "slider_speed": 6,
         "slider_adaptiveHeight": false,
         "title": "SAMPLE COLLECTION",
+        "extra_sub_text": "",
         "image_title_width": "",
         "enble-borders": false,
         "border-width": "",
@@ -80,7 +82,7 @@
         "16318108943773972f-1": {
           "type": "text",
           "settings": {
-            "text": "<p>From 1991 through 1993, Metallica toured the world in support of <em>The Black Album<\/em>. Now, the Black Box presents ten rare shows from this period, hand-selected by Spider Dan. Join the weekly watch party events with live chat!<\/p><p>Every Friday, beginning 10\/29 at 9:30p ET \/ 6:30p PT. <\/p>"
+            "text": "<p>From 1991 through 1993, Metallica toured the world in support of <em>The Black Album<\/em>. Now, the Black Box presents ten rare shows from this period, hand-selected by Spider Dan. Join the weekly live streaming watch party events with live chat - See them NOW, before they return to the vault!<\/p><p>Every Friday, beginning 11\/19 at 10:00p ET \/ 7:00p PT. <\/p>"
           }
         },
         "16318108943773972f-2": {
