@@ -99,6 +99,7 @@
     },
     "16318071439345de0b": {
       "type": "olm-carousel-collection",
+      "disabled": true,
       "settings": {
         "page_width": true,
         "arrows_off": false,
