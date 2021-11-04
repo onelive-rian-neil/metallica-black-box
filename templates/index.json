@@ -159,6 +159,17 @@
         "page_width": true
       }
     },
+    "1636030726c4668b65": {
+      "type": "image-banner-no-text",
+      "settings": {
+        "image": "shopify:\/\/shop_images\/NewCollections_1659x857_6ebbf592-e84e-44dd-8cb1-51c7c8c5cfc3.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/NewCollections_Mobile.jpg",
+        "banner_url": "",
+        "margin_top": "",
+        "margin_bottom": "",
+        "page_width": false
+      }
+    },
     "16319019840bfd0649": {
       "type": "image-banner-no-text",
       "settings": {
@@ -231,6 +242,7 @@
     "1629228300f5af320f",
     "162999708568073e49",
     "16299966134f7e0982",
+    "1636030726c4668b65",
     "16319019840bfd0649",
     "1629996636dc8e6157",
     "162998923071cf02fd",
