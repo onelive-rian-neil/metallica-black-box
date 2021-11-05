@@ -24,7 +24,7 @@ SOFTWARE.
 <section class="single-login">
   <div id="form-login" class="single-form">
     <h1 id="LoginHeading" class="text-center">{{ 'single.login.title' | t }}</h1>
-    <p>{{ 'single.login.subtext' | t }}</p>
+    <h5>{{ 'single.login.subtext' | t }}</h5>
     {% form 'customer_login' %}
       {{ form_errors | default_errors }}
       <input type="hidden" name="return_to" value="{{ page.url }}">
@@ -91,7 +91,7 @@ SOFTWARE.
         "single": {
           "login": {
             "title": "Login",
-            "subtext": "Please use the account created when purchasing your ticket!",
+            "subtext": "Please login or create account with the email used to purchase!",
             "email": "Email",
             "password": "Password",
             "sign_in": "Sign In",
