@@ -24,7 +24,7 @@ SOFTWARE.
 <section class="single-login">
   <div id="form-login" class="single-form">
     <h1 id="LoginHeading" class="text-center">{{ 'single.login.title' | t }}</h1>
-    <h4>{{ 'single.login.subtext' | t }}</h4>
+    <h6>{{ 'single.login.subtext' | t }}</h6>
     {% form 'customer_login' %}
       {{ form_errors | default_errors }}
       <input type="hidden" name="return_to" value="{{ page.url }}">
