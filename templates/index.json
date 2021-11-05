@@ -161,6 +161,7 @@
     },
     "1636030726c4668b65": {
       "type": "image-banner-no-text",
+      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/NewCollections_1659x857_6ebbf592-e84e-44dd-8cb1-51c7c8c5cfc3.jpg",
         "mobile_image": "shopify:\/\/shop_images\/NewCollections_Mobile.jpg",
@@ -172,7 +173,6 @@
     },
     "16319019840bfd0649": {
       "type": "image-banner-no-text",
-      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/metallica_40thNew_1659x857_5d6d70c8-096d-4101-a7d0-2d7ad3748164.jpg",
         "mobile_image": "shopify:\/\/shop_images\/metallica_40th_Mobile.jpg",
@@ -184,7 +184,6 @@
     },
     "1629996636dc8e6157": {
       "type": "image-banner-no-text",
-      "disabled": true,
       "settings": {
         "image": "shopify:\/\/shop_images\/TheArtNew_1659x857_d9920b23-7e4b-479e-ae3e-27e250f5879b.jpg",
         "mobile_image": "shopify:\/\/shop_images\/theart_banner_mobile.jpg",
