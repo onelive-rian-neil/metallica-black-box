@@ -39,14 +39,14 @@ SOFTWARE.
       <div class="submit">
         <input type="submit" value="{{ 'single.login.sign_in' | t }}" class="btn button">
       </div>
-    {% endform %}
-      <div class="recover-links">
+    {% endform %} 
+      <h4 class="recover-links" style="font-size: 1.25em;">
         <span>
           <a onclick="resetToggle()" id="RecoverPassword">{{ 'single.login.forgot_password' | t }}</a>
         </span>
         <span class="divider"> • </span>
         <span>{{ 'single.login.create_account' | t | customer_register_link }}</span>
-      </div>
+      </h4>
   </div>
   <div id="form-recover" class="single-form hidden">
     <h1 id="LoginHeading" class="text-center">{{ 'single.recover_password.title' | t }}</h1>
