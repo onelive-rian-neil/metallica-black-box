@@ -159,6 +159,24 @@ _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
 
 /* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
 
+  COLLECTION
+_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
+
+.template-page-store #MainContent .banner{
+  min-height: auto;
+  display: inline-block;
+}
+.template-page-store #MainContent .banner .banner__media.media{
+  position: relative;
+  height: auto;
+}
+.template-page-store #MainContent .banner .banner__media.media > img{
+  height: auto;
+  position: relative;
+}
+
+/* -_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-
+
 Footer 
 _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_ */
 
