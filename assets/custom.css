@@ -358,6 +358,9 @@ padding-left:0!important;
   .header__icon--search span:last-child {
     display:none;
   }
+  .cart-count-bubble span {
+    display: block;
+  }
   .icon.icon-cart {
     position: relative;
     bottom:-2px;
