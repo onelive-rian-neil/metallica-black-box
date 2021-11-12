@@ -365,6 +365,9 @@ padding-left:0!important;
     position: relative;
     bottom:-2px;
   }
+  main#MainContent {
+      margin-top: 0 !important;
+  }  
 }
 @media screen and (max-width: 375px) { 
   .footer-block-image>img {
