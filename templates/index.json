@@ -225,7 +225,7 @@
         "title": "THe BLACK BOX SHOP",
         "text_color_overwrite": "#060606",
         "image_title_width": "",
-        "extra_sub_text": "<p><strong>LIIMITED EDITIONS AND ONE-OF-A-KIND ARTIFACTS<\/strong><\/p>",
+        "extra_sub_text": "<p><strong>LIMITED EDITIONS AND ONE-OF-A-KIND ARTIFACTS<\/strong><\/p>",
         "view_all": true,
         "override_url": "shopify:\/\/pages\/store",
         "enable_bg_image": true,
