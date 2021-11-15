@@ -668,6 +668,12 @@
   position:relative;
   background:url(//cdn.shopify.com/s/files/1/0581/0159/6351/t/8/assets/audiobanner.jpg?v=1541499175769321682);
 }
+    @media screen and (max-width: 640px) {
+      .single-page-header {
+        text-align: center;
+      }
+    }
+   
 .single-page-header:after {
   content: "";
   position: absolute;
