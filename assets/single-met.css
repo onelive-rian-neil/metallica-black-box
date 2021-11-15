@@ -371,8 +371,11 @@
   left: 0;
 }
  @media screen and (max-width: 842px) {
-#single-player {
-  position: relative;
+  .single-livestream-player {
+    padding: 0 !important;
+  }
+  #single-player {
+    position: relative;
  }
  .single-collection {
      display: flex;
