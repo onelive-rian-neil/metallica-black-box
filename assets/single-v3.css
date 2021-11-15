@@ -424,13 +424,13 @@ a {
 
 /* Video Responsive */
 
-.single-livestream {
+.single-livestream-player {
   position: relative;
   padding: 45% 0 0;
   max-width: 100%;
 }
 
-.single-live-content {
+#single-player {
   height: 100%;
   width: 100%;
   max-width: 100%;
