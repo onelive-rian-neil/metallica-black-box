@@ -446,7 +446,8 @@
                 media_size: section.settings.image_ratio,
                 show_secondary_image: section.settings.show_secondary_image,
                 add_image_padding: section.settings.add_image_padding,
-                show_vendor: section.settings.show_vendor
+                show_vendor: section.settings.show_vendor,
+                btn_txt_section: section.settings.btn_txt
               %}
             </li>
           {%- endfor -%}
@@ -610,6 +611,12 @@
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.show_vendor.label"
     },
+    {
+      "type": "text",
+      "id": "btn_txt",
+      "default": MORE INFO,
+      "label": "Button Text Label"
+    },    
     {
       "type": "header", 
       "content": "t:sections.main-collection-product-grid.settings.header__1.content"
