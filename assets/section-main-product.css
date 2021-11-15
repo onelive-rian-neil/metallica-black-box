@@ -521,12 +521,10 @@ a.product__text {
 }
 
 .product-media-modal__toggle {
-  /* background-color: rgb(var(--color-background)); */
-  border: 2px solid #ccc;
+  background-color: rgb(var(--color-background));
   border: 0.1rem solid rgba(var(--color-foreground), 0.1);
   border-radius: 50%;
-  /* color: rgba(var(--color-foreground), 0.55); */
-  color: #ccc;
+  color: rgba(var(--color-foreground), 0.55);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -538,7 +536,6 @@ a.product__text {
   top: 2rem;
   width: 4rem;
 }
-
 
 .product-media-modal__content .deferred-media {
   width: 100%;
