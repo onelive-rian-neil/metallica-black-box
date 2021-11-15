@@ -370,6 +370,7 @@
   top: 0;
   left: 0;
 }
+
  @media screen and (max-width: 842px) {
   .single-livestream-player {
     padding: 0 !important;
@@ -377,6 +378,8 @@
   #single-player {
     position: relative;
  }
+}
+   
  .single-collection {
      display: flex;
      justify-content: center;
@@ -668,7 +671,6 @@
   position:relative;
   background:url('//cdn.shopify.com/s/files/1/0581/0159/6351/t/8/assets/audiobanner.jpg?v=1541499175769321682');
 }
-   
    
 .single-page-header:after {
   content: "";
