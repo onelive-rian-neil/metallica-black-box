@@ -474,6 +474,10 @@ a.product__text {
   width: 100%;
   overflow: auto;
 }
+.product-media-modal__content img {
+    max-height : 500px;
+    width: auto;
+}
 
 .product-media-modal__content > *:not(.active),
 .product__media-list .deferred-media {
