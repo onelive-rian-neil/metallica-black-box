@@ -422,6 +422,24 @@ a {
   overflow: hidden;
 }
 
+/* Video Responsive */
+
+.single-livestream {
+  position: relative;
+  padding: 45% 0 0;
+  max-width: 100%;
+}
+
+.single-live-content {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
 .single-collection {
   display: flex;
   justify-content: center;
