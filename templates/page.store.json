@@ -240,15 +240,15 @@
     "16369351337acc165f": {
       "type": "olm-carousel-collection",
       "settings": {
-        "page_width": false,
+        "page_width": true,
         "arrows_off": false,
-        "collection_pick": "",
+        "collection_pick": "video-audio",
         "collection_pick_limit": 6,
         "slider_animation": "slide",
         "slider_speed": 6,
         "slider_adaptiveHeight": false,
         "title": "BLack Album Live - Live Stream Events",
-        "text_color_overwrite": "",
+        "text_color_overwrite": "#333333",
         "image_title_width": "",
         "extra_sub_text": "",
         "view_all": true,
