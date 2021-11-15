@@ -6,7 +6,7 @@
 .banner-container img {
   width:100%;
 }
-.banner-container img:hover {
+.banner-container a img:hover {
   opacity: 0.8;
   cursor: pointer;
 }
