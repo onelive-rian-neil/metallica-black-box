@@ -236,6 +236,29 @@
         "site-background-image-repeat": "repeat",
         "site-background-image-attachment": "scroll"
       }
+    },
+    "16369351337acc165f": {
+      "type": "olm-carousel-collection",
+      "settings": {
+        "page_width": false,
+        "arrows_off": false,
+        "collection_pick": "",
+        "collection_pick_limit": 6,
+        "slider_animation": "slide",
+        "slider_speed": 6,
+        "slider_adaptiveHeight": false,
+        "title": "BLack Album Live - Live Stream Events",
+        "text_color_overwrite": "",
+        "image_title_width": "",
+        "extra_sub_text": "",
+        "view_all": true,
+        "override_url": "",
+        "enable_bg_image": false,
+        "site-background-image-position": "left top",
+        "site-background-image-size": "auto",
+        "site-background-image-repeat": "repeat",
+        "site-background-image-attachment": "scroll"
+      }
     }
   },
   "order": [
@@ -248,6 +271,7 @@
     "1633697883bd0dc85c",
     "16318103445a64017d",
     "1633697971be31af1c",
-    "163605185275318c2e"
+    "163605185275318c2e",
+    "16369351337acc165f"
   ]
 }
