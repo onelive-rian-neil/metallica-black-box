@@ -1,10 +1,7 @@
 {{ 'customer.css' | asset_url | stylesheet_tag }}
 
-<div class="customer login">
-  <h1 id="recover" tabindex="-1">
-    {{ 'customer.recover_password.title' | t }}
-  </h1>
 
+<div class="custom_login-header-wrapper">
   <h2>
       WELCOME to the Metallica Black Box!
   </h2>
@@ -17,6 +14,12 @@
   <p>
     Get your backstage pass - Sign up today!   
   </p>
+</div>
+
+<div class="customer login">
+  <h1 id="recover" tabindex="-1">
+    {{ 'customer.recover_password.title' | t }}
+  </h1>
 
   <div>
     <p>
