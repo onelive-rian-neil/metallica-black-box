@@ -454,3 +454,33 @@ body:not(.template-index) footer.color-background-1 {
     margin-top: -110px;
   }
 }
+
+/* Upsell Modal */
+
+.single-modal-content {
+    background-color: black !important;
+}
+
+h3.single-modal-parent-title {
+    margin: 0 !important;
+    padding: 0;
+    font-size: 1.5em;
+}
+
+h3.single-upsell-title {
+    font-size: 1.25em;
+    margin: 0;
+    padding: 0;
+}
+
+span.single-upsell-price {
+    color: #ccc;
+}
+
+.single-modal-item {
+    border-color: #333 !important;
+}
+
+.single-modal-footer {
+    background-color: #1f1f1f !important;
+}
