@@ -495,3 +495,7 @@ span.single-upsell-price {
     border-color: #333 !important;
     background-color: #000;
 }
+
+.single-modal-title {
+  display: none;
+}
