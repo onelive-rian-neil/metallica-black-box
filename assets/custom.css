@@ -496,6 +496,20 @@ span.single-upsell-price {
     background-color: #000;
 }
 
-.single-modal-title {
-  display: none;
+h2.single-modal-title {
+    display: none;
+}
+
+span.material-icons-round {
+    color: #999;
+}
+
+.single-modal-header {
+    padding: 2em !important;
+}
+
+.single-modal-close-button {
+    position: absolute;
+    right: 1em;
+    top: 1em;
 }
