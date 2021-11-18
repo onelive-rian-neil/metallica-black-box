@@ -42,17 +42,17 @@
     <section class="product-arrows-wrapper">
       <div id="product-arrows-left">
         {% if section.settings.arrows_off %}
-          <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow_off.png' | asset_url }}" ></a>
+          <a href="{% if collection.previous_product %}{{collection.previous_product}}{% else %}{{collection_product_last}}{% endif %}"><img src="{{ 'left-arrow_off.png' | asset_url }}" ></a>
         {% else %}
-          <a class="{% if collection.previous_product %}prev1{% else %}prev2{% endif %}" href="{% if collection.previous_product %}{{collection.previous_product}}{% else %}{{collection_product_last}}{% endif %}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
+          <a href="{% if collection.previous_product %}{{collection.previous_product}}{% else %}{{collection_product_last}}{% endif %}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
         {% endif %}
         {% comment %} {{ '❮' | link_to: collection.previous_product }} {% endcomment %}
       </div>
       <div id="product-arrows-right">
         {% if section.settings.arrows_off %}
-          <a href="{{collection.next_product}}"><img src="{{ 'right-arrow_off.png' | asset_url }}" ></a>
+          <a href="{% if collection.next_product %}{{collection.next_product}}{% else %}{{collection_product_first}}{% endif %}"><img src="{{ 'right-arrow_off.png' | asset_url }}" ></a>
         {% else %}
-          <a class="{% if collection.next_product %}next1{% else %}next2{% endif %}" href="{% if collection.next_product %}{{collection.next_product}}{% else %}{{collection_product_first}}{% endif %}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
+          <a href="{% if collection.next_product %}{{collection.next_product}}{% else %}{{collection_product_first}}{% endif %}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
         {% endif %}
         {% comment %} {{ '❯' | link_to: collection.next_product }} {% endcomment %}
       </div>
