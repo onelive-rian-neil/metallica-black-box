@@ -28,24 +28,31 @@
         {% if c.title == product.title %}
           {% assign count = forloop.index %}
         {% endif %}
+        {% if forloop.first %}
+          {% assign collection_product_first = c.url | within: collection %}
+        {% endif %}
+        {% if forloop.last %}
+          {% assign collection_product_last = c.url | within: collection %}
+        {% endif %}
       {% endfor %}
 
     {%- endpaginate -%}
+    {% comment %}  {% unless collection.previous_product %}class="disabled"{% endunless %}  {% unless collection.next_product %}class="disabled"{% endunless %}{% endcomment %}
 
     <section class="product-arrows-wrapper">
-      <div id="product-arrows-left" {% unless collection.previous_product %}class="disabled"{% endunless %}>
+      <div id="product-arrows-left">
         {% if section.settings.arrows_off %}
-          <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow_off.png' | asset_url }}" ></a>
+          <a href="{% if collection.previous_product %}{{collection.previous_product}}{% else %}{{collection_product_last}}{% endif %}"><img src="{{ 'left-arrow_off.png' | asset_url }}" ></a>
         {% else %}
-          <a href="{{collection.previous_product}}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
+          <a href="{% if collection.previous_product %}{{collection.previous_product}}{% else %}{{collection_product_last}}{% endif %}"><img src="{{ 'left-arrow.png' | asset_url }}" ></a>
         {% endif %}
         {% comment %} {{ '❮' | link_to: collection.previous_product }} {% endcomment %}
       </div>
-      <div id="product-arrows-right" {% unless collection.next_product %}class="disabled"{% endunless %}>
+      <div id="product-arrows-right">
         {% if section.settings.arrows_off %}
-          <a href="{{collection.next_product}}"><img src="{{ 'right-arrow_off.png' | asset_url }}" ></a>
+          <a href="{% if collection.next_product %}{{collection.next_product}}{% else %}{{collection_product_first}}{% endif %}"><img src="{{ 'right-arrow_off.png' | asset_url }}" ></a>
         {% else %}
-          <a href="{{collection.next_product}}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
+          <a href="{% if collection.next_product %}{{collection.next_product}}{% else %}{{collection_product_first}}{% endif %}"><img src="{{ 'right-arrow.png' | asset_url }}" ></a>
         {% endif %}
         {% comment %} {{ '❯' | link_to: collection.next_product }} {% endcomment %}
       </div>
