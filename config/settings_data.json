@@ -34,6 +34,19 @@
     "sections": {
       "announcement-bar": {
         "type": "announcement-bar",
+        "blocks": {
+          "a6e1e5f8-7a40-4d95-ae76-792485112edc": {
+            "type": "announcement",
+            "settings": {
+              "text": "\"Graz, Austria - December 12, 1991\" Livestream This Saturday! Click Here To Buy Tickets!",
+              "color_scheme": "accent-1",
+              "link": "shopify:\/\/collections\/video-audio"
+            }
+          }
+        },
+        "block_order": [
+          "a6e1e5f8-7a40-4d95-ae76-792485112edc"
+        ],
         "settings": {
         }
       },
