@@ -11,6 +11,14 @@
   }
 }
 
+.customer.activate {
+  color: #fff !important;
+}
+
+.customer .field input {
+  border: 1px solid #fff;
+}
+
 .customer form {
   margin-top: 4rem;
 }
