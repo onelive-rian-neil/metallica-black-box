@@ -19,6 +19,10 @@
   border: 1px solid #fff;
 }
 
+.customer.activate button {
+    background-color: #444;
+}
+
 .customer form {
   margin-top: 4rem;
 }
