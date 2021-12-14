@@ -19,12 +19,12 @@ SOFTWARE.
 -->
 {% endcomment %}
 
-{% assign ticket_promo = false %}
+{% assign ticket_promo = true %}
 
 <section class="single-login">
   <div id="form-login" class="single-form">
     <h1 id="LoginHeading" class="text-center">{{ 'single.login.title' | t }}</h1>
-    <h3 style="font-size: 1.5em;">{{ 'single.login.subtext' | t }}</h3>
+    <p>{{ 'single.login.subtext' | t }}</p>
     {% form 'customer_login' %}
       {{ form_errors | default_errors }}
       <input type="hidden" name="return_to" value="{{ page.url }}">
@@ -39,14 +39,14 @@ SOFTWARE.
       <div class="submit">
         <input type="submit" value="{{ 'single.login.sign_in' | t }}" class="btn button">
       </div>
-    {% endform %} 
-      <h4 class="recover-links" style="font-size: 1.25em;">
+    {% endform %}
+      <div class="recover-links">
         <span>
           <a onclick="resetToggle()" id="RecoverPassword">{{ 'single.login.forgot_password' | t }}</a>
         </span>
         <span class="divider"> • </span>
         <span>{{ 'single.login.create_account' | t | customer_register_link }}</span>
-      </h4>
+      </div>
   </div>
   <div id="form-recover" class="single-form hidden">
     <h1 id="LoginHeading" class="text-center">{{ 'single.recover_password.title' | t }}</h1>
@@ -76,7 +76,7 @@ SOFTWARE.
       }
     </script>
   </div>
-  <h4 style="font-size: 1.25em; margin: 0; padding: 0;">{{ 'single.login.help_header' | t }}</h4>
+  <h4>{{ 'single.login.help_header' | t }}</h4>
   <p><a href="FAQ_LINK" target="_blank">{{ 'single.login.faq' | t }}</a></p>
 </section>
 
@@ -90,8 +90,8 @@ SOFTWARE.
       "en": {
         "single": {
           "login": {
-            "title": "Stream Login",
-            "subtext": "Please log in or create account with the email used to purchase!",
+            "title": "Login",
+            "subtext": "Please use the account created when purchasing your ticket!",
             "email": "Email",
             "password": "Password",
             "sign_in": "Sign In",
