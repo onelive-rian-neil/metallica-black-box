@@ -451,6 +451,20 @@ a {
     width: 100% !important;
   }
 }
+/** NFT Countdown Page **/
+.single-nft-countdown-data h1,
+.single-nft-countdown-data p {
+  margin-bottom: 0;
+}
+.single-nft-countdown-data h2 {
+  margin-top: 0;
+}
+.single-nft-title {
+  margin-bottom: 4em;
+}
+.single-nft-title p {
+  margin-top: 0;
+}
 /** FAQ Page **/
 .single-page-faq {
   padding-top: 40px;
