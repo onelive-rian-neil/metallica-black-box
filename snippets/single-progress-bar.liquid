@@ -39,7 +39,7 @@
 {% endfor %}
 {% assign claimed_count = total_inventory | minus: available %}
 {% assign denom = total_inventory | times: 1.0 %}
-{% assign bar_width = claimed_count | divided_by: denom | times: 100 %}
+{% assign bar_width = claimed_count | divided_by: denom | times: 100 | round: 2 %}
 
 {% if total_inventory > 0 %}
 
