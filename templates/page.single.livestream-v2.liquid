@@ -54,6 +54,30 @@ SOFTWARE.
 {% assign today_date = 'now' | date: '%s'| plus: 0 %}
 {% assign video_access = customer.metafields.single_video['video_access'] %}
 
+{% comment %}
+<!-- Soundcheck URL Parameter logic -->
+{% endcomment %}
+{%- capture contentForQuerystring -%}{{ content_for_header }}{%- endcapture -%}
+{%- assign pageUrl = contentForQuerystring |
+    split:'"pageurl":"' | last |
+    split:'"' | first |
+    split:'.myshopify.com' | last |
+    replace:'\/','/' |
+    replace:'%20',' ' |
+    replace:'\u0026','&'
+-%}
+{%- for i in (1..1) -%}
+  {%- unless pageUrl contains "?" -%}{% break %}{%- endunless -%}
+  {%- assign pageQuerystring = pageUrl | split:'?' | last -%}
+  {%- assign parts = pageQuerystring | split:'&' -%}
+  {%- for part in parts -%}
+    {%- assign param_list = part | split:'=' -%}
+    {%- if param_list.size > 1 and param_list contains 'soundcheck' and param_list contains 'true' %}
+      {% assign soundcheck = true %}
+    {% endif %}
+  {%- endfor -%}
+{%- endfor -%}
+
 {% if request.path contains token %}
   {% assign bypass_token_used = true %}
 {% endif %}
@@ -101,7 +125,7 @@ SOFTWARE.
     <div class="single-livestream {{ page.handle }}">
       <div id="single-livestream-player"
            class="single-grid-item single-livestream-player {% if chat_enabled == 'false' %}chat-disabled{% endif %}">
-        <script src="https://{{ livestream_host }}/assets/livestream-embed.js?id={{ livestream_id }}&customerEmail={{ customer.email }}{% if bypass_token_used %}&token={{ token }}{% endif %}" type="text/javascript"></script>
+        <script src="https://{{ livestream_host }}/assets/livestream-embed.js?id={{ livestream_id }}&customerEmail={{ customer.email }}{% if bypass_token_used %}&token={{ token }}{% endif %}{% if soundcheck %}&soundcheck=true{% endif %}" type="text/javascript"></script>
       </div>
       <div class="single-grid-item single-body-content">
         {{ page.content }}
