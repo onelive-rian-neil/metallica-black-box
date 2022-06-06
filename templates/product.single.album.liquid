@@ -22,7 +22,7 @@ SOFTWARE.
 {% comment %}
 <!-- Single Default Styles - Can be edited in assets/single-v2.scss.liquid -->
 {% endcomment %}
-{{ 'single-v3.css' | asset_url | stylesheet_tag }}
+{{ 'single-v4.css' | asset_url | stylesheet_tag }}
 
 {% comment %}
 <!-- jQuery -->
@@ -70,7 +70,6 @@ SOFTWARE.
       <div class="single-album-description desktop-desc" itemprop="description">
         <p>Downloads include choice of MP3, WAV, or FLAC</p>
         <p>{{ product.description }}</p>
-        {% include 'single-share-menu' %}
       </div>
       {% endif %}
     </div>
@@ -142,8 +141,6 @@ SOFTWARE.
       {% capture productsExist %}{% if products != '' and products.length != 0 %}true{% endif %}{% endcapture %}
       {% if product.metafields.album.track_count != 1 and productsExist == 'true' %}
         <div class="single-tracklist">
-          <h3 class="single-tracklist-title">Tracklist</h3>
-          <hr class="single-hr">
           {% for track in products %}
             {% if track.type == 'Digital Track' %}
               {% include 'single-track' with track %}
@@ -167,14 +164,12 @@ SOFTWARE.
         <div class="single-album-description desktop-desc" itemprop="description">
           <p>Downloads include choice of MP3, WAV, or FLAC</p>
           <p>{{ product.description }}</p>
-          {% include 'single-share-menu' %}
         </div>
       {% endif %}
       <!-- Mobile Description -->
       <div class="single-album-description mobile-desc" itemprop="description">
         <p>Downloads include choice of MP3, WAV, or FLAC</p>
         <p>{{ product.description }}</p>
-        {% include 'single-share-menu' %}
       </div>
     </div>
     <!-- End Right Column -->
@@ -221,7 +216,7 @@ addTrackToCart = function addTrackToCart(variantId, trackId) {
     var audioPlayer = new AudioPlayer({ html5: true });
 
     var trackTimeCountdown;
-    var trackStopIcon = '<i class="material-icons">stop</i>';
+    var trackStopIcon = '<i class="material-icons">stop_circle_outline</i>';
     var trackPlayingClass = 'single-preview-playing';
 
     var getTimeLeft = function(seek, duration) {

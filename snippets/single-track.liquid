@@ -28,16 +28,9 @@ SOFTWARE.
 {% assign previewLink = track.metafields.track.preview_link %}
 {% capture albumOnly %}{% if track.metafields.track.album_only == "true" %}true{% endif %}{% endcapture %}
 {% capture previewClickEvent %}{% if trackOnSale == "true" and previewAvailable == "true" %}onclick="togglePlayingTrack('{{ track.id }}', '{{ previewLink }}')"{% endif %}{% endcapture %}
-{% capture trackTime %}{% if track.metafields.track.track_time != '' %}<span class="single-track-time">{{track.metafields.track.track_time}}</span>{% endif %}{% endcapture %}
+{% capture trackTime %}{% if track.metafields.track.track_time != '' %}<span>{{track.metafields.track.track_time}}</span>{% endif %}{% endcapture %}
 {% capture previewClass %}{% if previewAvailable == "true" %} single-track-preview{% endif %}{% endcapture %}
 {% capture availableClass %}{% if trackOnSale == "true" %} single-track-available{% endif %}{% endcapture %}
-{% capture explicitTrack %}
-  {% if track.metafields.track.explicit == "true" %}
-    <div class="single-track-explicit">
-      <span>e</span>
-    </div>
-  {% endif %}
-{% endcapture %}
 
 <div class="single-track{{previewClass}}{{availableClass}}" data-track-id="{{ track.id }}">
 
@@ -48,29 +41,24 @@ SOFTWARE.
       </span>
     {% endif %}
   </div>
-  <div class="single-track-order">
-    <p>
-      <span class="single-track-number">{{ track.metafields.track.track_order }}.</span>
-    </p>
-  </div>
+  
   <div class="single-track-title" {{ previewClickEvent }}>
     {% if track.metafields.track.featured_artist_names %}
-        <span>{{ track.title }} (feat. {{track.metafields.track.featured_artist_names}} )</span>
+        <span>{{ track.title }} (feat. {{track.metafields.track.featured_artist_names}})</span>
     {% else %}
         <span>{{ track.title }}</span>
     {% endif %}
-    {% if track.metafields.track.additional_artist_names %}
-        <span class="single-track-artist">{{track.metafields.track.additional_artist_names}}</span>
-    {% endif %}
-    {% if trackOnSale == "true" %}
-      {{trackTime}}
-    {% endif %}
   </div>
-  {{explicitTrack}}
+
+  {% if trackOnSale == "true" %}
+  <div class="single-track-time">
+      {{trackTime}}
+  </div>
+  {% endif %}
+
+
   {% if track.metafields.track.album_only == "true" or trackOnSale != "true" %}
-    <div class="single-album-only">
-      <p>Album Only</p>
-    </div>
+    <!-- If Album Only -->
   {% else %}
     {% for variant in track.variants %}
       {% if variant.available %}
@@ -80,12 +68,12 @@ SOFTWARE.
       {% endif %}
     {% endfor %}
     {% if presale != "true" or trackOnSale == "true" %}
-      <div class="single-track-price">
-        <p>{{ track.price | money }}</p>
-      </div>
       <div class="single-track-add-to-cart">
-        <i class="material-icons" id="single-add-track-to-cart-icon-{{track.id}}"
-           onclick="addTrackToCart({{ track_variant }}, {{ track.id }});">add_shopping_cart</i>
+        <div class="single-track-btn" 
+             onclick="addTrackToCart({{ track_variant }}, {{ track.id }});">
+          <i class="material-icons" id="single-add-track-to-cart-icon-{{track.id}}">add_shopping_cart</i>
+          <span>{{ track.price | money }}</span>
+        </div>
       </div>
     {% endif %}
   {% endif %}
