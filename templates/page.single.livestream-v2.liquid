@@ -97,8 +97,8 @@ SOFTWARE.
   {% endif %}
 {% endunless %}
 {% if send_to_login and request.path != "/challenge" %}
-  {% capture login_section %}{% section 'single-login' %}{% endcapture %}
-  {{ login_section | replace: 'FAQ_LINK', faq_link }}
+  {% capture login_section %}{% section 'single-video-login' %}{% endcapture %}
+  {{ login_section | replace: 'FAQ_LINK', faq_link |  replace: 'PAGE_URL', page.url }}
 {% else %}
   {% if customer.tags contains customer_tag or customer.tags contains global_tag or video_access contains livestream_id or bypass_token_used or shopify_preview_host %}
     {% assign has_ticket = true %}
