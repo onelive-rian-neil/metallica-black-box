@@ -73,7 +73,7 @@
       <div class="{{ artist_size }} single-video-artist">{{ video_artist }}</div>
     {% endif %}
     {% if show_description == 'true' %}
-      <p>{{ video_description | replace: '&lt;', '<' | replace: '&gt;', '>' | replace: '&quot;', '"' }}</p>
+      <p>{{ video_description | replace: '&amp;', '&' | replace: '&lt;', '<' | replace: '&gt;', '>' | replace: '&quot;', '"' | replace: '&nbsp;', ' ' }}</p>
     {% endif %}
   </div>
 {% endif %}
